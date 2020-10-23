@@ -1,0 +1,73 @@
+<div class="header">
+	<div class="headerMenu">
+		<button class="menu-button" (click)="menuButtonClick()">
+			<img src="assets/img/header/btn_hamburguer.svg" id="imgMenu">
+		</button>
+	</div>
+	<div class="headerLogo">
+		<a routerLink="/mis-asuntos"><img src="assets/img/header/logo.svg" alt="imgBAZ" id="imgLogo" /></a>
+	</div>
+	<div class="headerUser">
+		<div class="name">
+			<strong> {{ name | titlecase }} </strong> {{ lastname | titlecase }} <br/>
+			{{ profile | titlecase }}
+		</div>
+		<div class="pic" style="background-image: url('assets/img/header/88838.jpg')"></div>
+		<div class="user-menu">
+			<a><img src="assets/img/header/btn_desp_menu.svg" (click)="headerService.showMenuLogOut()" /></a>
+		</div>
+		<div class="fecha">
+			<b>{{ fechaHora[0] }}/{{ fechaHora[1] }}/{{ fechaHora[2] }}</b><br />
+			<span>{{ fechaHora[3] }}:{{ fechaHora[4] }}Hrs.</span>
+		</div>
+	</div>
+</div>
+
+<div class="titulo">
+	<div>
+		<div class="ruta">
+			<a routerLink="/">Inicio</a>
+		</div>
+		{{headerService.titulo}}
+	</div>
+</div>
+
+<!-- Menu -->
+<div *ngIf="showMenu" [ngClass]="{'activeAnimation': showMenu}" class="ui-widget-content ui-corner-all menu-principal">
+	<div id="menuPrincipal">
+		<div class="u-flex-column u-m-2">
+			<div class="u-flex u-pb-2"> 
+				<img src="../assets/img/icoBaz.svg" class="u-img-xl">
+				<div class="u-flex-column u-pl-1-5">
+					<div class="titulo1">MODUNE</div>
+					<div class="titulo2">Menú principal</div>
+				</div>
+			</div>
+			<div class="u-position-r">
+				<input type="text" id="busca">
+				<input type="submit" class="buscar" value="">
+			</div>
+		</div>
+		<div id="menu">
+		<ul class="l-navegacion nivel1">
+			<li><a (click)="goMisAsusntos()"><div>Mis asuntos</div></a></li>
+			<li><a (click)="goRegistro()"><div>Registro</div></a></li>
+			<li><a href="#"><div>Carga masiva casos</div></a></li>
+			<li><a href="#"><div>Reportes</div></a></li>
+			<li class="dropdown2">
+				<a><div>Consulta histórico MODUNE</div><div class="flecha"></div></a>
+				<ul class="nivel2 dropdown-content2">
+					<li><a href="#"><div>Opción 1</div></a></li>
+					<li class="dropdown3">
+						<a><div>Opción 2</div><div class="flecha"></div></a>
+						<ul class="nivel3 dropdown-content3">
+							<li><a href="#"><div>Opción 1</div></a></li>
+							<li><a href="#"><div>Opción 2</div></a></li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		</div>
+	</div>
+</div>

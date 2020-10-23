@@ -1,0 +1,271 @@
+header {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #ffffff;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #006341;
+    background-color: #ffffff;
+}
+
+.header>div {
+    width: 33%;
+}
+
+.headerLogo {
+    text-align: center;
+}
+
+.headerMenu {
+    padding: 0px 15px;
+}
+
+.headerUser {
+    justify-content: flex-end;
+    padding: 0px 5px 0px 0px;
+}
+
+img#imgLogo {
+    height: 35px;
+}
+
+.headerMenu a img {
+    width: 21px;
+}
+
+div.pic {
+    display: block;
+    position: relative;
+    width: 38px;
+    height: 38px;
+    margin: 0 0 0 10px;
+    background: #FFFFFF no-repeat center center;
+    border: solid 2px #666666;
+    border-radius: 50%;
+    background-size: 80%;
+}
+
+.user-menu a img {
+    width: 10px;
+}
+
+.headerUser {
+    display: flex;
+    align-items: center;
+}
+
+.user-menu {
+    margin: 23px 4px 0px 4px;
+}
+
+.name {
+    color: #000;
+    font-size: 12px;
+    line-height: 17px;
+    text-align: right;
+}
+
+.fecha {
+    font-size: 11px;
+    line-height: 15px;
+    padding: 0px 6px;
+}
+
+.titulo {
+    padding: 2px 2% 6px 15px;
+    background-color: #fafafa;
+    font-size: 24px;
+    color: #43413B;
+    font-weight: 800;
+    text-align: left;
+    // margin-bottom: 15px;
+}
+
+.titulo .ruta {
+    font-size: 12px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 1px 0px 0px 0px;
+}
+
+.titulo .ruta a {
+    color: #7E7E7E;
+    text-decoration: none;
+}
+
+.ruta a::after {
+    content: "/ ";
+    display: inline-block;
+    width: 0.4rem;
+    height: 0.4rem;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.ver {
+    display: block;
+}
+
+.MenuUser {
+    width: 250px;
+    position: absolute;
+    right: 4px;
+}
+
+.MenuUser:after {
+    content: "";
+    border-top: 2px solid transparent;
+    border-bottom: 10px solid #ffffff;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    left: 59%;
+    position: absolute;
+    top: 2px;
+    z-index: 28;
+}
+
+.MenuUser1 {
+    display: none;
+    background-color: #ffffff;
+    box-shadow: 2px -3px 13px 2px rgba(154, 150, 150, 0.5);
+    z-index: 9;
+    border-radius: 10px;
+    margin-top: 12px;
+    font-size: 14px;
+}
+
+.titConfig {
+    color: #333333;
+    font-family: 'Avenir_Next_Demi_Bold';
+    padding: 10px 0px 10px 20px;
+    border-bottom: 1px solid #ebebeb;
+}
+
+a.selMenu {
+    width: 100%;
+    color: #cbcbcb;
+    font-family: 'Avenir_Next_Demi_Bold';
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid red;
+    margin: auto;
+}
+
+a.selMenu div {
+    padding: 5px 15px;
+    align-items: center;
+    display: flex;
+}
+
+a.selMenu div:nth-child(1) {
+    width: 77%;
+}
+
+a.selMenu div:nth-child(2) {
+    width: 23%;
+}
+
+a.selMenu:hover {
+    background-color: #e6efe6;
+    color: #333333;
+    border-bottom: 1px solid #e6efe6;
+    border-radius: 10px;
+}
+
+a.selMenu:hover div {
+    border-bottom: 1px solid #e6efe6;
+}
+
+.imgConfig {
+    width: 20px;
+}
+
+a.selMenu:hover .imgConfig {
+    -webkit-filter: contrast(200%);
+    filter: contrast(2%) brightness(0%);
+}
+
+.MenuUser1 a:last-child {
+    border-bottom: 0px;
+}
+
+.verLogOut {
+    display: block;
+}
+
+.menu-principal {
+    min-width: 320px;
+}
+
+.titulo1 {
+    font-size: 12px;
+    font-family: "Avenir_Light";
+    color: #54585A;
+}
+
+.titulo2 {
+    font-size: 18px;
+}
+
+.opciones-menu .opcion {
+    color: #54585A;
+    padding: 12px 15px;
+    line-height: 15px;
+    text-align: justify;
+    border-bottom: solid 1px #f1f1f1;
+    cursor: pointer;
+}
+.opciones-menu .opcion:hover {
+    color: #54585A;
+    padding: 12px 15px;
+    line-height: 15px;
+    text-align: justify;
+    border-bottom: solid 1px #f1f1f1;
+    cursor: pointer;
+    background-color: #e6efe6;
+    color: #2a633d;
+}
+.opciones-menu .opcion:first-of-type {
+    border-top: solid 1px #f1f1f1;
+}
+
+img#imgMenu {
+    height: 17px;
+}
+
+.menu-button {
+    padding: unset;
+    width: 43px;
+    height: 43px;
+    background-color: unset;
+    border: unset;
+    outline: none;
+    cursor: pointer;
+    margin-bottom: -3px;
+}
+
+@media screen and (max-width: 1023px) {
+    .fecha {
+        display: none;
+    }
+}
+
+@media screen and (max-width:700px) {
+    div.name {
+        display: none;
+    }
+}
+
+@media screen and (max-width:500px) {
+    div.pic {
+        width: 35px;
+        height: 35px;
+    }
+}

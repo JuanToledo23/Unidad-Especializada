@@ -1,0 +1,76 @@
+@import "assets/styles/temaBaz";
+@import "assets/styles/variables";
+@import "assets/styles/utilidades";
+@import "assets/styles/input";
+@import "assets/styles/buttons";
+@import "assets/styles/forms";
+@import "assets/styles/table";
+@import "assets/styles/containers";
+@import "assets/styles/titles";
+@import "assets/styles/menu";
+@import "assets/styles/expansion-panel";
+@import "assets/styles/grid";
+@import "assets/styles/selects";
+@import "assets/styles/datePicker";
+
+html,
+body {
+    font-family: $font-regular;
+    font-weight: normal;
+    font-style: normal;
+    color: #333333;
+    // height: 100%;
+    min-width: 1024px;
+    margin: 0px;
+    padding: 0px;
+    font-size: 15px;
+    min-height: 720px;
+}
+
+div {
+    outline: none;
+}
+
+mat-sidenav-container {
+    height: 100% !important;
+    
+    
+}
+
+.mat-drawer-container {
+    background-color: $color-blanco !important;
+    color: #333333 !important;
+    height: auto;
+}
+
+.mat-drawer-content {
+    overflow: hidden !important;
+}
+
+a {
+    color: #333333;
+}
+
+.cont-seccion {
+    width: 96%;
+    margin: 2%;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #33333357;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #33333357;
+}

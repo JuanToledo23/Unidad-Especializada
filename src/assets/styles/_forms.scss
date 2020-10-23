@@ -1,0 +1,135 @@
+input.buscar {
+    background-image: url(/assets/img/lupa.svg);
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    width: 17px;
+    height: 17px;
+    border: 0px;
+    cursor: pointer;
+    position: absolute;
+    right: 5px;
+    bottom: -5px;
+    font-size: 0;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"],
+input[type="password"],
+select,
+input[type="time"],
+input[type="search"],
+mat-select,
+input {
+    background-color: #fff;
+    color: #2e2925;
+    border: 0px;
+    padding: 0px;
+    border-radius: 0px;
+    position: relative;
+    font-size: 11px;
+    padding: 0px 10px;
+    height: 29px !important;
+    width: 100%;
+    border: 1px solid #bfbfbf;
+    box-sizing: border-box;
+    outline: none;
+}
+
+textarea {
+    background-color: #fff;
+    color: #2e2925;
+    border: 0px;
+    padding: 0px;
+    border-radius: 0px;
+    position: relative;
+    font-size: 11px;
+    padding: 6px 10px;
+    width: 100%;
+    border: 1px solid #bfbfbf;
+    box-sizing: border-box;
+    outline: none;
+    min-height: 100px;
+    resize: none;
+}
+
+input.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+.inputfile + label {
+    cursor: pointer;
+    display: block;
+    overflow: hidden;
+    padding: 0px 1.25rem;
+}
+.inputfile + label {
+    cursor: pointer;
+    background-image: url(/assets/img/icoAdjuntar.svg);
+    background-size: 17px;
+    background-position: 97% 35%;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    background-color: #fff;
+    color: #999999;
+    border-radius: 0px;
+    border: 1px solid #bfbfbf;
+    position: relative;
+    font-size: 11px;
+    padding: 0px 10px;
+    height: 29px;
+    width: 100%;
+}
+// .carga + label span {
+//     width: 100%;
+//     line-height: 29px;
+// }
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="search"] {
+    width: 200px;
+}
+select,
+.dk-selected {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 30px !important;
+}
+.w87 {
+    width: 87%;
+    margin: auto;
+    position: relative;
+}
+
+input.editar {
+    //background-image: url('./assets/img/icoEditar.svg');
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    width: 17px;
+    height: 17px;
+    border: 0px;
+    cursor: pointer;
+    position: absolute;
+    right: 2%;
+    bottom: 6px;
+}
+.divTel {
+    display: flex;
+}
+.divTel > input:nth-child(1) {
+    width: 30%;
+    margin-right: 2%;
+}

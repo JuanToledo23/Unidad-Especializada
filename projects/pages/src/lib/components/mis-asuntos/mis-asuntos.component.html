@@ -1,0 +1,76 @@
+<app-header></app-header>
+
+<div class="contenedor-contenido">
+    <div class="titulo-contenido">Mis asuntos pendientes</div>
+    <div class="contenedor-gris">
+        <div class="u-flex-center u-flex-column u-mt-1">
+            <div class="u-position-r u-w-50">
+                <input type="text" id="buscaAsuntos" (keyup)="applyFilter($event)">
+                <input type="submit" class="buscar" value="">
+            </div>
+            <div class="u-flex-center u-w-75 u-mt-1-5">
+                <mat-radio-group aria-label="Select an option" class="u-w-100 u-flex-between" (change)="radioChange($event)">
+                    <div class="u-txt-medium">Tipo de búsqueda:</div>
+                    <mat-radio-button value="-1">Todos</mat-radio-button>
+                    <mat-radio-button value="0">Gestión electrónica</mat-radio-button>
+                    <mat-radio-button value="1">Unidad especializada</mat-radio-button>
+                    <mat-radio-button value="2">REDECO</mat-radio-button>
+                </mat-radio-group>
+            </div>
+        </div>
+        <div class="u-mt-1-5 scroll-y">
+            <table mat-table [dataSource]="dataSource" matSort
+                class="tblGeneral tblPuestos">
+
+                <ng-container matColumnDef="folio">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Folio</th>
+                    <td mat-cell *matCellDef="let element"><a class="link">{{element.folio}}</a></td>
+                </ng-container>
+
+                <ng-container matColumnDef="nombre">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre(s)</th>
+                    <td mat-cell *matCellDef="let element">{{element.nombre}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="estatus">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Estatus</th>
+                    <td mat-cell *matCellDef="let element">{{element.estatus}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="fechaRecepcion">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha <br> recepción</th>
+                    <td mat-cell *matCellDef="let element">{{element.fechaRecepcion}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="fechaVencimiento">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha <br> vencimiento</th>
+                    <td mat-cell *matCellDef="let element">{{element.fechaVencimiento}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="medioLlegada">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Medio <br> de llegada</th>
+                    <td mat-cell *matCellDef="let element">{{element.medioLlegada}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="diasVencimiento">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Días de <br> vencimiento</th>
+                    <td mat-cell *matCellDef="let element" class="u-txt-demibold"
+                        [ngClass]="{'bg-rojo': +element.diasVencimiento < 10, 'bg-amarillo': +element.diasVencimiento >= 10 && +element.diasVencimiento < 20, 'bg-verde': +element.diasVencimiento >= 20 && +element.diasVencimiento < 30}">
+                        {{element.diasVencimiento}}</td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
+        <div class="u-flex-center u-w-100 u-mt-1">
+            <div class="u-flex-between u-w-50">
+                <div class="u-txt-medium">Tiempo para atender:</div>
+                <div class="u-flex-center"><div class="cuadrito bg-verde u-mr-0-5"></div>Nuevo</div>
+                <div class="u-flex-center"><div class="cuadrito bg-amarillo u-mr-0-5"></div>Normal</div>
+                <div class="u-flex-center"><div class="cuadrito bg-rojo u-mr-0-5"></div>Urgente</div>
+            </div>
+        </div>
+    </div>
+</div>
+<une-footer></une-footer>

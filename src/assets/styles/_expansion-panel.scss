@@ -1,0 +1,31 @@
+.mat-expansion-panel-spacing {
+    margin: 0px !important;
+}
+
+.mat-expansion-panel {
+    border-radius: 0px !important;
+}
+
+.mat-expansion-panel-content {
+    font: 500 14px/29px Avenir_Next_Regular !important;
+}
+
+mat-expansion-panel-header {
+    border: solid 1px $color-gris-e3;
+    border-bottom: solid 1px $color-primario;
+    font-size: 16px !important;
+    color: #1C1C1C !important;
+    font-family: $font-bold !important;
+    height: 48px !important;
+}
+
+.mat-expansion-panel:not([class*=mat-elevation-z]) {
+    box-shadow: unset !important;
+}
+
+.mat-expansion-indicator::after{
+    border-width: 0 3px 3px 0 !important;
+    padding: 7px !important;
+    vertical-align: unset !important;
+    color: $color-primario;
+}

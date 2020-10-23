@@ -1,0 +1,49 @@
+@import '~@angular/material/theming';
+@include mat-core(); 
+
+$md-baztema: (
+    50 : #e0ece8,
+    100 : #b3d0c6,
+    200 : #80b1a0,
+    300 : #4d9279,
+    400 : #267a5d,
+    500 : #006340,
+    600 : #005b3a,
+    700 : #005132,
+    800 : #00472a,
+    900 : #00351c,
+    A100 : #6dffaa,
+    A200 : #3aff8d,
+    A400 : #07ff6f,
+    A700 : #00ec63,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$baz-paleta-primario: mat-palette($md-baztema);
+$baz-paleta-secundario:  mat-palette($md-baztema);
+$baz-tema: mat-light-theme($baz-paleta-primario, $baz-paleta-secundario);
+
+@include angular-material-theme($baz-tema);
+
+$custom-typography: mat-typography-config(
+  $font-family: 'Avenir_Next_Regular',
+  $headline: mat-typography-level(32px, 48px, 700),
+  $body-1: mat-typography-level(16px, 24px, 500)
+);
+
+@include angular-material-typography($custom-typography);

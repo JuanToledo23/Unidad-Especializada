@@ -1,0 +1,22 @@
+.date-picker {
+    position: relative;
+}
+
+.date-picker > mat-datepicker-toggle > button {
+    position: absolute;
+    min-width: unset !important;
+    right: 1px;
+    top: -3px;
+    width: 35px;
+    height: 35px;
+}
+.date-picker > mat-datepicker-toggle > button > span {
+    position: absolute;
+    right: 7px;
+    top: -3px;
+}
+
+.date-picker .mat-icon {
+    height: 20px !important;
+    width: 20px !important;
+}

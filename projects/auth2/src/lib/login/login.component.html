@@ -1,0 +1,145 @@
+<!-- Agregar los formShowError -->
+<div class="ContLogin">
+	<div class="imagen" style="height: 87vw;">
+        <div class="u-flex-column u-txt-left u-w-100 tituloBaz">
+            <img src="assets/img/bancoazteca.svg" class="logoBaz">
+            <div class="subtituloBaz">Unidad Especializada de Atención al Usuario</div>
+        </div>
+    </div>
+	<div class="login">
+        <div class="titHome">
+            <div class="titHomeBorder">
+                <br>
+                <span class="bold-medium">Bienvenido</span>
+            </div>
+        </div>
+
+		<div class="subtit">Iniciar Sesión por:</div>
+		<mat-radio-group (change)="onChange($event)" name="tipoInicio">
+				<div >
+						<mat-radio-button value="1">Llave Maestra</mat-radio-button>
+				</div>
+				<div class="modRadioButton">
+						<mat-radio-button value="2">Usuario Normal</mat-radio-button>
+				</div>
+				
+				
+		</mat-radio-group>
+
+
+		<!-- POR LLAVE MAESTRA -->
+		<form *ngIf="flagInicioSesionByMasterKey" #f="ngForm" novalidate autocomplete="off" class="center">
+				<div class="divLogin">
+					<!-- <div class="subtit">Iniciar Sesión</div> -->
+					<div class="div-ng-container">
+						<input class="inputlogin" type="text" name="usr" autocomplete="off" maxlength="12" #usr="ngModel" ngModel required (click)="cleanMsg()" (change)="changeValues()" placeholder="Usuario:"/>
+						<!--formShowError [control] ="usr"></formShowError-->
+					</div>
+					<div class="div-ng-container">
+						<input class="inputlogin" [type]="show ? 'text' : 'password'" autocomplete="off" name="contr" #contr="ngModel" ngModel required (click)="cleanMsg2();changeValues();" (change)="cleanMsg2();changeValues();" placeholder="Llave maestra:"/>
+								<i style="width: 5%;" id="eyeLogin" width="20" (mouseup)="hiddenPassword()" (mousedown)="showPassword()"class="fa fa-eye fa-lg" aria-hidden="true"></i>
+						<!--formShowError [control] ="contr"></formShowError-->
+					</div>
+					<ng-container *ngIf="paisesUsr.length > 0">
+						<div class="div-ng-container">
+							País:<br>
+							<ng-select class=""
+								[ngModelOptions] = "{standalone: true}"
+								bindLabel="paisDesc"
+								bindValue="idPais"
+								placeholder="Selecciona un pais"
+								[(ngModel)]="paisSelected"
+								
+								required>
+							</ng-select>
+						</div>
+						<div class="div-ng-container">
+							Rol:<br>
+							<ng-select  class=""
+								[ngModelOptions] = "{standalone: true}"
+								bindLabel="rolDesc"
+								bindValue="idRol"
+								placeholder="Selecciona un rol"
+								[(ngModel)]="rolSelected"
+								required>
+							</ng-select>
+						</div>
+					</ng-container>
+					<div *ngIf="msg" class="messageService2">
+						{{ msg }}
+					</div>
+					<div *ngIf="msg2" class="messageService2">
+						{{ msg2 }}
+					</div>
+					<div *ngIf="msgBloq" class="messageService2">
+						{{ msgBloq }}
+					</div>
+					<div class="btnCenter" *ngIf="checking">
+						<mat-spinner></mat-spinner>
+					</div>
+					<div class="btnCenter">
+                        <button mat-flat-button color="primary" class="btn" (click)="iniciarSesion()">Ingresar</button>
+                    </div>
+				</div>
+			</form>
+
+		<!-- FIN POR LLAVE MAESTRA -->
+
+
+		<!-- POR USUARIO NORMAL -->
+		<form  *ngIf="flagInicioSesionByUser" #f="ngForm" novalidate autocomplete="off" class="center">
+			<div class="divLogin">
+				<!-- <div class="subtit">Iniciar Sesión</div> -->
+				<div class="div-ng-container">
+					<input class="inputlogin" type="text" name="usr" autocomplete="off" maxlength="12" #usr="ngModel" ngModel required (click)="cleanMsg()" (change)="changeValues()" placeholder="Usuario:"/>
+					<!--formShowError [control] ="usr"></formShowError-->
+				</div>
+				<div class="div-ng-container">
+					<input class="inputlogin" [type]="show ? 'text' : 'password'" autocomplete="off" name="contr" #contr="ngModel" ngModel required (click)="cleanMsg2();changeValues();" (change)="cleanMsg2();changeValues();" placeholder="Contraseña:"/>
+							<i style="width: 5%;" id="eyeLogin" width="20" (mouseup)="hiddenPassword()" (mousedown)="showPassword()"class="fa fa-eye fa-lg" aria-hidden="true"></i>
+					<!--formShowError [control] ="contr"></formShowError-->
+				</div>
+				<ng-container *ngIf="paisesUsr.length > 0">
+					<div class="div-ng-container">
+						País:<br>
+						<ng-select class=""
+							[ngModelOptions] = "{standalone: true}"
+							bindLabel="paisDesc"
+							bindValue="idPais"
+							placeholder="Selecciona un pais"
+							[(ngModel)]="paisSelected"
+							required>
+						</ng-select>
+					</div>
+					<div class="div-ng-container">
+						Rol:<br>
+						<ng-select  class=""
+							[ngModelOptions] = "{standalone: true}"
+							bindLabel="rolDesc"
+							bindValue="idRol"
+							placeholder="Selecciona un rol"
+							[(ngModel)]="rolSelected"
+							required>
+						</ng-select>
+					</div>
+				</ng-container>
+				<div *ngIf="msg" class="messageService2">
+					{{ msg }}
+				</div>
+				<div *ngIf="msg2" class="messageService2">
+					{{ msg2 }}
+				</div>
+				<div *ngIf="msgBloq" class="messageService2">
+					{{ msgBloq }}
+				</div>
+				<div class="btnCenter" *ngIf="checking">
+					<mat-spinner></mat-spinner>
+				</div>
+                <div class="btnCenter">
+                    <button mat-flat-button color="primary" (click)="iniciarSesion()">Ingresar</button>
+				</div>
+			</div>
+		</form>
+		<!-- FIN POR USUARIO NORMAL -->
+	</div>
+</div>
