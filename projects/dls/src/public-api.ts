@@ -4,6 +4,7 @@
 
  // Modules
 export * from './lib/dls.module';
+export * from './lib/directives/directive.module';
 
 // Components
 export * from './lib/components/header/header.component';
@@ -12,3 +13,6 @@ export * from './lib/components/formValidate/formShowErrors.component';
 
 // Services
 export * from './lib/services/header.service';
+
+// Directives
+export * from './lib/directives/expiration-date/expiration-date.directive';

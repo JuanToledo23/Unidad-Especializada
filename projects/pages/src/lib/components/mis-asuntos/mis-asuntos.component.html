@@ -54,8 +54,8 @@
 
                 <ng-container matColumnDef="diasVencimiento">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>Días de <br> vencimiento</th>
-                    <td mat-cell *matCellDef="let element" class="u-txt-demibold"
-                        [ngClass]="{'bg-rojo': +element.diasVencimiento < 10, 'bg-amarillo': +element.diasVencimiento >= 10 && +element.diasVencimiento < 20, 'bg-verde': +element.diasVencimiento >= 20 && +element.diasVencimiento < 30}">
+                    <td mat-cell *matCellDef="let element" class="u-txt-demibold" expirationDate
+                        >
                         {{element.diasVencimiento}}</td>
                 </ng-container>
 
