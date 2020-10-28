@@ -301,6 +301,10 @@ strong{
     font-family: 'Avenir_Next_Bold';
 }
 
+.strong2 {
+    font-family: 'Avenir_Next_Demi_Bold';
+}
+
 .u-txt-sm{
     font-size: 12px;
 }
@@ -405,6 +409,10 @@ strong{
 .u-desac{
     pointer-events: none;
     opacity: 0.6;
+}
+
+input.u-desac {
+    background-color: #f4f4f4 !important;
 }
 
 .u-cursor-pointer{

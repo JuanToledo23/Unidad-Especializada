@@ -1,15 +1,34 @@
 <app-header></app-header>
 
 <div class="contenedor-contenido">
-    <div class="titulo-contenido">Captura de Caso</div>
+    <div class="titulo-contenido">Consulta de Caso</div>
     <div class="contenedor-gris">
         <div class="u-flex-center u-flex-column u-my-1">
             <div class="u-position-r u-w-50">
                 <input type="text" id="buscaAsuntos" placeholder="Buscar por número de cuenta, tarjeta o CU">
-                <input type="submit" class="buscar" (click)="goConsulta()">
+                <input type="submit" class="buscar">
             </div>
         </div>
         <div class="subtitulo-seccion">Caso</div>
+        <div class="row">
+            <div class="col-12 col-s-12 info-reclamante u-flex-between">
+                <div class="u-flex">
+                    <img src="assets/img/icoFlecha.svg" class="u-img-lg u-mr-1 u-ml-1">
+                    <div>
+                        <label class="tit-info">RECLAMACIÓN SIGE</label>
+                        <div><label>Num. Expediente: </label><label class="strong2">2020/090/200</label></div>
+                        <div><label>Folio interno: </label><label class="strong2">12345</label></div>
+                    </div>
+                </div>
+                <div class="u-flex u-txt-right">
+                    <div>
+                        <label class="tit-info">LUIS FERNANDO ESQUIVEL MAYETT</label>
+                        <div><label class="strong2">722500</label></div>
+                    </div>
+                    <img src="assets/img/icoFlecha.svg" class="u-img-lg u-mr-1 u-ml-1">
+                </div>
+            </div>
+        </div>
         <mat-accordion multi>
             <mat-expansion-panel>
                 <mat-expansion-panel-header>

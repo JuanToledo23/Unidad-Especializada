@@ -43,8 +43,12 @@ export class MaterialModule {
       this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/img/icoCalendario.svg")
     );
     this.matIconRegistry.addSvgIcon(
-      "ico-agregar",
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/img/icoAgregar.svg")
+      "ico-agregar-blanco",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/img/icoAgregarBlanco.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      "ico-agregar-negro",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/img/icoAgregarNegro.svg")
     );
     this.matIconRegistry.addSvgIcon(
       "ico-guardar",

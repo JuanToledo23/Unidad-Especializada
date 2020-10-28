@@ -22,6 +22,6 @@
     </div>
     <div class="col-4 col-s-12">
         <label>Monto reclamado</label>
-        <input type="text">
+        <input type="text" [ngModel]="montoReclamado | MoneyFormat" (ngModelChange)="montoReclamado = $event">
     </div>
 </div>
