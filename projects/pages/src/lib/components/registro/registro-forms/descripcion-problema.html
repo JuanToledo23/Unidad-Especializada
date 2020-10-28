@@ -1,75 +1,116 @@
-<div class="subtitulo-subseccion">Causa de reclamación</div>
+<ng-container *ngFor="let reclamo of reclamos">
+    <div class="subtitulo-subseccion">Causa de reclamación {{ reclamo.numeroReclamacion }}</div>
+    <div class="row">
+        <div class="col-4 col-s-12">
+            <label>Búsqueda por:</label>
+            <mat-select placeholder="Selecciona" (selectionChange)="cambioBusquedaPor($event.value, reclamo)">
+                <mat-option value="numeroTarjeta">Número de tarjeta</mat-option>
+                <mat-option value="numeroCuenta">Número de cuenta</mat-option>
+                <mat-option value="clienteUnico">Cliente Único</mat-option>
+            </mat-select>
+        </div>
+        <div class="col-4 col-s-12" *ngIf="reclamo.busquedaPor.numeroTarjeta.estatus">
+            <label>Número de tarjeta:</label>
+            <mat-select placeholder="Selecciona" (selectionChange)="seleccionoSegundoParametro(reclamo)">
+                <mat-option value="option1">1235876219842637</mat-option>
+                <mat-option value="option2">5238715829714362</mat-option>
+            </mat-select>
+        </div>
+        <div class="col-4 col-s-12" *ngIf="reclamo.busquedaPor.numeroTarjeta.segundoParametro">
+            <label>Número de cuenta</label>
+            <input type="text" value="01726524119758" class="u-desac">
+        </div>
+
+        <div class="col-4 col-s-12" *ngIf="reclamo.busquedaPor.numeroCuenta.estatus">
+            <label>Número de cuenta:</label>
+            <mat-select placeholder="Selecciona" (selectionChange)="seleccionoSegundoParametro(reclamo)">
+                <mat-option value="option1">01726524119758</mat-option>
+                <mat-option value="option2">01726524119755</mat-option>
+            </mat-select>
+        </div>
+        <div class="col-4 col-s-12" *ngIf="reclamo.busquedaPor.numeroCuenta.segundoParametro">
+            <label>Número de tarjeta</label>
+            <input type="text" value="1235876219842637" class="u-desac">
+        </div>
+
+        <div class="col-4 col-s-12" *ngIf="reclamo.busquedaPor.clienteUnico.estatus">
+            <label>Número de cliente único:</label>
+            <mat-select placeholder="Selecciona" (selectionChange)="seleccionoSegundoParametro(reclamo)">
+                <mat-option value="option1">01-01-5610-1234</mat-option>
+                <mat-option value="option2">01-01-5610-1235</mat-option>
+            </mat-select>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-4 col-s-12">
+            <label>Sucursal de origen</label>
+            <input type="text">
+        </div>
+        <div class="col-4 col-s-12">
+            <label>Unidad de Negocio</label>
+            <mat-select>
+                <mat-option value="option1">Opción 1</mat-option>
+                <mat-option value="option2">Opción 2</mat-option>
+                <mat-option value="option3">Opción 3</mat-option>
+            </mat-select>
+        </div>
+        <div class="col-4 col-s-12">
+            <label>Tipo de producto o servicio</label>
+            <mat-select>
+                <mat-option value="option1">Opción 1</mat-option>
+                <mat-option value="option2">Opción 2</mat-option>
+                <mat-option value="option3">Opción 3</mat-option>
+            </mat-select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4 col-s-12">
+            <label>Nombre comercial del producto o servicio</label>
+            <mat-select>
+                <mat-option value="option1">Opción 1</mat-option>
+                <mat-option value="option2">Opción 2</mat-option>
+                <mat-option value="option3">Opción 3</mat-option>
+            </mat-select>
+        </div>
+        <div class="col-4 col-s-12">
+            <label>Canal de la operación</label>
+            <mat-select>
+                <mat-option value="option1">Opción 1</mat-option>
+                <mat-option value="option2">Opción 2</mat-option>
+                <mat-option value="option3">Opción 3</mat-option>
+            </mat-select>
+        </div>
+        <div class="col-4 col-s-12">
+            <label>Causa de la inconformidad</label>
+            <mat-select>
+                <mat-option value="option1">Opción 1</mat-option>
+                <mat-option value="option2">Opción 2</mat-option>
+                <mat-option value="option3">Opción 3</mat-option>
+            </mat-select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4 col-s-12">
+            <label>No. de transacciones reclamadas</label>
+            <input type="number">
+        </div>
+        <div class="col-4 col-s-12">
+            <label>Monto de la reclamación</label>
+            <input type="text" [ngModel]="montoReclamacion | MoneyFormat" (ngModelChange)="montoReclamacion = $event">
+        </div>
+        <div class="col-4 col-s-12">
+            <label>Importe bonificado o cancelado</label>
+            <input type="text" [ngModel]="importeBonificacion | MoneyFormat" (ngModelChange)="importeBonificacion = $event">
+        </div>
+    </div>
+</ng-container>
+
+
 <div class="row">
-    <div class="col-4 col-s-12">
-        <label>Unidad de Negocio</label>
-        <mat-select>
-            <mat-option value="option1">Opción 1</mat-option>
-            <mat-option value="option2">Opción 2</mat-option>
-            <mat-option value="option3">Opción 3</mat-option>
-        </mat-select>
-    </div>
-    <div class="col-4 col-s-12">
-        <label>Tipo de producto o servicio</label>
-        <mat-select>
-            <mat-option value="option1">Opción 1</mat-option>
-            <mat-option value="option2">Opción 2</mat-option>
-            <mat-option value="option3">Opción 3</mat-option>
-        </mat-select>
-    </div>
-    <div class="col-4 col-s-12">
-        <label>Nombre comercial del producto o servicio</label>
-        <mat-select>
-            <mat-option value="option1">Opción 1</mat-option>
-            <mat-option value="option2">Opción 2</mat-option>
-            <mat-option value="option3">Opción 3</mat-option>
-        </mat-select>
-    </div>
-</div>
-<div class="row">
-    <div class="col-4 col-s-12">
-        <label>Canal de la operación</label>
-        <mat-select>
-            <mat-option value="option1">Opción 1</mat-option>
-            <mat-option value="option2">Opción 2</mat-option>
-            <mat-option value="option3">Opción 3</mat-option>
-        </mat-select>
-    </div>
-    <div class="col-4 col-s-12">
-        <label>Causa de la inconformidad</label>
-        <mat-select>
-            <mat-option value="option1">Opción 1</mat-option>
-            <mat-option value="option2">Opción 2</mat-option>
-            <mat-option value="option3">Opción 3</mat-option>
-        </mat-select>
-    </div>
-    <div class="col-4 col-s-12">
-        <label>No. de transacciones reclamadas</label>
-        <input type="number">
-    </div>
-</div>
-<div class="row">
-    <div class="col-4 col-s-12">
-        <label>Monto de la reclamación</label>
-        <input type="text">
-    </div>
-    <div class="col-4 col-s-12">
-        <label>Importe bonificado o cancelado</label>
-        <input type="text">
-    </div>
-    <div class="col-4 col-s-12">
-        <label>Fallo</label>
-        <div>
-            <mat-radio-group name="fallo">
-                <div class="col-4 u-ex-left-u">
-                    <mat-radio-button value="1">Procede</mat-radio-button>
-                </div>
-                <div class="col-4 u-p-u">
-                    <mat-radio-button value="2">No procede</mat-radio-button>
-                </div>
-            </mat-radio-group>
-            <div class="col-4 u-ex-right-u">
-                <button mat-flat-button color="primary" class="btn u-flex-center"><mat-icon matDatepickerToggleIcon svgIcon="ico-agregar" class="icoBtn"></mat-icon>Añadir otro</button>
-            </div>
+    <div class="col-12 col-s-12 u-flex-end">
+        <div class="col-4 u-ex-right-u u-flex-end">
+            <button mat-flat-button color="primary" class="btn u-flex-center" (click)="agregarCausa()"><mat-icon matDatepickerToggleIcon svgIcon="ico-agregar-negro" class="icoBtn"></mat-icon>Añadir otra causa</button>
         </div>
     </div>
 </div>

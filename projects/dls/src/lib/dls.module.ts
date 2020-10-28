@@ -5,6 +5,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FormShowError } from './components/formValidate/formShowErrors.component';
 import { MaterialModule } from './material-module';
+import { MoneyFormatPipe } from './pipes/moneyFormat.pipe';
 
 const compponents = [
   HeaderComponent,
@@ -13,12 +14,14 @@ const compponents = [
 ]
 
 @NgModule({
-  declarations: [compponents],
+  declarations: [compponents,
+    MoneyFormatPipe],
   imports: [
     CommonModule,
     FormsModule,
     MaterialModule
   ],
-  exports: [compponents]
+  exports: [compponents,
+    MoneyFormatPipe]
 })
 export class DlsModule { }

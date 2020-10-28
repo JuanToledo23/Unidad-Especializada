@@ -16,6 +16,7 @@ import {  AntecedentesAclaracionesForm,
           OrigenReclamacionForm 
 } from './components/registro/registro-forms/registro-forms.component';
 import { DlsModule } from 'dls';
+import { ConsultaComponent } from './components/consulta/consulta.component';
 
 const RegistroComponents = [
   OrigenReclamacionForm,
@@ -39,13 +40,15 @@ const RegistroComponents = [
     PagesComponent,
     MisAsuntosComponent,
     RegistroComponent,
-    RegistroComponents
+    RegistroComponents,
+    ConsultaComponent
   ],
   exports: [
     PagesComponent,
     MisAsuntosComponent,
     RegistroComponent,
-    RegistroComponents
+    RegistroComponents,
+    ConsultaComponent
 ]
 })
 export class PagesModule { }
