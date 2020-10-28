@@ -15,7 +15,7 @@ import {  AntecedentesAclaracionesForm,
           DocumentosForm, 
           OrigenReclamacionForm 
 } from './components/registro/registro-forms/registro-forms.component';
-import { DlsModule } from 'dls';
+import { DlsModule, DirectiveModule  } from 'dls';
 
 const RegistroComponents = [
   OrigenReclamacionForm,
@@ -33,7 +33,8 @@ const RegistroComponents = [
     CommonModule,
     MaterialModule,
     PagesRoutingModule,
-    DlsModule
+    DlsModule,
+    DirectiveModule
   ],
   declarations: [
     PagesComponent,
