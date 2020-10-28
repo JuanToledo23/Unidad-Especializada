@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { HeaderService } from 'dls';
 
 @Component({
@@ -10,7 +11,7 @@ export class RegistroComponent implements OnInit, AfterViewInit {
 
   panelOpenState = false;
 
-  constructor(public headerService: HeaderService) {}
+  constructor(public headerService: HeaderService, private router: Router) {}
 
   ngOnInit(): void {
 
@@ -20,6 +21,10 @@ export class RegistroComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       this.headerService.titulo = 'Registro';
     });
+  }
+
+  goConsulta() {
+    this.router.navigate(['/analista/consulta']);
   }
 
 }
