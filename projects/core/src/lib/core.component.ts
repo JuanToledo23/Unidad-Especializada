@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'une-core-core',
+  selector: 'core-core',
   template: `
     <p>
       core works!

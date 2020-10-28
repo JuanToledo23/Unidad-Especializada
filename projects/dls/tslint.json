@@ -4,13 +4,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "uneDls",
+      "dls",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "une-dls",
+      "dls",
       "kebab-case"
     ]
   }
