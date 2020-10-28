@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { HeaderService } from 'projects/dls/src/public-api';
+import { HeaderService } from 'dls';
 
 @Component({
   selector: 'app-registro',

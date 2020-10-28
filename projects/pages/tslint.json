@@ -4,13 +4,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "unePaage",
+      "pages",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "une-paage",
+      "pages",
       "kebab-case"
     ]
   }

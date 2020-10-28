@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material-module';
 
 import { PagesRoutingModule } from './pages-routing.module';
-import { DlsModule } from 'projects/dls/src/public-api';
 import { MisAsuntosComponent } from './components/mis-asuntos/mis-asuntos.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { PagesComponent } from './pages.component';
@@ -16,6 +15,7 @@ import {  AntecedentesAclaracionesForm,
           DocumentosForm, 
           OrigenReclamacionForm 
 } from './components/registro/registro-forms/registro-forms.component';
+import { DlsModule } from 'dls';
 
 const RegistroComponents = [
   OrigenReclamacionForm,
