@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { MatSort, Sort } from '@angular/material/sort';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { HeaderService } from 'projects/dls/src/public-api';
+import { HeaderService } from 'dls';
 
 export interface AsuntoPendiente {
   id: number;
@@ -55,12 +55,12 @@ const ASUNTOS_PENDIENTES: AsuntoPendiente[] = [
 })
 export class MisAsuntosComponent implements OnInit, AfterViewInit {
 
-  @ViewChild( MatSort, {static: true}) sort: MatSort;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
   displayedColumns: string[] = ['folio', 'nombre', 'estatus', 'fechaRecepcion', 'fechaVencimiento', 'medioLlegada', 'diasVencimiento'];
   dataSource: MatTableDataSource<AsuntoPendiente>;
   filter: any;
 
-  constructor(public headerService: HeaderService) {}
+  constructor(public headerService: HeaderService) { }
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource(ASUNTOS_PENDIENTES);
@@ -80,9 +80,9 @@ export class MisAsuntosComponent implements OnInit, AfterViewInit {
 
   radioChange(event) {
     let result: any;
-    if(+event.value !== -1){
+    if (+event.value !== -1) {
       result = ASUNTOS_PENDIENTES.filter(asunto => {
-        if(asunto.idLlegada === +event.value) {
+        if (asunto.idLlegada === +event.value) {
           return asunto;
         }
       });
@@ -90,6 +90,6 @@ export class MisAsuntosComponent implements OnInit, AfterViewInit {
       result = ASUNTOS_PENDIENTES;
     }
     this.dataSource = new MatTableDataSource(result);
-}
+  }
 
 }

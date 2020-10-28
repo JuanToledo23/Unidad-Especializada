@@ -14,10 +14,29 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "pages": [
+        "dist/pages/pages",
+        "dist/pages"
+      ],
+      "dls": [
+        "dist/dls/dls",
+        "dist/dls"
+      ],
+      "core": [
+        "dist/core/core",
+        "dist/core"
+      ],
+      "auth": [
+        "dist/auth/auth",
+        "dist/auth"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true
+    "strictInjectionParameters": true,
+    "enableIvy": false
   }
 }

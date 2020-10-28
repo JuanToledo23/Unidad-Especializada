@@ -6,9 +6,12 @@ import { AbstractControlDirective, AbstractControl } from '@angular/forms';
   templateUrl: './formShowErrors.component.html',
   styleUrls: ['./formShowErrors.component.scss']
 })
-export class FormShowError implements OnInit {
 
-  static readonly errorMessages = {
+export class FormShowError implements OnInit {
+// @dynamic
+  static errorMessages = null;
+
+  errorMessages = {
     'required': () => 'El campo es requerido',
     'minlength': (params) => 'El valor minimo de caracteres es: ' + params.requiredLength,
     'maxlength': (params) => 'El valor maximo de caracteres es: ' + params.requiredLength,
@@ -23,9 +26,10 @@ export class FormShowError implements OnInit {
 
   @Input() control: AbstractControlDirective | AbstractControl;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
+    
   }
 
   shouldShowErrors(): boolean {
