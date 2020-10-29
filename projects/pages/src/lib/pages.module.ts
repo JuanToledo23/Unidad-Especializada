@@ -15,8 +15,8 @@ import {  AntecedentesAclaracionesForm,
           DocumentosForm, 
           OrigenReclamacionForm 
 } from './components/registro/registro-forms/registro-forms.component';
-import { DlsModule } from 'dls';
 import { ConsultaComponent } from './components/consulta/consulta.component';
+import { DlsModule  } from 'dls';
 
 const RegistroComponents = [
   OrigenReclamacionForm,
