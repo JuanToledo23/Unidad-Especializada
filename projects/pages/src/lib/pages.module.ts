@@ -18,6 +18,8 @@ import {  AntecedentesAclaracionesForm,
 import { DlsModule, DirectiveModule } from 'dls';
 import { ConsultaComponent } from './components/consulta/consulta.component';
 
+
+
 const RegistroComponents = [
   OrigenReclamacionForm,
   DatosGeneralesClienteForm,
