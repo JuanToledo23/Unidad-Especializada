@@ -15,7 +15,8 @@ import {  AntecedentesAclaracionesForm,
           DocumentosForm, 
           OrigenReclamacionForm 
 } from './components/registro/registro-forms/registro-forms.component';
-import { DlsModule, DirectiveModule  } from 'dls';
+import { ConsultaComponent } from './components/consulta/consulta.component';
+import { DlsModule  } from 'dls';
 
 const RegistroComponents = [
   OrigenReclamacionForm,
@@ -33,20 +34,21 @@ const RegistroComponents = [
     CommonModule,
     MaterialModule,
     PagesRoutingModule,
-    DlsModule,
-    DirectiveModule
+    DlsModule
   ],
   declarations: [
     PagesComponent,
     MisAsuntosComponent,
     RegistroComponent,
-    RegistroComponents
+    RegistroComponents,
+    ConsultaComponent
   ],
   exports: [
     PagesComponent,
     MisAsuntosComponent,
     RegistroComponent,
-    RegistroComponents
+    RegistroComponents,
+    ConsultaComponent
 ]
 })
 export class PagesModule { }

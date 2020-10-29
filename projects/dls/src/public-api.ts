@@ -14,5 +14,8 @@ export * from './lib/components/formValidate/formShowErrors.component';
 // Services
 export * from './lib/services/header.service';
 
+// Pipes 
+export * from './lib/pipes/moneyFormat.pipe'
+
 // Directives
 export * from './lib/directives/expiration-date/expiration-date.directive';
