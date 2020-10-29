@@ -64,6 +64,9 @@ img.imgLogo {
     cursor: pointer;
     border-bottom: solid 1px #f1f1f1;
 }
+.l-navegacion li:first-of-type {
+    border-top: solid 1px #f1f1f1;
+}
 .flecha::before,
 .flecha::after {
     content: " ";

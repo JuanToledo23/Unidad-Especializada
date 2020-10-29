@@ -11,9 +11,9 @@
         </div>
         <div class="subtitulo-seccion">Caso</div>
         <div class="row">
-            <div class="col-12 col-s-12 info-reclamante u-flex-between">
+            <div class="col-12 col-s-12 info-reclamante u-flex-between u-p-1">
                 <div class="u-flex">
-                    <img src="assets/img/icoFlecha.svg" class="u-img-lg u-mr-1 u-ml-1">
+                    <img src="assets/img/icoHoja.svg" class="u-img-md u-mr-1 u-ml-1">
                     <div>
                         <label class="tit-info">RECLAMACIÓN SIGE</label>
                         <div><label>Num. Expediente: </label><label class="strong2">2020/090/200</label></div>
@@ -25,63 +25,106 @@
                         <label class="tit-info">LUIS FERNANDO ESQUIVEL MAYETT</label>
                         <div><label class="strong2">722500</label></div>
                     </div>
-                    <img src="assets/img/icoFlecha.svg" class="u-img-lg u-mr-1 u-ml-1">
+                    <img src="assets/img/icoResponsable.svg" class="img-responsable u-mr-1 u-ml-2">
                 </div>
             </div>
         </div>
-        <mat-accordion multi>
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Origen de la reclamación
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                    <origen-reclamacion></origen-reclamacion>
-            </mat-expansion-panel>
-            
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Datos generales del cliente
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <datos-generales-cliente></datos-generales-cliente>
-            </mat-expansion-panel>
-<!-- 
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Datos finacieros
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <datos-financieros></datos-financieros>
-            </mat-expansion-panel> -->
 
+        <div class="row u-mt-1 u-mb-1">
+            <div class="col-6 col-s-12">
+                <div class="subtitulo-subseccion u-mb-1 u-pl-0">Origen de la reclamación</div>
+                <div class="col-12 col-s-12 u-bg-blanco u-flex-column u-p-1 u-min-h-279px">
+                    <div class="u-flex u-justify-center">
+                        <div class="u-txt-right u-pr-07 u-w-50 u-p-5px u-mw-300">Tipo de solicitud:</div>
+                        <div class="u-txt-left u-pl-07 u-w-50 u-p-5px u-mw-300"><strong>RECLAMACIÓN SIGE</strong></div>
+                    </div>
+                    <div class="u-flex u-justify-center">
+                        <div class="u-txt-right u-pr-07 u-w-50 u-p-5px u-mw-300">Número de expediente SIO:</div>
+                        <div class="u-txt-left u-pl-07 u-w-50 u-p-5px u-mw-300"><strong>2020/090/200</strong></div>
+                    </div>
+                    <div class="u-flex u-justify-center">
+                        <div class="u-txt-right u-pr-07 u-w-50 u-p-5px u-mw-300">Medio de llegada:</div>
+                        <div class="u-txt-left u-pl-07 u-w-50 u-p-5px u-mw-300"><strong>GESTIÓN ELECTRÓNICA TRADICIONAL</strong></div>
+                    </div>
+                    <div class="u-flex u-justify-center">
+                        <div class="u-txt-right u-pr-07 u-w-50 u-p-5px u-mw-300">Fecha de recepción:</div>
+                        <div class="u-txt-left u-pl-07 u-w-50 u-p-5px u-mw-300"><strong>01/09/2020</strong></div>
+                    </div>
+                    <div class="u-flex u-justify-center">
+                        <div class="u-txt-right u-pr-07 u-w-50 u-p-5px u-mw-300">Fecha de vencimiento:</div>
+                        <div class="u-txt-left u-pl-07 u-w-50 u-p-5px u-mw-300"><strong>28/09/2020</strong></div>
+                    </div>
+                    <div class="u-flex u-justify-center">
+                        <div class="u-txt-right u-pr-07 u-w-50 u-p-5px u-mw-300">Días para atención del asunto:</div>
+                        <div class="u-txt-left u-pl-07 u-w-50 u-p-5px u-mw-300"><strong>20</strong></div>
+                    </div>
+                    <div class="u-flex u-justify-center">
+                        <div class="u-txt-right u-pr-07 u-w-50 u-p-5px u-mw-300">Unidad de Atención CONDUSEF:</div>
+                        <div class="u-txt-left u-pl-07 u-w-50 u-p-5px u-mw-300"><strong>TAMAULIPAS</strong></div>
+                    </div>
+                    <div class="u-flex u-justify-center">
+                        <div class="u-txt-right u-pr-07 u-w-50 u-p-5px u-mw-300">Estatus:</div>
+                        <div class="u-txt-left u-pl-07 u-w-50 u-p-5px u-mw-300">
+                            <div class="u-w-100">
+                                <input type="text" value="EN ANÁLISIS">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-s-12">
+                <div class="subtitulo-subseccion u-mb-1 u-pl-0">Datos generales del cliente</div>
+                <div class="col-12 col-s-12 u-bg-blanco u-flex-column u-p-1 u-min-h-279px">
+                    <div class="u-flex u-justify-center">
+                        <div class="u-txt-right u-pr-07 u-w-50 u-p-5px u-mw-250">Nombre:</div>
+                        <div class="u-txt-left u-pl-07 u-w-50 u-p-5px u-mw-250"><strong>ALAN GUTIERREZ ESTRADA</strong></div>
+                    </div>
+                    <div class="u-flex u-justify-center">
+                        <div class="u-txt-right u-pr-07 u-w-50 u-p-5px u-mw-250">Dirección:</div>
+                        <div class="u-txt-left u-pl-07 u-w-50 u-p-5px u-mw-250"><strong>A.V. INSURGENTES SUR No. 3549 COL. VILLA OLIMPICA TLALPAN CIUDAD DE MÉXICO</strong></div>
+                    </div>
+                    <div class="u-flex u-justify-center">
+                        <div class="u-txt-right u-pr-07 u-w-50 u-p-5px u-mw-250">R.F.C. o CURP:</div>
+                        <div class="u-txt-left u-pl-07 u-w-50 u-p-5px u-mw-250"><strong>GUEA900000</strong></div>
+                    </div>
+                    <div class="u-flex u-justify-center">
+                        <div class="u-txt-right u-pr-07 u-w-50 u-p-5px u-mw-250">Teléfono:</div>
+                        <div class="u-txt-left u-pl-07 u-w-50 u-p-5px u-mw-250"><strong>5512345678</strong></div>
+                    </div>
+                    <div class="u-flex u-justify-center">
+                        <div class="u-txt-right u-pr-07 u-w-50 u-p-5px u-mw-250">Correo electrónico:</div>
+                        <div class="u-txt-left u-pl-07 u-w-50 u-p-5px u-mw-250"><strong>agutierreze@bancoazteca.com.mx</strong></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <mat-accordion multi>
             <mat-expansion-panel>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
                         Antecedentes en aclaraciones
                     </mat-panel-title>
                 </mat-expansion-panel-header>
-                <antecedentes-aclaraciones></antecedentes-aclaraciones>
+                    <consulta-antecedentes-aclaraciones></consulta-antecedentes-aclaraciones>
             </mat-expansion-panel>
-
+            
             <mat-expansion-panel>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
                         Descripción del problema
                     </mat-panel-title>
                 </mat-expansion-panel-header>
-                <descripcion-problema></descripcion-problema>
+                <consulta-descripcion-problema></consulta-descripcion-problema>
             </mat-expansion-panel>
 
-            <!-- <mat-expansion-panel>
+            <mat-expansion-panel>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
                         Conclusión
                     </mat-panel-title>
                 </mat-expansion-panel-header>
-                <conclusion></conclusion>
+                <consulta-conclusion></consulta-conclusion>
             </mat-expansion-panel>
 
             <mat-expansion-panel>
@@ -90,8 +133,9 @@
                         Documentos
                     </mat-panel-title>
                 </mat-expansion-panel-header>
-                <documentos></documentos>
-            </mat-expansion-panel> -->
+                <consulta-documentos></consulta-documentos>
+            </mat-expansion-panel>
+
         </mat-accordion>
     </div>
 

@@ -8,24 +8,31 @@ import { MisAsuntosComponent } from './components/mis-asuntos/mis-asuntos.compon
 import { RegistroComponent } from './components/registro/registro.component';
 import { PagesComponent } from './pages.component';
 import {  AntecedentesAclaracionesForm, 
-          ConclusionForm, 
-          DatosFinancierosForm, 
           DatosGeneralesClienteForm, 
           DescripcionProblemaForm, 
-          DocumentosForm, 
           OrigenReclamacionForm 
 } from './components/registro/registro-forms/registro-forms.component';
 import { DlsModule, DirectiveModule } from 'dls';
 import { ConsultaComponent } from './components/consulta/consulta.component';
+import {  ConsultaAntecedentesAclaracionesForm, 
+          ConsultaConclusionForm, 
+          ConsultaDescripcionProblemaForm, 
+          ConsultaDocumentosForm,
+
+} from './components/consulta/consulta-forms/consulta-forms.component';
 
 const RegistroComponents = [
   OrigenReclamacionForm,
   DatosGeneralesClienteForm,
-  DatosFinancierosForm,
   AntecedentesAclaracionesForm,
-  DescripcionProblemaForm,
-  ConclusionForm,
-  DocumentosForm
+  DescripcionProblemaForm
+]
+
+const ConsultaComponents = [
+  ConsultaDocumentosForm,
+  ConsultaConclusionForm,
+  ConsultaAntecedentesAclaracionesForm,
+  ConsultaDescripcionProblemaForm
 ]
 
 @NgModule({
@@ -42,14 +49,16 @@ const RegistroComponents = [
     MisAsuntosComponent,
     RegistroComponent,
     RegistroComponents,
-    ConsultaComponent
+    ConsultaComponent,
+    ConsultaComponents
   ],
   exports: [
     PagesComponent,
     MisAsuntosComponent,
     RegistroComponent,
     RegistroComponents,
-    ConsultaComponent
+    ConsultaComponent,
+    ConsultaComponents
 ]
 })
 export class PagesModule { }

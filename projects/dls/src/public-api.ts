@@ -13,8 +13,10 @@ export * from './lib/components/formValidate/formShowErrors.component';
 
 // Services
 export * from './lib/services/header.service';
+export * from './lib/services/caso.service';
 
 // Directives
 export * from './lib/directives/expiration-date/expiration-date.directive';
+
 // Pipes 
 export * from './lib/pipes/moneyFormat.pipe'
