@@ -5,7 +5,7 @@
     <div class="contenedor-gris">
         <div class="u-flex-center u-flex-column u-my-1">
             <div class="u-position-r u-w-50">
-                <input type="text" id="buscaAsuntos" placeholder="Buscar por número de cuenta, tarjeta o CU">
+                <input type="text" id="buscaAsuntos" placeholder="Buscar por número de cuenta, tarjeta o CU" (keydown.enter)="goConsulta()">
                 <input type="submit" class="buscar" (click)="goConsulta()">
             </div>
         </div>

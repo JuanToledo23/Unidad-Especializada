@@ -6,8 +6,6 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { PagesComponent } from './pages.component';
 
 const routes: Routes = [
-  // { path: 'mis-asuntos', component: MisAsuntosComponent},
-  // { path: 'registro', component: RegistroComponent},
 
   {
     path: '',

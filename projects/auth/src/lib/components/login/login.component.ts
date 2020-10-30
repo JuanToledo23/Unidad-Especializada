@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatRadioButton, MatRadioChange } from '@angular/material/radio';
 import { MatSelectChange } from '@angular/material/select';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private cdr: ChangeDetectorRef,
     public authLogin: AuthService,
-    private router: Router
     ) {
 
     this.profilesDefined = true;
@@ -69,11 +68,10 @@ export class LoginComponent implements OnInit {
   }
 
   onChange(mrChange: MatRadioChange) {
-    // const mrButton: MatRadioButton = mrChange.source;
-    // if ( mrChange.value === 'master-key' && mrButton.checked ) {
-    //   this.authLogin.builldRedirecToMasterKeyRequest();
-    // }
-    this.router.navigate(['/analista/mis-asuntos']);
+    const mrButton: MatRadioButton = mrChange.source;
+    if ( mrChange.value === 'master-key' && mrButton.checked ) {
+      this.authLogin.builldRedirecToMasterKeyRequest();
+    }
   }
 
   roleSelected( matSelectChange: MatSelectChange ) {
