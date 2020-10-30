@@ -40,19 +40,19 @@ export class MaterialModule {
   constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {
     this.matIconRegistry.addSvgIcon(
       "ico-calendario",
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/img/icoCalendario.svg")
+      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/img/icoCalendario.svg")
     );
     this.matIconRegistry.addSvgIcon(
       "ico-agregar-blanco",
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/img/icoAgregarBlanco.svg")
+      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/img/icoAgregarBlanco.svg")
     );
     this.matIconRegistry.addSvgIcon(
       "ico-agregar-negro",
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/img/icoAgregarNegro.svg")
+      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/img/icoAgregarNegro.svg")
     );
     this.matIconRegistry.addSvgIcon(
       "ico-guardar",
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/img/icoGuardar.svg")
+      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/img/icoGuardar.svg")
     );
   }
 }

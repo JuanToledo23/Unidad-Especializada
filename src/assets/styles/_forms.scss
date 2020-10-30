@@ -1,5 +1,5 @@
 input.buscar {
-    background-image: url(/assets/img/lupa.svg);
+    background-image: url(./assets/img/lupa.svg);
     background-size: 16px;
     background-repeat: no-repeat;
     background-color: transparent;
@@ -70,7 +70,7 @@ input.inputfile {
 }
 .inputfile + label {
     cursor: pointer;
-    background-image: url(/assets/img/icoAdjuntar.svg);
+    background-image: url(./assets/img/icoAdjuntar.svg);
     background-size: 17px;
     background-position: 97% 35%;
     background-repeat: no-repeat;
