@@ -20,6 +20,7 @@ import {  ConsultaAntecedentesAclaracionesForm,
           ConsultaDocumentosForm,
 
 } from './components/consulta/consulta-forms/consulta-forms.component';
+import { CargaMasivaComponent } from './components/carga-masiva/carga-masiva.component';
 
 const RegistroComponents = [
   OrigenReclamacionForm,
@@ -50,7 +51,8 @@ const ConsultaComponents = [
     RegistroComponent,
     RegistroComponents,
     ConsultaComponent,
-    ConsultaComponents
+    ConsultaComponents,
+    CargaMasivaComponent
   ],
   exports: [
     PagesComponent,
@@ -58,7 +60,8 @@ const ConsultaComponents = [
     RegistroComponent,
     RegistroComponents,
     ConsultaComponent,
-    ConsultaComponents
+    ConsultaComponents,
+    CargaMasivaComponent
 ]
 })
 export class PagesModule { }

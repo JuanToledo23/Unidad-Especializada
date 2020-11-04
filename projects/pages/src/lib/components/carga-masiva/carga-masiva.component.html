@@ -1,0 +1,44 @@
+<app-header></app-header>
+
+<div class="contenedor-contenido">
+    <div class="titulo-contenido">Carga archivo (Excel)</div>
+    <div class="contenedor-gris">
+        <div class="u-flex-center u-flex-column u-mt-1">
+            <div class="u-flex-center u-w-3 u-mt-1-5">
+                <mat-radio-group aria-label="Select an option" class="u-w-100 u-flex-between">
+                    <div class="u-txt-medium">Medio de llegada:</div>
+                    <mat-radio-button value="0">REDECO</mat-radio-button>
+                    <mat-radio-button value="1">Gestión electrónica</mat-radio-button>
+                </mat-radio-group>
+            </div>
+            <div class="u-txt-medium u-txt-left u-w-3">Agrega fecha y archivo (Excel)</div>
+            <div class="u-flex-center u-w-3 u-mt-5px u-flex-column contenedor-blanco">
+                <div class="row u-w-100">
+                    <div class="col-6 col-s-12">
+                        <label>Fecha de recepción</label>
+                        <div class="date-picker">
+                            <input matInput [matDatepicker]="picker" (click)="picker.open()">
+                            <mat-datepicker-toggle matSuffix [for]="picker">
+                                <mat-icon matDatepickerToggleIcon svgIcon="ico-calendario"></mat-icon>
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </div>
+                    </div>
+                </div>
+                <div class="row u-w-100">
+                    <div class="col-12 col-s-12">
+                        <label>{{file[0].label}}</label>
+                        <input type="file" [id]="file[0].id" class="inputfile" (change)="handleFileInput($event.target.files)"/>
+                        <label [for]="file[0].id"><span [ngClass]="{'u-txt-black': file[0].estatus}">{{file[0].name}}</span></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="u-flex-center u-mb-4">
+        <button mat-flat-button color="secundary" class="btn btnSecundary u-mx-1">Cancelar</button>
+    </div>
+</div>
+<app-loader [customTitle]="yourVariable"></app-loader>
+<une-footer></une-footer>

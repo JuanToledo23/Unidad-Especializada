@@ -86,11 +86,8 @@ input.inputfile {
     padding: 0px 10px;
     height: 29px;
     width: 100%;
+    font: 500 11px/29px Avenir_Next_Regular !important;
 }
-// .carga + label span {
-//     width: 100%;
-//     line-height: 29px;
-// }
 
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {

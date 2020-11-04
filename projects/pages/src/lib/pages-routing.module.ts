@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { CargaMasivaComponent } from './components/carga-masiva/carga-masiva.component';
 import { ConsultaComponent } from './components/consulta/consulta.component';
 import { MisAsuntosComponent } from './components/mis-asuntos/mis-asuntos.component';
 import { RegistroComponent } from './components/registro/registro.component';
@@ -19,6 +20,9 @@ const routes: Routes = [
       },
       {
         path:'consulta', component: ConsultaComponent
+      },
+      {
+        path:'carga-masiva', component: CargaMasivaComponent
       }
     ]
   }

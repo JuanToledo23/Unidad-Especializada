@@ -10,6 +10,7 @@ export * from './lib/directives/directive.module';
 export * from './lib/components/header/header.component';
 export * from './lib/components/footer/footer.component';
 export * from './lib/components/formValidate/formShowErrors.component';
+export * from './lib/components/loader/loader.component';
 
 // Services
 export * from './lib/services/header.service';
