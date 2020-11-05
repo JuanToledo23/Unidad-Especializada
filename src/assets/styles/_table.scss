@@ -59,6 +59,14 @@ tr.total td {
 .tblPuestos {
     background-color: #faf9f9 !important;
 }
+.tblCargaMasiva {
+    background-color: #faf9f9 !important;
+}
+
+.tblCargaMasiva .mat-header-cell {
+    font-family: $font-medium !important;
+    color: #000 !important;
+}
 
 .mat-sort-header-container {
     justify-content: center;

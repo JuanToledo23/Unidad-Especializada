@@ -20,7 +20,8 @@ import {  ConsultaAntecedentesAclaracionesForm,
           ConsultaDocumentosForm,
 
 } from './components/consulta/consulta-forms/consulta-forms.component';
-import { CargaMasivaComponent } from './components/carga-masiva/carga-masiva.component';
+import { CargaExitosaDialog, CargaFalloDialog, CargaMasivaComponent } from './components/carga-masiva/carga-masiva.component';
+import { ResultadoCargaDialog } from './components/carga-masiva/dialogs/resultado-carga.dialog';
 
 const RegistroComponents = [
   OrigenReclamacionForm,
@@ -34,6 +35,12 @@ const ConsultaComponents = [
   ConsultaConclusionForm,
   ConsultaAntecedentesAclaracionesForm,
   ConsultaDescripcionProblemaForm
+]
+
+const Dialogs = [
+  CargaExitosaDialog,
+  ResultadoCargaDialog,
+  CargaFalloDialog
 ]
 
 @NgModule({
@@ -52,7 +59,8 @@ const ConsultaComponents = [
     RegistroComponents,
     ConsultaComponent,
     ConsultaComponents,
-    CargaMasivaComponent
+    CargaMasivaComponent,
+    Dialogs
   ],
   exports: [
     PagesComponent,
@@ -62,6 +70,9 @@ const ConsultaComponents = [
     ConsultaComponent,
     ConsultaComponents,
     CargaMasivaComponent
-]
+  ],
+  entryComponents: [
+    Dialogs
+  ]
 })
 export class PagesModule { }

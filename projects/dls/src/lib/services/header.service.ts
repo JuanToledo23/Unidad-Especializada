@@ -24,7 +24,7 @@ export class HeaderService {
             }
         }, 1000)
     });
-
+    showLoader = false;
     showMenuLogOut(){
         this.mostrarMenu = !this.mostrarMenu;
     }

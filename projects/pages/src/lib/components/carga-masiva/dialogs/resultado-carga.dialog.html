@@ -1,0 +1,47 @@
+<div class="titulo-contenido u-p-u">Resultado de la carga masiva del Excel</div>
+<div class="contenedor-dialog u-pt-1">
+    <div class="scroll-y">
+        <table mat-table [dataSource]="dataSource" matSort
+            class="tblGeneral tblCargaMasiva">
+
+            <ng-container matColumnDef="folioInternoAsociado">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Folio interno asociado</th>
+                <td mat-cell *matCellDef="let element"><a class="link">{{element.folioInternoAsociado}}</a></td>
+            </ng-container>
+
+            <ng-container matColumnDef="fechaRecepcion">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha recepción</th>
+                <td mat-cell *matCellDef="let element">{{element.fechaRecepcion}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="unidadCondusef">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Unidad CONDUSEF</th>
+                <td mat-cell *matCellDef="let element">{{element.unidadCondusef}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="analista">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Analista</th>
+                <td mat-cell *matCellDef="let element">{{element.analista}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="observaciones">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Observaciones</th>
+                <td mat-cell *matCellDef="let element">{{element.observaciones}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="estatus">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Estatus</th>
+                <td mat-cell *matCellDef="let element">
+                    <img src="assets/img/icoExitoso.svg" *ngIf="element.estatus">
+                    <img src="assets/img/icoFallo.svg" *ngIf="!element.estatus">
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" class="u-txt-medium"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="u-txt-medium"></tr>
+        </table>
+    </div>
+    <div class="u-flex-center u-pt-2">
+        <button mat-flat-button color="primary" class="btn u-mx-1" mat-dialog-close cdkFocusInitial>Aceptar</button>
+    </div>
+</div>
