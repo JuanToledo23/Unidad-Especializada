@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [],
@@ -10,12 +11,14 @@ import { MatButtonModule } from '@angular/material/button';
     CommonModule,
     MatRadioModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
+    MatInputModule
   ],
   exports: [
     MatRadioModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
+    MatInputModule
   ]
 })
 export class AuthMaterialModule { }

@@ -15,6 +15,8 @@ export * from './lib/components/loader/loader.component';
 // Services
 export * from './lib/services/header.service';
 export * from './lib/services/caso.service';
+export * from './lib/services/aclaraciones.service';
+
 
 // Directives
 export * from './lib/directives/expiration-date/expiration-date.directive';

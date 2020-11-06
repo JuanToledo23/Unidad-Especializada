@@ -4,15 +4,15 @@
     <div class="titulo-contenido">Carga archivo (Excel)</div>
     <div class="contenedor-gris">
         <div class="u-flex-center u-flex-column u-mt-1">
-            <div class="u-flex-center u-w-3">
+            <div class="u-flex-center u-w-35">
                 <mat-radio-group aria-label="Select an option" class="u-w-100 u-flex-between">
                     <div class="u-txt-medium">Medio de llegada:</div>
                     <mat-radio-button value="0">REDECO</mat-radio-button>
                     <mat-radio-button value="1">Gestión electrónica</mat-radio-button>
                 </mat-radio-group>
             </div>
-            <div class="u-txt-medium u-txt-left u-w-3">Agrega fecha y archivo (Excel)</div>
-            <div class="u-flex-center u-w-3 u-mt-5px u-flex-column contenedor-blanco">
+            <div class="u-txt-medium u-txt-left u-w-35">Agrega fecha y archivo (Excel)</div>
+            <div class="u-flex-center u-w-35 u-mt-5px u-flex-column contenedor-blanco">
                 <div class="row u-w-100">
                     <div class="col-6 col-s-12">
                         <label>Fecha de recepción</label>
@@ -35,10 +35,9 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="u-flex-center u-mb-4">
-        <button mat-flat-button color="secundary" class="btn btnSecundary u-mx-1">Cancelar</button>
+        <div class="u-flex-center u-mb-4">
+            <button mat-flat-button color="secundary" class="btn btnSecundary u-mx-1">Cancelar</button>
+        </div>
     </div>
 </div>
 <app-loader [customTitle]="loaderTitle" *ngIf="headerService.showLoader"></app-loader>

@@ -1,0 +1,61 @@
+<div class="ContLogin">
+
+  <div class="imagen" style="height: 87vw;">
+    <div class="u-flex-column u-txt-left u-w-100 tituloBaz">
+      <img src="assets/img/bancoazteca.svg" class="logoBaz">
+      <div class="subtituloBaz">Unidad Especializada de Atención al Usuario</div>
+    </div>
+  </div>
+
+  <div class="login">
+
+    <div class="titHome">
+      <div class="titHomeBorder">
+        <br>
+        <span class="bold-medium">Bienvenido</span>
+      </div>
+    </div>
+
+    <ng-container *ngIf="profilesDefined">
+
+      <div class="subtit">Iniciar Sesión por:</div>
+      <ng-container *ngIf="roles.length === 0 ">
+        <mat-radio-group (change)="onChange($event)" name="tipoInicio">
+          <div>
+            <mat-radio-button value="master-key">Llave Maestra</mat-radio-button>
+          </div>
+        </mat-radio-group>
+      </ng-container>
+
+      <ng-container *ngIf="roles.length > 0">
+        <form novalidate autocomplete="off" class="center">
+          <div class="divLogin">
+            <div class="div-ng-container">
+  
+              <mat-form-field appearance="fill">
+                <mat-label>Rol:</mat-label>
+                <mat-select (selectionChange)="roleSelected($event)">
+                  <mat-option *ngFor="let rol of roles" [value]="rol.key">
+                    {{ rol.value }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+  
+            </div>
+          </div>
+        </form>
+      </ng-container>
+
+    </ng-container>
+
+    <ng-container *ngIf="!profilesDefined">
+      <div class="subtit">
+        Este empleado no tiene roles definidos <br>
+        <cite>Comunicate con el administrador de la aplicación</cite>
+        <div>
+          <button mat-raised-button color="primary" (click)="authLogin.logout()">Cerrar sesión</button>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

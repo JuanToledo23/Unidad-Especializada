@@ -21,7 +21,7 @@ export class CargaMasivaComponent implements OnInit, AfterViewInit {
 
   loaderTitle = "Procesando el archivo...";
   json_object: any;
-  TODO_BIEN = false;
+  TODO_BIEN = true;
 
   handleFileInput(loadedFile) {
       const selectedFile = this.archivoExcel[0];

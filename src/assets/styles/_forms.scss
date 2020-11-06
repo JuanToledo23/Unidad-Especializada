@@ -1,5 +1,5 @@
 input.buscar {
-    background-image: url(./assets/img/lupa.svg);
+    background-image: url(./assets/img/icoLupa.svg);
     background-size: 16px;
     background-repeat: no-repeat;
     background-color: transparent;
@@ -129,4 +129,8 @@ input.editar {
 .divTel > input:nth-child(1) {
     width: 30%;
     margin-right: 2%;
+}
+
+.infoInput {
+    margin-left: 9px;
 }

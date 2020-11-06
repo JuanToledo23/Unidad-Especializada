@@ -16,46 +16,39 @@
       </div>
     </div>
 
-    <ng-container *ngIf="profilesDefined">
+    <ng-container>
 
-      <div class="subtit">Iniciar Sesión por:</div>
-      <ng-container *ngIf="roles.length === 0 ">
-        <mat-radio-group (change)="onChange($event)" name="tipoInicio">
-          <div>
-            <mat-radio-button value="master-key">Llave Maestra</mat-radio-button>
-          </div>
-        </mat-radio-group>
-      </ng-container>
+      <div class="subtit">Iniciar Sesión</div>
 
-      <ng-container *ngIf="roles.length > 0">
-        <form novalidate autocomplete="off" class="center">
-          <div class="divLogin">
-            <div class="div-ng-container">
-  
-              <mat-form-field appearance="fill">
-                <mat-label>Rol:</mat-label>
-                <mat-select (selectionChange)="roleSelected($event)">
-                  <mat-option *ngFor="let rol of roles" [value]="rol.key">
-                    {{ rol.value }}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-  
-            </div>
-          </div>
-        </form>
-      </ng-container>
-
-    </ng-container>
-
-    <ng-container *ngIf="!profilesDefined">
-      <div class="subtit">
-        Este empleado no tiene roles definidos <br>
-        <cite>Comunicate con el administrador de la aplicación</cite>
-        <div>
-          <button mat-raised-button color="primary" (click)="authLogin.logout()">Cerrar sesión</button>
+      <ng-container *ngIf="INGRESO">
+        <div class="u-flex-center u-mb-4 u-mt-5">
+          <button mat-flat-button color="primary" class="btn u-mx-1 btnPrimary u-font-u" (click)="llaveMaestra()">Ingresa con llave maestra</button>
         </div>
-      </div>
+      </ng-container>
+
+      <ng-container *ngIf="!INGRESO">
+        <div class="u-flex-center">
+          <mat-form-field>
+            <mat-label>Usuario:</mat-label>
+            <input matInput class="input-h-un">
+          </mat-form-field>
+        </div>
+
+        <div class="u-flex-center">
+          <mat-radio-group aria-label="Select an option" class="u-w-100 u-flex u-w-500 u-flex-baseline">
+              <div class="u-txt-medium">Rol:</div>
+              <mat-radio-button value="0">Analista</mat-radio-button>
+              <mat-radio-button value="1">Responsable</mat-radio-button>
+          </mat-radio-group>
+        </div>
+
+        <div class="u-flex-center u-mb-4">
+          <button mat-flat-button color="primary" class="btn u-mx-1 btnPrimary u-font-u u-mt-5" (click)="iniciarSesion()">Ingresar</button>
+        </div>
+      </ng-container>
+
+      
+
     </ng-container>
   </div>
 </div>

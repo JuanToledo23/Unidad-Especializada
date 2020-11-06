@@ -33,7 +33,7 @@
     cursor: pointer;
 }
 .tblGeneral tr td img {
-    width: 15px;
+    width: 22px;
     cursor: pointer;
 }
 .cantidad {
@@ -106,4 +106,8 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
 .scroll-y {
     max-height: 550px;
     overflow-y: auto;
+}
+
+.mat-sort-header-button {
+    color: #1C1C1C !important;
 }

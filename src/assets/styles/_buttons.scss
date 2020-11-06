@@ -1,7 +1,11 @@
 .btn {
     border-radius: unset !important;
     min-width: 130px !important;
-    font-family: "Avenir_Next_Bold" !important;
+    // font-family: "Avenir_Next_Bold" ;
+}
+
+.btnPrimary:hover {
+    background-color: #027b51;
 }
 
 .btnSecundary {
@@ -14,4 +18,10 @@
     margin-right: 10px;
     margin-bottom: 6px;
     fill: red;
+}
+
+.inputButton {
+    height: 29px;
+    width: 100%;
+    line-height: unset !important;
 }

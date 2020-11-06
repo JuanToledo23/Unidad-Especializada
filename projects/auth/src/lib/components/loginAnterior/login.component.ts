@@ -1,10 +1,8 @@
 import { ChangeDetectorRef, Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { MatRadioButton, MatRadioChange } from '@angular/material/radio';
 import { MatSelectChange } from '@angular/material/select';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
-// import { PerfilDesconocidoDialog } from './dialogs/perfilDesconocido.dialog';
 
 @Component({
   selector: 'auth-login',
@@ -20,8 +18,6 @@ export class LoginComponent implements OnInit {
 
   profilesDefined: boolean;
 
-  INGRESO = true;
-
   // tslint:disable-next-line: no-output-native
   @Output() change: EventEmitter<MatRadioChange>;
 
@@ -29,8 +25,7 @@ export class LoginComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private cdr: ChangeDetectorRef,
     public authLogin: AuthService,
-    private router: Router,
-    public dialog: MatDialog
+    private router: Router
     ) {
 
     this.profilesDefined = true;
@@ -73,27 +68,16 @@ export class LoginComponent implements OnInit {
   }
 
   onChange(mrChange: MatRadioChange) {
-    const mrButton: MatRadioButton = mrChange.source;
-    if ( mrChange.value === 'master-key' && mrButton.checked ) {
-      this.authLogin.builldRedirecToMasterKeyRequest();
-    }
+    // const mrButton: MatRadioButton = mrChange.source;
+    // if ( mrChange.value === 'master-key' && mrButton.checked ) {
+    //   this.authLogin.builldRedirecToMasterKeyRequest();
+    // }
+    this.router.navigate(['/analista/mis-asuntos']);
   }
 
   roleSelected( matSelectChange: MatSelectChange ) {
     this.authLogin.loginWithRole({
       employeeNumber: `${JSON.parse(sessionStorage.getItem('UI_CORE')).employeeNumber}`,
       role:  matSelectChange.value });
-  }
-
-  llaveMaestra() {
-    this.INGRESO = false;
-    // const dialogRef = this.dialog.open(PerfilDesconocidoDialog, {
-    //   disableClose: true
-    // });
-    // dialogRef.afterClosed().subscribe(result => {
-    // });
-  }
-  iniciarSesion() {
-    this.router.navigate(['/analista/mis-asuntos']);
   }
 }

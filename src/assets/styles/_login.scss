@@ -598,9 +598,10 @@ mat-radio-group {
     min-width: 30rem !important;
 }
 
-// .mat-radio-button {
-//     min-width: 140px !important;
-// }
+
+mat-radio-group > mat-radio-button{
+    margin-left: 70px;
+}
 
 @media screen and (max-width: 1512px) {
     .eslogan {
