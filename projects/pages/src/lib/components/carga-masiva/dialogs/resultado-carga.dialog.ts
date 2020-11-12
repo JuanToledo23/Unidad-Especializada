@@ -11,7 +11,6 @@ export interface RegistroCargaMasiva {
     analista: string;
     observaciones: string;
     estatus: boolean;
-
 }
 
 @Component({

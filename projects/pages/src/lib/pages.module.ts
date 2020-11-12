@@ -22,6 +22,7 @@ import {  ConsultaAntecedentesAclaracionesForm,
 } from './components/consulta/consulta-forms/consulta-forms.component';
 import { CargaExitosaDialog, CargaFalloDialog, CargaMasivaComponent } from './components/carga-masiva/carga-masiva.component';
 import { ResultadoCargaDialog } from './components/carga-masiva/dialogs/resultado-carga.dialog';
+import { EstatusAclaracionDialog, ListaAclaracionesDialog } from './components/registro/dialogs/aclaraciones.component';
 
 const RegistroComponents = [
   OrigenReclamacionForm,
@@ -40,7 +41,9 @@ const ConsultaComponents = [
 const Dialogs = [
   CargaExitosaDialog,
   ResultadoCargaDialog,
-  CargaFalloDialog
+  CargaFalloDialog,
+  ListaAclaracionesDialog,
+  EstatusAclaracionDialog
 ]
 
 @NgModule({

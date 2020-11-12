@@ -1,40 +1,25 @@
-<div class="titulo-contenido u-p-u">Resultado de la carga masiva del Excel</div>
+<div class="titulo-contenido u-p-u">Para ver el detalle de la aclaración, selecciona el número de folio</div>
 <div class="contenedor-dialog u-pt-1">
     <div class="scroll-y">
         <table mat-table [dataSource]="dataSource" matSort
             class="tblGeneral tblCargaMasiva">
 
-            <ng-container matColumnDef="folioInternoAsociado">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Folio interno asociado</th>
-                <td mat-cell *matCellDef="let element"><a class="link">{{element.folioInternoAsociado}}</a></td>
+            <ng-container matColumnDef="folio">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Folio</th>
+                <td mat-cell *matCellDef="let element"><a class="link" (click)="abrirEstatusAclaracion(element)">{{element.folio}}</a></td>
             </ng-container>
 
-            <ng-container matColumnDef="fechaRecepcion">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha recepción</th>
-                <td mat-cell *matCellDef="let element">{{element.fechaRecepcion}}</td>
+            <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+                <td mat-cell *matCellDef="let element">{{element.nombre}}</td>
             </ng-container>
-
-            <ng-container matColumnDef="unidadCondusef">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Unidad CONDUSEF</th>
-                <td mat-cell *matCellDef="let element">{{element.unidadCondusef}}</td>
+            <ng-container matColumnDef="numeroCuenta">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Número de Cuenta</th>
+                <td mat-cell *matCellDef="let element">{{element.numeroCuenta}}</td>
             </ng-container>
-
-            <ng-container matColumnDef="analista">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Analista</th>
-                <td mat-cell *matCellDef="let element">{{element.analista}}</td>
-            </ng-container>
-
-            <ng-container matColumnDef="observaciones">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Observaciones</th>
-                <td mat-cell *matCellDef="let element">{{element.observaciones}}</td>
-            </ng-container>
-
-            <ng-container matColumnDef="estatus">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Estatus</th>
-                <td mat-cell *matCellDef="let element">
-                    <img src="assets/img/icoCorrecto.svg" *ngIf="element.estatus">
-                    <img src="assets/img/icoIncorrecto.svg" *ngIf="!element.estatus">
-                </td>
+            <ng-container matColumnDef="fallo">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Fallo</th>
+                <td mat-cell *matCellDef="let element">{{element.fallo}}</td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" class="u-txt-medium"></tr>

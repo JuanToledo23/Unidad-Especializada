@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { CasoService } from 'dls';
+import { ListaAclaracionesDialog } from '../dialogs/aclaraciones.component';
 
 @Component({
   selector: 'origen-reclamacion',
@@ -20,7 +22,16 @@ export class DatosGeneralesClienteForm { }
   templateUrl: './antecedentes-aclaraciones.html'
 })
 export class AntecedentesAclaracionesForm {
-  constructor(public casoService: CasoService) {}
+  constructor(public casoService: CasoService, public dialog: MatDialog) {}
+
+  consultarAclaraciones() {
+    const dialogRef = this.dialog.open(ListaAclaracionesDialog, {
+      disableClose: true
+    });
+    // dialogRef.afterClosed().subscribe(result => {
+    // });
+  }
+
 }
 
 @Component({
