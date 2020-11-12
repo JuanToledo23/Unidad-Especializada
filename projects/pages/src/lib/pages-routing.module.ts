@@ -12,13 +12,13 @@ const routes: Routes = [
     component: PagesComponent,
     children: [
       {
-        path: 'mis-asuntos', component: MisAsuntosComponent,
-      },
-      {
         path:'registro', component: RegistroComponent
       },
       {
-        path:'consulta', component: ConsultaComponent
+        path:'consulta', component: MisAsuntosComponent
+      },
+      {
+        path:'consulta/:caseId', component: ConsultaComponent
       }
     ]
   }

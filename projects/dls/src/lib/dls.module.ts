@@ -6,16 +6,21 @@ import { FooterComponent } from './components/footer/footer.component';
 import { FormShowError } from './components/formValidate/formShowErrors.component';
 import { MaterialModule } from './material-module';
 import { MoneyFormatPipe } from './pipes/moneyFormat.pipe';
+import { TimerComponent } from './components/timer/timer.component';
+import { TimerFormatPipe } from './pipes/timer/timer-format.pipe';
 
 const compponents = [
   HeaderComponent,
   FooterComponent,
+  TimerComponent,
   FormShowError
 ]
 
 @NgModule({
   declarations: [compponents,
-    MoneyFormatPipe],
+    MoneyFormatPipe,
+    TimerFormatPipe
+  ],
   imports: [
     CommonModule,
     FormsModule,

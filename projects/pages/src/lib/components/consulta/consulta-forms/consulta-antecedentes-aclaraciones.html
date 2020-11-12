@@ -1,27 +1,29 @@
-<div class="row">
+<ng-container [formGroup]="form">
+  <div class="row" formGroupName="clarificationInfo">
     <div class="col-4 col-s-12">
-        <label>Busca antecedentes</label>
-        <div class="u-position-r">
-            <input type="text" id="busca">
-            <input type="submit" class="buscar">
-        </div>
+      <label>Busca antecedentes</label>
+      <div class="u-position-r">
+        <input type="text" id="busca">
+        <input type="submit" class="buscar">
+      </div>
     </div>
     <div class="col-4 col-s-12">
-        <label>Folio previo de aclaraciones</label>
-        <input type="text">
+      <label>Folio previo de aclaraciones</label>
+      <input type="text" formControlName="clarificationId">
     </div>
     <div class="col-4 col-s-12">
-        <label>Estatus</label>
-        <input type="text">
+      <label>Estatus</label>
+      <input type="text" formControlName="status">
     </div>
-</div>
-<div class="row">
+  </div>
+  <div class="row" formGroupName="clarificationInfo">
     <div class="col-4 col-s-12">
-        <label>Fallo</label>
-        <input type="text">
+      <label>Fallo</label>
+      <input type="text" formControlName="opinion">
     </div>
     <div class="col-4 col-s-12">
-        <label>Monto reclamado</label>
-        <input type="text" [ngModel]="casoService.montoReclamado | MoneyFormat" (ngModelChange)="casoService.montoReclamado = $event">
+      <label>Monto reclamado</label>
+      <input type="text" formControlName="reclaimedAmount">
     </div>
-</div>
+  </div>
+</ng-container>

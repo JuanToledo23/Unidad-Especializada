@@ -86,11 +86,13 @@ export class AuthService {
       Authorization: `Bearer ${sessionStorage.getItem('TOKEN_CORE')}`
     });
     this.http.post<LoginResponse>(`${this.settings.CORE}login`, bodyLoginWithRole, { headers }).subscribe(data => {
+      sessionStorage.setItem('TOKEN_CORE', `${data.respuesta.tokenInformation.token}`);
+      sessionStorage.setItem('TOKEN_EXPIRATION_CORE', `${data.respuesta.tokenInformation.expirationDate}`);
       const userInformation: UserInformation = JSON.parse(sessionStorage.getItem('UI_CORE'));
       userInformation.menuOptions = data.respuesta.userInformation.menuOptions;
       sessionStorage.setItem('UI_CORE', `${JSON.stringify(userInformation)}`);
       this.menus.next(userInformation);
-      this.router.navigate(['/mis-asuntos']);
+      this.router.navigate(['consulta']);
     });
   }
 
@@ -118,7 +120,7 @@ export class AuthService {
 
   core() {
     switch (sessionStorage.getItem('ROLE_CORE')) {
-      case '1': this.router.navigate(['/mis-asuntos']); break;
+      case '1': this.router.navigate(['consulta']); break;
       default: return;
     }
   }

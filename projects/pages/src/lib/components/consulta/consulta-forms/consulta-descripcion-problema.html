@@ -1,73 +1,103 @@
-<ng-container *ngFor="let reclamo of casoService.reclamos">
-    <div class="subtitulo-subseccion">Causa de reclamación {{ reclamo.numeroReclamacion }}</div>
-    <div class="row">
-        <div class="col-4 col-s-12">
-            <label>Unidad de Negocio</label>
-            <mat-select>
-                <mat-option value="option1">Opción 1</mat-option>
-                <mat-option value="option2">Opción 2</mat-option>
-                <mat-option value="option3">Opción 3</mat-option>
-            </mat-select>
-        </div>
-        <div class="col-4 col-s-12">
-            <label>Tipo de producto o servicio</label>
-            <mat-select>
-                <mat-option value="option1">Opción 1</mat-option>
-                <mat-option value="option2">Opción 2</mat-option>
-                <mat-option value="option3">Opción 3</mat-option>
-            </mat-select>
-        </div>
-        <div class="col-4 col-s-12">
-            <label>Canal de la operación</label>
-            <mat-select>
-                <mat-option value="option1">Opción 1</mat-option>
-                <mat-option value="option2">Opción 2</mat-option>
-                <mat-option value="option3">Opción 3</mat-option>
-            </mat-select>
-        </div>
-    </div>
+<div class="subtitulo-subseccion">Causa de reclamación {{idx}}</div>
 
-    <div class="row">
-        <div class="col-4 col-s-12">
-            <label>Causa de la inconformidad</label>
-            <mat-select>
-                <mat-option value="option1">Opción 1</mat-option>
-                <mat-option value="option2">Opción 2</mat-option>
-                <mat-option value="option3">Opción 3</mat-option>
-            </mat-select>
-        </div>
-        <div class="col-4 col-s-12">
-            <label>Monto de la reclamación</label>
-            <input type="text" [ngModel]="casoService.montoReclamacion | MoneyFormat" (ngModelChange)="casoService.montoReclamacion = $event">
-        </div>
-        <div class="col-4 col-s-12">
-            <div class="col-5 u-ex-left-u">
-                <label>No. de transacciones reclamadas</label>
-                <input type="number">
-            </div>
-            <div class="col-7 u-ex-right-u">
-                <label>Fallo</label>
-                <div>
-                    <mat-radio-group name="fallo">
-                        <div class="col-6 u-ex-left-u">
-                            <mat-radio-button value="1">Procede</mat-radio-button>
-                        </div>
-                        <div class="col-6 u-p-u">
-                            <mat-radio-button value="2">No procede</mat-radio-button>
-                        </div>
-                    </mat-radio-group>
-                </div>
-            </div>
-        </div>
+<div class="row" [formGroup]="form">
+  <div class="col-4 col-s-12" formArrayName="descriptionOfTheProblem">
+    <div [formGroupName]="idx">
+      <label>Unidad de Negocio</label>
+      <mat-select formControlName="business" (selectionChange)="businessSelected($event)">
+        <mat-option value="-1">-- SELECCIONAR --</mat-option>
+        <mat-option *ngFor="let businees of businessCatalogue" [value]="businees.key">{{ businees.value | uppercase }}
+        </mat-option>
+      </mat-select>
     </div>
+  </div>
+  <div class="col-4 col-s-12" formArrayName="descriptionOfTheProblem">
+    <div [formGroupName]="idx">
+      <label>Tipo de producto o servicio</label>
+      <mat-select formControlName="productType" (selectionChange)="productTypeSelected($event)">
+        <mat-option value="-1">-- SELECCIONAR --</mat-option>
+        <mat-option *ngFor="let productType of productTypes$ | async" [value]="productType.key">
+          {{ productType.value }}
+        </mat-option>
+      </mat-select>
+    </div>
+  </div>
+  <div class="col-4 col-s-12" formArrayName="descriptionOfTheProblem">
+    <div [formGroupName]="idx">
+      <label>Unidad Comercial</label>
+      <mat-select formControlName="tradeName" (selectionChange)="tradeNameSelected($event)">
+        <mat-option value="-1">-- SELECCIONAR --</mat-option>
+        <mat-option *ngFor="let tradeName of tradeNames$ | async" [value]="tradeName.key">
+          {{ tradeName.value | uppercase }}</mat-option>
+      </mat-select>
+    </div>
+  </div>
+</div>
 
-    <div class="row">
-        <div class="col-4 col-s-12">
-            <label>Importe bonificado o cancelado</label>
-            <input type="text" [ngModel]="casoService.importeBonificacion | MoneyFormat" (ngModelChange)="casoService.importeBonificacion = $event">
-        </div>
-        <div class="col-8 col-s-12">
-            <label>Notas sobre el asunto</label>
-            <input type="text">
-        </div>
+<div class="row" [formGroup]="form">
+  <div class="col-4 col-s-12" formArrayName="descriptionOfTheProblem">
+    <div [formGroupName]="idx">
+      <label>Canal de la operación</label>
+      <mat-select formControlName="channel" (selectionChange)="channelSelected($event)">
+        <mat-option value="-1">-- SELECCIONAR --</mat-option>
+        <mat-option *ngFor="let channel of channels$ | async" [value]="channel.key">{{ channel.value | uppercase }}
+        </mat-option>
+      </mat-select>
     </div>
+  </div>
+  <div class="col-4 col-s-12" formArrayName="descriptionOfTheProblem">
+    <div [formGroupName]="idx">
+      <label>Causa de la inconformidad</label>
+      <mat-select formControlName="cause">
+        <mat-option value="-1">-- SELECCIONAR --</mat-option>
+        <mat-option *ngFor="let cause of causes$ | async" [value]="cause.key">{{ cause.value | uppercase}}
+        </mat-option>
+      </mat-select>
+    </div>
+  </div>
+  <div class="col-4 col-s-12" formArrayName="descriptionOfTheProblem">
+    <div [formGroupName]="idx">
+      <label>Monto de la reclamación</label>
+      <input type="text" formControlName="reclaimedAmount">
+    </div>
+  </div>
+</div>
+
+<div class="row" [formGroup]="form">
+  <div class="col-4 col-s-12" formArrayName="descriptionOfTheProblem">
+    <div [formGroupName]="idx">
+      <label>Importe bonificado o cancelado</label>
+      <input type="text" formControlName="subsidizedAmount">
+    </div>
+  </div>
+  <div class="col-4 col-s-12" formArrayName="descriptionOfTheProblem">
+    <div [formGroupName]="idx">
+      <label>No. de transacciones reclamadas</label>
+      <input type="number" formControlName="txsNumber">
+    </div>
+  </div>
+  <div class="col-4 col-s-12" formArrayName="descriptionOfTheProblem">
+    <div class="col-6 u-ex-right-u" [formGroupName]="idx">
+      <label class="d-flex justify-content-center">Fallo</label>
+      <div>
+        <mat-radio-group class="d-flex justify-content-around" [name]="'failed'+idx" formControlName="opinion">
+          <div class="col-6 u-ex-left-u">
+            <mat-radio-button value="1">Procede</mat-radio-button>
+          </div>
+          <div class="col-6 u-p-u ">
+            <mat-radio-button value="0">No procede</mat-radio-button>
+          </div>
+        </mat-radio-group>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row" [formGroup]="form">
+  <div class="col-12 col-s-12" formArrayName="descriptionOfTheProblem">
+    <div [formGroupName]="idx">
+      <label>Notas sobre el asunto</label>
+      <input type="text" formControlName="comments">
+    </div>
+    </div>
+</div>

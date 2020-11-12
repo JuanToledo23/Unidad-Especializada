@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "prepare": "rm -rf ./dist ng build auth && ng build core && ng build dls && ng build pages"
+    "prepare": "rm -rf ./dist && ng build auth && ng build dls && ng build core  && ng build pages"
   },
   "private": true,
   "dependencies": {

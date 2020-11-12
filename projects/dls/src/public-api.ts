@@ -14,6 +14,7 @@ export * from './lib/components/formValidate/formShowErrors.component';
 // Services
 export * from './lib/services/header.service';
 export * from './lib/services/caso.service';
+export * from './lib/services/timer/timer.service';
 
 // Directives
 export * from './lib/directives/expiration-date/expiration-date.directive';

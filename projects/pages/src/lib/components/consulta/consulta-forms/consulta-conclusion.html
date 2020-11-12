@@ -1,16 +1,24 @@
-<div class="row">
+<ng-container [formGroup]="form">
+  <div class="row" formGroupName="conclusions">
     <div class="col-4 col-s-12">
-        <label>Fallo del dictamen</label>
-        <input type="text">
+      <label>Fallo del dictamen</label>
+      <mat-select formControlName="opinionId">
+        <mat-option [value]="-1">-- SELECCIONE --</mat-option>
+        <mat-option *ngFor="let opinion of catalogues.opinions" [value]="opinion.key">{{ opinion.value | uppercase }}</mat-option>
+      </mat-select>
     </div>
     <div class="col-4 col-s-12">
-        <label>Motivo del fallo</label>
-        <input type="text">
+      <label>Motivo del fallo</label>
+      <mat-select formControlName="reasonId">
+        <mat-option [value]="-1">-- SELECCIONE --</mat-option>
+        <mat-option *ngFor="let reason of catalogues.reasons" [value]="reason.key">{{ reason.value | uppercase }}</mat-option>
+      </mat-select>
     </div>
-</div>
-<div class="row">
+  </div>
+  <div class="row" formGroupName="conclusions">
     <div class="col-12 col-s-12">
-        <label>Respuesta</label>
-        <textarea></textarea>
+      <label>Respuesta</label>
+      <textarea formControlName="comments"></textarea>
     </div>
-</div>
+  </div>
+</ng-container> 

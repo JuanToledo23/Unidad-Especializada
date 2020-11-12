@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material-module';
 
@@ -20,6 +20,8 @@ import {  ConsultaAntecedentesAclaracionesForm,
           ConsultaDocumentosForm,
 
 } from './components/consulta/consulta-forms/consulta-forms.component';
+import { CheckTokenInterceptor, CoreModule } from 'core';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 const RegistroComponents = [
   OrigenReclamacionForm,
@@ -37,12 +39,14 @@ const ConsultaComponents = [
 
 @NgModule({
   imports: [
+    ReactiveFormsModule,
     FormsModule,
     CommonModule,
     MaterialModule,
     PagesRoutingModule,
     DlsModule,
-    DirectiveModule
+    DirectiveModule,
+    CoreModule,
   ],
   declarations: [
     PagesComponent,
@@ -59,6 +63,9 @@ const ConsultaComponents = [
     RegistroComponents,
     ConsultaComponent,
     ConsultaComponents
+],
+providers: [
+  { provide: HTTP_INTERCEPTORS, useClass: CheckTokenInterceptor, multi: true },
 ]
 })
 export class PagesModule { }
