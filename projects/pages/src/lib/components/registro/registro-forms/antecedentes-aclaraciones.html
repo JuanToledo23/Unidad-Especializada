@@ -5,20 +5,20 @@
     </div>
     <div class="col-4 col-s-12">
         <label>Folio previo de aclaraciones</label>
-        <input type="text">
+        <input type="text" [(ngModel)]="aclaracionesService.aclaracionEnlazada.folio">
     </div>
 </div>
 <div class="row">
     <div class="col-4 col-s-12">
         <label>Fallo</label> <br>
-        <label class="infoInput">- - -</label>
+        <label class="infoInput"><strong>{{aclaracionesService.aclaracionEnlazada.fallo}}</strong></label>
     </div>
     <div class="col-4 col-s-12">
         <label>Estatus</label> <br>
-        <label class="infoInput">- - -</label>
+        <label class="infoInput"><strong>{{aclaracionesService.aclaracionEnlazada.estatus}}</strong></label>
     </div>
     <div class="col-4 col-s-12">
         <label>Monto reclamado</label> <br>
-        <label class="infoInput">- - -</label>    
+        <label class="infoInput"><strong>{{aclaracionesService.aclaracionEnlazada.montoReclamo}}</strong></label>    
     </div>
 </div>

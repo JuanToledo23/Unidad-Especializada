@@ -1,5 +1,11 @@
 <ng-container *ngFor="let reclamo of casoService.reclamos">
-    <div class="subtitulo-subseccion">Causa de reclamación {{ reclamo.numeroReclamacion }}</div>
+    <div class="u-flex-between">
+        <div class="subtitulo-subseccion">Causa de reclamación {{ reclamo.numeroReclamacion }}</div>
+        <div class="numCuenta u-flex-between u-mw-290px">
+            <div>Número de cuenta:</div>
+            <div><strong>017265419758</strong></div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-4 col-s-12">
             <label>Unidad de Negocio</label>
@@ -18,6 +24,18 @@
             </mat-select>
         </div>
         <div class="col-4 col-s-12">
+            <label>Nombre comercial del producto o servicio</label>
+            <mat-select>
+                <mat-option value="option1">Opción 1</mat-option>
+                <mat-option value="option2">Opción 2</mat-option>
+                <mat-option value="option3">Opción 3</mat-option>
+            </mat-select>
+        </div>
+        
+    </div>
+
+    <div class="row">
+        <div class="col-4 col-s-12">
             <label>Canal de la operación</label>
             <mat-select>
                 <mat-option value="option1">Opción 1</mat-option>
@@ -25,9 +43,6 @@
                 <mat-option value="option3">Opción 3</mat-option>
             </mat-select>
         </div>
-    </div>
-
-    <div class="row">
         <div class="col-4 col-s-12">
             <label>Causa de la inconformidad</label>
             <mat-select>
@@ -36,38 +51,49 @@
                 <mat-option value="option3">Opción 3</mat-option>
             </mat-select>
         </div>
-        <div class="col-4 col-s-12">
-            <label>Monto de la reclamación</label>
+        <div class="col-2 col-s-12">
+            <label>Transacciones reclamadas</label>
             <input type="text" [ngModel]="casoService.montoReclamacion | MoneyFormat" (ngModelChange)="casoService.montoReclamacion = $event">
-        </div>
-        <div class="col-4 col-s-12">
-            <div class="col-5 u-ex-left-u">
-                <label>No. de transacciones reclamadas</label>
-                <input type="number">
-            </div>
-            <div class="col-7 u-ex-right-u">
-                <label>Fallo</label>
-                <div>
-                    <mat-radio-group name="fallo">
-                        <div class="col-6 u-ex-left-u">
-                            <mat-radio-button value="1">Procede</mat-radio-button>
-                        </div>
-                        <div class="col-6 u-p-u">
-                            <mat-radio-button value="2">No procede</mat-radio-button>
-                        </div>
-                    </mat-radio-group>
-                </div>
-            </div>
         </div>
     </div>
 
     <div class="row">
         <div class="col-4 col-s-12">
+            <label>Importe reclamado</label>
+            <input type="text" [ngModel]="casoService.montoReclamacion | MoneyFormat" (ngModelChange)="casoService.montoReclamacion = $event">
+        </div>
+        <div class="col-4 col-s-12">
             <label>Importe bonificado o cancelado</label>
             <input type="text" [ngModel]="casoService.importeBonificacion | MoneyFormat" (ngModelChange)="casoService.importeBonificacion = $event">
         </div>
+        <div class="col-4 u-ex-right-u">
+            <label>Fallo</label>
+            <div>
+                <mat-radio-group name="fallo">
+                    <div class="col-6 u-ex-left-u">
+                        <mat-radio-button value="1">Procede</mat-radio-button>
+                    </div>
+                    <div class="col-6 u-p-u">
+                        <mat-radio-button value="2">No procede</mat-radio-button>
+                    </div>
+                </mat-radio-group>
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-8 col-s-12">
             <label>Notas sobre el asunto</label>
             <input type="text">
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-12 col-s-12 u-flex-end">
+            <div class="col-4 u-ex-right-u u-flex-end">
+                <button mat-flat-button class="btn u-flex-center btnSecundary descripcionBtn u-mr-1" *ngIf="reclamo.btnEliminar"><mat-icon matDatepickerToggleIcon svgIcon="ico-agregar-negro" class="icoBtn"></mat-icon><div>Eliminar <br> la causa</div></button>
+                <button mat-flat-button class="btn u-flex-center btnTertiary descripcionBtn u-mr-1" *ngIf="reclamo.btnLimpiar"><mat-icon matDatepickerToggleIcon svgIcon="ico-agregar-negro" class="icoBtn"></mat-icon><div>Limpiar <br> campos</div></button>
+                <button mat-flat-button color="primary" class="btn u-flex-center btnPrimary descripcionBtn" *ngIf="reclamo.btnAnadir"><mat-icon matDatepickerToggleIcon svgIcon="ico-agregar-negro" class="icoBtn"></mat-icon><div>Añadir <br> otra causa</div></button>
+            </div>
+        </div>
+    </div>
+</ng-container>

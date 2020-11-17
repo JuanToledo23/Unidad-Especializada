@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { CasoService } from 'dls';
+import { AclaracionesService, CasoService } from 'dls';
 import { ListaAclaracionesDialog } from '../dialogs/aclaraciones.component';
 
 @Component({
@@ -22,7 +22,7 @@ export class DatosGeneralesClienteForm { }
   templateUrl: './antecedentes-aclaraciones.html'
 })
 export class AntecedentesAclaracionesForm {
-  constructor(public casoService: CasoService, public dialog: MatDialog) {}
+  constructor(public casoService: CasoService, public dialog: MatDialog, public aclaracionesService: AclaracionesService) {}
 
   consultarAclaraciones() {
     const dialogRef = this.dialog.open(ListaAclaracionesDialog, {
@@ -39,5 +39,56 @@ export class AntecedentesAclaracionesForm {
   templateUrl: './descripcion-problema.html'
 })
 export class DescripcionProblemaForm {
-  constructor(public casoService: CasoService) {}
+  constructor(public casoService: CasoService) {
+    console.log(casoService.reclamos)
+  }
+
+  agregarCausa() {
+    this.casoService.reclamos.push({
+        id: this.casoService.reclamos.length, numeroReclamacion: '' + (this.casoService.reclamos.length + 1), descripcion: 'Reclamación' + this.casoService.reclamos.length + 1, seleccionTipoBusqueda: null, busquedaPor: {
+            numeroTarjeta: {
+                estatus: false, segundoParametro: false
+            },
+            numeroCuenta: {
+                estatus: false, segundoParametro: false
+            },
+            clienteUnico: {
+                estatus: false, segundoParametro: false
+            }
+        },
+        btnEliminar: true,
+        btnLimpiar: true,
+        btnAnadir: true
+    })
+
+    this.validacion()
+  }
+
+  eliminarCausa(reclamo) {
+    let i = this.casoService.reclamos.indexOf(reclamo);
+    this.casoService.reclamos.splice(i, 1);
+    this.validacion()
+  }
+
+  validacion() {
+    this.casoService.reclamos.forEach(element => {
+      element.btnEliminar = true;
+      element.btnLimpiar = true;
+      element.btnAnadir = true;
+    });
+
+    if(this.casoService.reclamos.length === 1) {
+      this.casoService.reclamos[0].btnEliminar = false;
+    }
+
+    if(this.casoService.reclamos.length > 1) {
+      this.casoService.reclamos[0].btnEliminar = true;
+
+      this.casoService.reclamos.forEach(element => {
+        element.btnAnadir = false;
+      });
+      
+      this.casoService.reclamos[this.casoService.reclamos.length - 1].btnAnadir = true;
+    }
+  }
 }

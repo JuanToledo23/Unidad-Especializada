@@ -18,7 +18,10 @@ export class CasoService {
                 clienteUnico: {
                     estatus: false, segundoParametro: false
                 }
-            }
+            },
+            btnEliminar: true,
+            btnLimpiar: true,
+            btnAnadir: true
         }
     ]
 
@@ -66,19 +69,4 @@ export class CasoService {
         }
     }
 
-    agregarCausa() {
-        this.reclamos.push({
-            id: this.reclamos.length, numeroReclamacion: '' + (this.reclamos.length + 1), descripcion: 'Reclamación' + this.reclamos.length + 1, seleccionTipoBusqueda: null, busquedaPor: {
-                numeroTarjeta: {
-                    estatus: false, segundoParametro: false
-                },
-                numeroCuenta: {
-                    estatus: false, segundoParametro: false
-                },
-                clienteUnico: {
-                    estatus: false, segundoParametro: false
-                }
-            }
-        })
-    }
 }
