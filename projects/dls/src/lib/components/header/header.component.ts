@@ -2,7 +2,6 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HeaderService } from '../../services/header.service';
 
-
 interface UserInformation {
   email?: string;
   employeeNumber: string;
@@ -11,6 +10,7 @@ interface UserInformation {
   maternalName: string;
   menuOptions?: MenuOptionResponse;
   roles?: Role[];
+  profile?: string;
 }
 
 interface MenuOptionResponse extends Response {
@@ -33,11 +33,13 @@ interface Role {
 }
 
 @Component({
-  selector: 'app-header',
+  selector: 'dls-header',
   templateUrl: './header.component.html'
 })
 export class HeaderComponent implements OnInit {
+
   fechaHora = [];
+
   wasInside: boolean;
 
   showMenu = false;
@@ -61,13 +63,11 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.UI_CORE = JSON.parse(sessionStorage.getItem('UI_CORE'));
-
     if ( this.UI_CORE && this.UI_CORE.userName && this.UI_CORE.paternalName && this.UI_CORE.maternalName ) {
       this.name = `${this.UI_CORE.userName}`;
       this.lastname = `${this.UI_CORE.paternalName} ${this.UI_CORE.maternalName}`;
-      this.profile = `${this.UI_CORE.roles[0].value}`;
+      this.profile = `${this.UI_CORE.profile}`;
     }
-
   }
 
   goMisAsusntos() {
@@ -80,14 +80,13 @@ export class HeaderComponent implements OnInit {
   menuButtonClick() {
     this.showMenu = !this.showMenu;
   }
-  
+
   @HostListener('click')
   clickInside() {
     this.wasInside = true;
   }
-  
-  @HostListener('document:click')
-  clickout() {
+
+  @HostListener('document:click') clickout() {
     if (!this.wasInside) {
       this.showMenu = false;
     }

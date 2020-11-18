@@ -1,0 +1,50 @@
+{
+	"success": true,
+	"codigo": 1,
+	"descripcion": "Informacion enviada",
+	"respuesta": {
+		"responseInfo": {
+			"fieldName": "productType",
+			"label": null,
+			"fieldId": 14,
+			"endpoint": "getCatalogue",
+			"catalogueElement": [{
+				"key": 4,
+				"value": "ADQUIRENTE",
+				"generateGroup": null,
+				"data": null
+			}, {
+				"key": 1,
+				"value": "EKT",
+				"generateGroup": null,
+				"data": null
+			}, {
+				"key": 3,
+				"value": "FIDUCIARIO",
+				"generateGroup": null,
+				"data": null
+			}, {
+				"key": 2,
+				"value": "MERCADO DE DINERO",
+				"generateGroup": null,
+				"data": null
+			}, {
+				"key": 5,
+				"value": "TRANSMISORES SIPA",
+				"generateGroup": null,
+				"data": null
+			}]
+		},
+		"catalogues": null,
+		"response": {
+			"message": "Informacion enviada",
+			"code": "200",
+			"type": true,
+			"serverDate": "2020-11-20 19:46:29"
+		},
+		"tokenInformation": {
+			"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMDAyODY1NCIsInJvbGUiOjQ5LCJleHAiOjE2MDU5MjQzMDUsImlhdCI6MTYwNTkyMzA0NX0.GUvfsu0cC1nkpqYMReC4PryMOIw2oLxZ41AxhSJSDNC1W_UMIJyEkMKMUg-a7kpLQvQSeJtp7eQaRxWDgvXCyw",
+			"expirationDate": "2020-11-20 20:05:05"
+		}
+	}
+}

@@ -6,15 +6,15 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 export class MoneyFormatPipe implements PipeTransform {
     transform(numero: string): any {
-        if (numero === "") { return; }
-        if (numero.indexOf(".") >= 0) {
-            var decimal_pos = numero.indexOf(".");
-            var left_side = numero.substring(0, decimal_pos);
-            var right_side = numero.substring(decimal_pos);
-            left_side = this.formatNumber(left_side);
-            right_side = this.formatNumber(right_side);
-            right_side = right_side.substring(0, 2);
-            numero = left_side + "." + right_side;
+        if (numero === '') { return; }
+        if (numero.indexOf('.') >= 0) {
+            const decimalPos = numero.indexOf('.');
+            let leftSide = numero.substring(0, decimalPos);
+            let rightSide = numero.substring(decimalPos);
+            leftSide = this.formatNumber(leftSide);
+            rightSide = this.formatNumber(rightSide);
+            rightSide = rightSide.substring(0, 2);
+            numero = leftSide + '.' + rightSide;
 
         } else {
             numero = this.formatNumber(numero);
@@ -23,6 +23,6 @@ export class MoneyFormatPipe implements PipeTransform {
         return '$' + numero;
     }
     formatNumber(n) {
-        return n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+        return n.replace(/\D/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     }
 }

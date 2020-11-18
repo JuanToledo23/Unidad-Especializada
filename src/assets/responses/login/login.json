@@ -1,0 +1,40 @@
+{
+	"success": true,
+	"codigo": 1,
+	"descripcion": "200 - Informacion enviada",
+	"respuesta": {
+		"response": {
+			"message": "Informacion enviada",
+			"code": "200",
+			"type": true,
+			"serverDate": "2020-11-20 19:41:17"
+		},
+		"tokenInformation": {
+			"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMDAyODY1NCIsImV4cCI6MTYwNTkyMzA1NywiaWF0IjoxNjA1OTIyODc3fQ.lFwyvRjLAcLoY6EXTwCsmANo0g-hYQ6aKe_Z3l0qVAxq1ncAjmnBdqP-vSBqYTBeLCiy2Vsthn_0qmE2H0e6Ng",
+			"expirationDate": "2020-11-20 19:44:17"
+		},
+		"userInformation": {
+			"email": null,
+			"employeeNumber": "10028654",
+			"userName": "ARTURO",
+			"paternalName": "HERNANDEZ",
+			"maternalName": "MADERO",
+			"profile": 0,
+			"roles": [{
+				"key": 49,
+				"value": "Analista UEAU",
+				"generateGroup": null,
+				"data": null
+			}, {
+				"key": 53,
+				"value": "Responsable UEAU",
+				"generateGroup": null,
+				"data": null
+			}],
+			"menuOptions": null
+		},
+		"roleEstatus": 2
+	}
+}
+
+/* ?code=%2FwEBAAQEACDPe0AefmRlEf0e4NRxe5r67fvJJNaUhHSU9W2WR8waNu4CdhplxysuXvBld@qh32pAaxehX6bBn@wcaaHXPT1Ky0PU3RHl7XY84Uc@heObgL@s3cHg7gKd@VjHzpNK@w5AQmD@nYr1ZPfKagGDbBE3A7CN6tg02s5qiczqdhyiC9kYIkSgl7FM0tnngxhHa2GKy379vBtG7gXpgHpow1wOqLizzT0XPQlJtPKZtbybAc3agbydaC6oHD7Wgq@h3Ftv13S1GPVYMt16Hq7tObM@Hh@AFPslnhZ3Q92bdSV2FdS2HauAI9mQUPzs1hAm3VthDfXZnI7RTqsu9xt9Gv7BfxVg6v7Z%2F6ALG2RQEqS3kmugwTOF9UU2lCpgwJ9zPLcSz8fn2K2RT8JZQq79tlBXj2FKuophnlah3bTnz5l7bD2LfjpE8W%2FoDoHDd0xSiG3JWltRUutSIPuXgUYAKoBhAksCwiH%2FKZnIXzsvaCnaboGpqVUayMKxYq56B%2FT9a4g~&scope=UNEFront */

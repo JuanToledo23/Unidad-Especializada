@@ -67,6 +67,11 @@
     align-items: center;
 }
 
+.u-flex-baseline {
+    display: flex;
+    align-items: baseline;
+}
+
 .u-justify-left{
     justify-content: left;
 }
@@ -228,6 +233,10 @@
     margin-bottom: 1rem!important;
 }
 
+.u-yop-0{
+    margin-top: 0!important;
+    padding-top: 0 !important;
+}
 .u-my-0{
     margin-top: 0!important;
     margin-bottom: 0!important;
@@ -242,10 +251,10 @@
     margin-right: 0!important;
 }
 .u-mr-0-5{
-    margin-right: 0.5rem;
+    margin-right: 0.5rem !important;
 }
 .u-mr-1{
-    margin-right: 1rem;
+    margin-right: 1rem !important;
 }
 
 .u-mr-2{
@@ -266,6 +275,9 @@
 .u-mt-23px {
     margin-top: 23px;
 }
+.u-mt-5px {
+    margin-top: 5px;
+}
 .u-mt-1{
     margin-top: 1rem!important;
 }
@@ -282,6 +294,9 @@
 
 .u-mt-3{
     margin-top: 3rem!important;
+}
+.u-mt-5{
+    margin-top: 5rem!important;
 }
 
 .u-mt-0{
@@ -320,6 +335,9 @@ strong{
 .u-txt-sm{
     font-size: 12px;
 }
+.u-txt-md{
+    font-size: 17px;
+}
 
 .u-txt-lg{
     font-size: 26px;
@@ -327,6 +345,10 @@ strong{
 
 .u-txt-gray {
     color: #999999;
+}
+
+.u-font-u {
+    font-family: unset !important;
 }
 
 .u-txt-regular{
@@ -347,6 +369,10 @@ strong{
 
 .u-txt-italic {
     font-style: italic;
+}
+
+.u-txt-sub {
+    text-decoration: underline;
 }
 
 .u-color-gris{
@@ -395,6 +421,9 @@ strong{
 .u-w-30{
     width: 30%;
 }
+.u-w-45{
+    width: 45%;
+}
 
 .u-w-50{
     width: 50%;
@@ -413,11 +442,19 @@ strong{
     width: 100%;
 }
 
+.u-w-35{
+    width: 35rem !important;
+}
+
 .u-mw-250 {
     max-width: 250px;
 }
 .u-mw-300 {
     max-width: 300px;
+}
+
+.u-w-500 {
+    width: 500px;
 }
 
 .u-py-20{
@@ -482,7 +519,7 @@ input.u-desac {
 }
 
 .u-txt-red {
-    color: #CC3300;
+    color: #F44336;
 }
 
 .u-txt-black {
@@ -509,4 +546,46 @@ input.u-desac {
     .u-lg-w-70{
         width: unset;
     }
+}
+
+.info-reclamante {
+    background-color: #e6efe5;
+}
+
+.tit-info {
+    color: #333333;
+    font-size: 17px;
+    font-family: 'Avenir_Next_Demi_Bold';
+}
+
+.img-responsable {
+    width: 3.8rem;
+}
+
+.scroll-auto {
+    overflow-y: auto;
+    height: 38vw !important;
+    min-width: 855px;
+}
+
+/* .letraPequeña strong {
+    font-size: 12px !important;
+} */
+
+/* .u-lh-24 {
+    line-height: 24px;
+} */
+
+.u-min-h-544px {
+    min-height: 544px;
+}
+
+.numCuenta {
+    background-color: #E6EFE6;
+    padding: 2px 17px;
+    margin-top: -8px;
+}
+
+.u-mw-290px {
+    min-width: 290px;
 }

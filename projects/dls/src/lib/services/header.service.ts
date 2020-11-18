@@ -10,19 +10,19 @@ export class HeaderService {
     titulo = 'Puestos';
     constructor(){}
 
-    myObservable = Observable.create((observer: Observer<Array<string | number>>) => {
+    myObservable = new Observable((observer: Observer<Array<string | number>>) => {
         setInterval(() => {
-            let date = new Date();
+            const date = new Date();
             const meses = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
             const fechaHora = [date.getDate(), meses[date.getMonth()], date.getFullYear(), date.getHours(), date.getMinutes()];
             for (let i = 0; i < fechaHora.length; i++){
-                if(fechaHora[i].toString().length === 1){
+                if (fechaHora[i].toString().length === 1){
                     const aux = fechaHora[i];
                     fechaHora[i] = '0' + aux;
                 }
                 observer.next(fechaHora);
             }
-        }, 1000)
+        }, 1000);
     });
 
     showMenuLogOut(){

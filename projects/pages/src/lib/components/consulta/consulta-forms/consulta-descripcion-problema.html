@@ -1,4 +1,10 @@
-<div class="subtitulo-subseccion">Causa de reclamación {{idx}}</div>
+<div class="u-flex-between" *ngIf="theCase">
+  <div class="subtitulo-subseccion">Causa de reclamación </div>
+  <div class="numCuenta u-flex-between u-mw-290px">
+      <div>{{ theCase.searchType.label }}:</div>
+      <div><strong>{{ theCase.searchType.value }}</strong></div>
+  </div>
+</div>
 
 <div class="row" [formGroup]="form">
   <div class="col-4 col-s-12" formArrayName="descriptionOfTheProblem">
@@ -100,4 +106,14 @@
       <input type="text" formControlName="comments">
     </div>
     </div>
+</div>
+
+<div class="row" style="border-bottom: 1px dotted #E6EFE6;">
+  <div class="col-12 col-s-12 u-flex-end">
+      <div class="col-4 u-ex-right-u u-flex-end">
+          <button type="button" mat-flat-button class="btn u-flex-center btnSecundary descripcionBtn u-mr-1" ><mat-icon matDatepickerToggleIcon svgIcon="ico-agregar-negro" class="icoBtn"></mat-icon><div>Eliminar <br> la causa</div></button>
+          <button type="button" mat-flat-button class="btn u-flex-center btnTertiary descripcionBtn u-mr-1" ><mat-icon matDatepickerToggleIcon svgIcon="ico-agregar-negro" class="icoBtn"></mat-icon><div>Limpiar <br> campos</div></button>
+          <button type="button" mat-flat-button color="primary" class="btn u-flex-center btnPrimary descripcionBtn" ><mat-icon matDatepickerToggleIcon svgIcon="ico-agregar-negro" class="icoBtn"></mat-icon><div>Añadir <br> otra causa</div></button>
+      </div>
+  </div>
 </div>

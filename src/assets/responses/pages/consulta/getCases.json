@@ -1,0 +1,162 @@
+{
+    "success": true,
+    "codigo": 1,
+    "descripcion": "Informacion enviada",
+    "respuesta": {
+      "responseInfo": {
+        "cases": [
+          {
+            "caseId": "19363",
+            "clientName": "",
+            "status": "EN ANALISIS",
+            "arrivalDate": "09/11/2020",
+            "endDate": "09/11/2020",
+            "arrivalMean": "GESTION ELECTRONICA INMEDIATA",
+            "redirectTo": "Registro",
+            "bulkLoadCase": 0
+          },
+          {
+            "caseId": "19359",
+            "clientName": "",
+            "status": "EN ANALISIS",
+            "arrivalDate": "09/11/2020",
+            "endDate": "09/11/2020",
+            "arrivalMean": "GESTION ELECTRONICA TRADICIONAL",
+            "redirectTo": "Registro",
+            "bulkLoadCase": 0
+          },
+          {
+            "caseId": "19361",
+            "clientName": "",
+            "status": "EN ANALISIS",
+            "arrivalDate": "09/11/2020",
+            "endDate": "09/11/2020",
+            "arrivalMean": "GESTION ELECTRONICA INMEDIATA",
+            "redirectTo": "Registro",
+            "bulkLoadCase": 0
+          },
+          {
+            "caseId": "19369",
+            "clientName": "",
+            "status": "EN ANALISIS",
+            "arrivalDate": "11/11/2020",
+            "endDate": "11/11/2020",
+            "arrivalMean": "GESTION ELECTRONICA PORI",
+            "redirectTo": "Registro",
+            "bulkLoadCase": 0
+          },
+          {
+            "caseId": "19383",
+            "clientName": "",
+            "status": "EN ANALISIS",
+            "arrivalDate": "11/11/2020",
+            "endDate": "11/11/2020",
+            "arrivalMean": "GESTION ELECTRONICA INMEDIATA",
+            "redirectTo": "Registro",
+            "bulkLoadCase": 0
+          },
+          {
+            "caseId": "19375",
+            "clientName": "",
+            "status": "EN ANALISIS",
+            "arrivalDate": "11/11/2020",
+            "endDate": "11/11/2020",
+            "arrivalMean": "GESTION ELECTRONICA PORI",
+            "redirectTo": "Registro",
+            "bulkLoadCase": 0
+          },
+          {
+            "caseId": "19368",
+            "clientName": "",
+            "status": "EN ANALISIS",
+            "arrivalDate": "11/11/2020",
+            "endDate": "11/11/2020",
+            "arrivalMean": "GESTION ELECTRONICA PORI",
+            "redirectTo": "Registro",
+            "bulkLoadCase": 0
+          },
+          {
+            "caseId": "19378",
+            "clientName": "",
+            "status": "EN ANALISIS",
+            "arrivalDate": "11/11/2020",
+            "endDate": "11/11/2020",
+            "arrivalMean": "GESTION ELECTRONICA PORI",
+            "redirectTo": "Registro",
+            "bulkLoadCase": 0
+          },
+          {
+            "caseId": "19374",
+            "clientName": "",
+            "status": "EN ANALISIS",
+            "arrivalDate": "11/11/2020",
+            "endDate": "11/11/2020",
+            "arrivalMean": "GESTION ELECTRONICA PORI",
+            "redirectTo": "Registro",
+            "bulkLoadCase": 0
+          },
+          {
+            "caseId": "19388",
+            "clientName": "",
+            "status": "EN ANALISIS",
+            "arrivalDate": "11/11/2020",
+            "endDate": "11/11/2020",
+            "arrivalMean": "GESTION ELECTRONICA TRADICIONAL",
+            "redirectTo": "Registro",
+            "bulkLoadCase": 0
+          },
+          {
+            "caseId": "19394",
+            "clientName": "",
+            "status": "EN ANALISIS",
+            "arrivalDate": "12/11/2020",
+            "endDate": "12/11/2020",
+            "arrivalMean": "GESTION ELECTRONICA INMEDIATA",
+            "redirectTo": "Registro",
+            "bulkLoadCase": 0
+          },
+          {
+            "caseId": "19360",
+            "clientName": "ALAN GUTIERREZ ESTRADA",
+            "status": "RECHAZADO",
+            "arrivalDate": "09/11/2020",
+            "endDate": "24/12/2020",
+            "arrivalMean": "UNIDAD ESPECIALIZADA ELECTRONICA",
+            "redirectTo": "Consulta",
+            "bulkLoadCase": 1
+          },
+          {
+            "caseId": "19372",
+            "clientName": "ELEUTERIO MARTINEZ GONZALEZ",
+            "status": "EN ANALISIS",
+            "arrivalDate": "11/11/2020",
+            "endDate": "26/12/2020",
+            "arrivalMean": "UNIDAD ESPECIALIZADA PRESENCIAL",
+            "redirectTo": "Consulta",
+            "bulkLoadCase": 1
+          },
+          {
+            "caseId": "19389",
+            "clientName": "ELEUTERIO MARTINEZ GONZALEZ",
+            "status": "EN ANALISIS",
+            "arrivalDate": "11/11/2020",
+            "endDate": "26/12/2020",
+            "arrivalMean": "UNIDAD ESPECIALIZADA PRESENCIAL",
+            "redirectTo": "Consulta",
+            "bulkLoadCase": 1
+          }
+        ]
+      },
+      "catalogues": null,
+      "response": {
+        "message": "Informacion enviada",
+        "code": "200",
+        "type": true,
+        "serverDate": "2020-11-20 19:51:05"
+      },
+      "tokenInformation": {
+        "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMDAyODY1NCIsInJvbGUiOjQ5LCJleHAiOjE2MDU5MjQzMDUsImlhdCI6MTYwNTkyMzA0NX0.GUvfsu0cC1nkpqYMReC4PryMOIw2oLxZ41AxhSJSDNC1W_UMIJyEkMKMUg-a7kpLQvQSeJtp7eQaRxWDgvXCyw",
+        "expirationDate": "2020-11-20 20:05:05"
+      }
+    }
+  }

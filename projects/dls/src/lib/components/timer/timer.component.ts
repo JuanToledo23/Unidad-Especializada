@@ -9,9 +9,7 @@ import { AuthService } from 'auth';
   styleUrls: ['./timer.component.scss']
 })
 export class TimerComponent {
-
   public counter: Observable<number>;
-
   constructor(
     private timer: TimerService,
     private auth: AuthService ) {

@@ -1,0 +1,412 @@
+{
+    "success": true,
+    "codigo": 1,
+    "descripcion": "Informacion enviada",
+    "respuesta": {
+      "responseInfo": null,
+      "catalogues": {
+        "business": {
+          "fieldName": "business",
+          "label": "Negocio",
+          "fieldId": 13,
+          "endpoint": "caseRegistry",
+          "catalogueElement": [
+            {
+              "key": 4,
+              "value": "BAZ DIGITAL",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 2,
+              "value": "BIG",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 1,
+              "value": "CAPTACION",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 5,
+              "value": "CREDITO Y COBRANZA",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 6,
+              "value": "MICRONEGOCIO AZTECA",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 8,
+              "value": "OTRO",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 7,
+              "value": "PRESTA PRENDA",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 3,
+              "value": "TESORERIA",
+              "generateGroup": null,
+              "data": null
+            }
+          ]
+        },
+        "status": {
+          "fieldName": "status",
+          "label": "Estatus",
+          "fieldId": 3,
+          "endpoint": "caseRegistry",
+          "catalogueElement": [
+            {
+              "key": 120,
+              "value": "EN ANALISIS",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 127,
+              "value": "ENVIADO A REVISION",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 129,
+              "value": "ENVIADO A REVISION (REVERSA)",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 128,
+              "value": "RECHAZADO",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 123,
+              "value": "SOLICITUD DE ACTUALIZACION DE DATOS",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 122,
+              "value": "SOLICITUD DE INFORMACION ADICIONAL",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 121,
+              "value": "SOLICITUD DE PRORROGA",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 124,
+              "value": "SOLICITUD DE REVERSA",
+              "generateGroup": null,
+              "data": null
+            }
+          ]
+        },
+        "opinion": null,
+        "reason": null,
+        "arrivalMeans": {
+          "fieldName": "arrivalMeans",
+          "label": "MedioLlegada",
+          "fieldId": 2,
+          "endpoint": "caseRegistry",
+          "catalogueElement": [
+            {
+              "key": 4,
+              "value": "UNIDAD ESPECIALIZADA ELECTRONICA",
+              "generateGroup": null,
+              "data": 30
+            },
+            {
+              "key": 5,
+              "value": "UNIDAD ESPECIALIZADA PRESENCIAL",
+              "generateGroup": null,
+              "data": 30
+            }
+          ]
+        },
+        "searchType": {
+          "fieldName": "searchType",
+          "label": "TipoBusqueda",
+          "fieldId": 5,
+          "endpoint": "caseRegistry",
+          "catalogueElement": [
+            {
+              "key": 1,
+              "value": "CLIENTE UNICO",
+              "generateGroup": "CLIENTNAME",
+              "data": null
+            },
+            {
+              "key": 2,
+              "value": "NUMERO DE CUENTA",
+              "generateGroup": "ACCOUTNUMBER",
+              "data": null
+            },
+            {
+              "key": 3,
+              "value": "NUMERO DE TARJETA",
+              "generateGroup": "CARDNUMBER",
+              "data": null
+            }
+          ]
+        },
+        "estate": {
+          "fieldName": "estate",
+          "label": "Estado",
+          "fieldId": 8,
+          "endpoint": "caseRegistry",
+          "catalogueElement": [
+            {
+              "key": 1,
+              "value": "AGUASCALIENTES",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 2,
+              "value": "BAJA CALIFORNIA",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 3,
+              "value": "BAJA CALIFORNIA SUR",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 4,
+              "value": "CAMPECHE",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 7,
+              "value": "CHIAPAS",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 8,
+              "value": "CHIHUAHUA",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 9,
+              "value": "CIUDAD DE MEXICO",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 5,
+              "value": "COAHUILA",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 6,
+              "value": "COLIMA",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 10,
+              "value": "DURANGO",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 11,
+              "value": "GUANAJUATO",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 12,
+              "value": "GUERRERO",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 13,
+              "value": "HIDALGO",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 14,
+              "value": "JALISCO",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 15,
+              "value": "MEXICO",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 16,
+              "value": "MICHOACAN",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 17,
+              "value": "MORELOS",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 18,
+              "value": "NAYARIT",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 19,
+              "value": "NUEVO LEON",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 20,
+              "value": "OAXACA",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 21,
+              "value": "PUEBLA",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 22,
+              "value": "QUERETARO",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 23,
+              "value": "QUINTANA ROO",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 24,
+              "value": "SAN LUIS POTOSI",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 25,
+              "value": "SINALOA",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 26,
+              "value": "SONORA",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 27,
+              "value": "TABASCO",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 28,
+              "value": "TAMAULIPAS",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 29,
+              "value": "TLAXCALA",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 30,
+              "value": "VERACRUZ",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 31,
+              "value": "YUCATAN",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 32,
+              "value": "ZACATECAS",
+              "generateGroup": null,
+              "data": null
+            }
+          ]
+        },
+        "requestType": {
+          "fieldName": "requestType",
+          "label": "TipoSolicitud",
+          "fieldId": 17,
+          "endpoint": "caseRegistry",
+          "catalogueElement": [
+            {
+              "key": 4,
+              "value": "ACLARACION UNE",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 3,
+              "value": "CONSULTA UNE",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 1,
+              "value": "RECLAMACION SIGE",
+              "generateGroup": null,
+              "data": null
+            },
+            {
+              "key": 2,
+              "value": "RECLAMACION UNE",
+              "generateGroup": null,
+              "data": null
+            }
+          ]
+        }
+      },
+      "response": {
+        "message": "Informacion enviada",
+        "code": "200",
+        "type": true,
+        "serverDate": "2020-11-20 19:54:34"
+      },
+      "tokenInformation": {
+        "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMDAyODY1NCIsInJvbGUiOjQ5LCJleHAiOjE2MDU5MjQzMDUsImlhdCI6MTYwNTkyMzA0NX0.GUvfsu0cC1nkpqYMReC4PryMOIw2oLxZ41AxhSJSDNC1W_UMIJyEkMKMUg-a7kpLQvQSeJtp7eQaRxWDgvXCyw",
+        "expirationDate": "2020-11-20 20:05:05"
+      }
+    }
+  }

@@ -1,6 +1,6 @@
-import { ChangeDetectorRef, Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { MatRadioButton, MatRadioChange } from '@angular/material/radio';
-import { MatSelectChange } from '@angular/material/select';
+import { LoaderService } from './../../services/loader/loader.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
 
@@ -11,6 +11,8 @@ import { AuthService } from '../../services/auth/auth.service';
 })
 export class LoginComponent implements OnInit {
 
+  form: FormGroup;
+
   private params: Params;
 
   role: string;
@@ -19,14 +21,18 @@ export class LoginComponent implements OnInit {
 
   profilesDefined: boolean;
 
-  // tslint:disable-next-line: no-output-native
-  @Output() change: EventEmitter<MatRadioChange>;
-
   constructor(
+    private loader: LoaderService,
     private activatedRoute: ActivatedRoute,
     private cdr: ChangeDetectorRef,
     public authLogin: AuthService,
+    private fb: FormBuilder
     ) {
+
+    this.form = this.fb.group({
+      user: [ { value: 'Arturo Hernández Medero', disabled: true }, [ Validators.required ]],
+      role: [ '', [Validators.required] ]
+    });
 
     this.profilesDefined = true;
 
@@ -35,6 +41,7 @@ export class LoginComponent implements OnInit {
     this.authLogin.roles$.subscribe( roles => {
       this.roles = roles;
       this.profilesDefined = true;
+      this.loader.setLoader(false);
     });
 
     this.role = sessionStorage.getItem('ROLE_CORE') ? sessionStorage.getItem('ROLE_CORE') : '-1';
@@ -51,12 +58,12 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     if ( sessionStorage.getItem('MK_CODE') && sessionStorage.getItem('MK_SCOPE') ) {
-
+      this.loader.setLoader(true);
       this.authLogin.login();
-
       this.profilesDefined = true;
-
       if (sessionStorage.getItem('UI_CORE')){
+        const UI_CORE = JSON.parse(sessionStorage.getItem('UI_CORE'));
+        this.form.get('user').setValue(`${UI_CORE.userName} ${UI_CORE.paternalName} ${UI_CORE.maternalName}`);
         this.roles = JSON.parse(sessionStorage.getItem('UI_CORE')).roles;
         this.authLogin.forceRoles();
         this.profilesDefined = true;
@@ -67,16 +74,15 @@ export class LoginComponent implements OnInit {
     this.cdr.detectChanges();
   }
 
-  onChange(mrChange: MatRadioChange) {
-    const mrButton: MatRadioButton = mrChange.source;
-    if ( mrChange.value === 'master-key' && mrButton.checked ) {
+  redirectToMasterKey() {
       this.authLogin.builldRedirecToMasterKeyRequest();
-    }
   }
 
-  roleSelected( matSelectChange: MatSelectChange ) {
+  loginWithRoleSelected() {
+    if (! this.form.valid ) { return; }
+    this.loader.setLoader(true);
     this.authLogin.loginWithRole({
       employeeNumber: `${JSON.parse(sessionStorage.getItem('UI_CORE')).employeeNumber}`,
-      role:  matSelectChange.value });
+      role: this.form.get('role').value });
   }
 }

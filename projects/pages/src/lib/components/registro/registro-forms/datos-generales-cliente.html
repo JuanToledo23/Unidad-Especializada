@@ -1,93 +1,93 @@
-<div class="row">
-    <div class="col-4 col-s-12">
+<div class="row" [formGroup]="form">
+    <div class="col-4 col-s-12" formGroupName="clientInformation">
         <label>Nombre(s)</label>
-        <input type="text">
+        <input type="text" formControlName="clientName">
     </div>
-    <div class="col-4 col-s-12">
+    <div class="col-4 col-s-12" formGroupName="clientInformation">
         <label>Apellido paterno</label>
-        <input type="text">
+        <input type="text" formControlName="clientPaternalName">
     </div>
-    <div class="col-4 col-s-12">
+    <div class="col-4 col-s-12" formGroupName="clientInformation">
         <label>Apellido materno</label>
-        <input type="text">
+        <input type="text" formControlName="clientMaternalName">
     </div>
 </div>
-<div class="row">
-    <div class="col-4 col-s-12">
+
+<div class="row" [formGroup]="form">
+    <div class="col-4 col-s-12" formGroupName="clientInformation">
         <label>Nombre(s) <strong>(Reclamante)</strong> </label>
-        <input type="text">
+        <input type="text" formControlName="claimantName">
     </div>
-    <div class="col-4 col-s-12">
+    <div class="col-4 col-s-12" formGroupName="clientInformation">
         <label>Apellido paterno <strong>(Reclamante)</strong> </label>
-        <input type="text">
+        <input type="text" formControlName="claimantPaternalName">
     </div>
-    <div class="col-4 col-s-12">
+    <div class="col-4 col-s-12" formGroupName="clientInformation">
         <label>Apellido materno <strong>(Reclamante)</strong> </label>
-        <input type="text">
+        <input type="text" formControlName="claimantMaternalName">
     </div>
 </div>
-<div class="row">
-    <div class="col-4 col-s-12">
+
+<div class="row" [formGroup]="form">
+    <div class="col-4 col-s-12" formGroupName="clientInformation">
         <label>Calle</label>
-        <input type="text">
+        <input type="text" formControlName="streetName">
     </div>
-    <div class="col-4 col-s-12">
+    <div class="col-4 col-s-12" formGroupName="clientInformation">
         <div class="col-6 u-ex-left-u">
             <label>No. Exterior</label>
-            <input type="text">
+            <input type="text" formControlName="streetNumber">
         </div>
-        <div class="col-6 u-ex-right-u">
+        <div class="col-6 u-ex-right-u" >
             <label>No. Interior</label>
-            <input type="text">
+            <input type="text" formControlName="interiorNumber">
         </div>
     </div>
-    <div class="col-4 col-s-12">
-        <div class="col-6 u-p-u">
+    <div class="col-4 col-s-12" formGroupName="clientInformation">
+        <div class="col-6 u-p-u" >
             <label>Código postal</label>
             <div class="u-position-r">
-                <input type="number" id="busca">
-                <input type="submit" class="buscar" value="">
+                <input type="number" formControlName="postalCode">
             </div>
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-4 col-s-12">
+
+<div class="row" [formGroup]="form">
+    <div class="col-4 col-s-12" formGroupName="clientInformation">
         <label>Colonia</label>
-        <mat-select>
-            <mat-option value="option1">Opción 1</mat-option>
-            <mat-option value="option2">Opción 2</mat-option>
-            <mat-option value="option3">Opción 3</mat-option>
-        </mat-select>
+        <input formControlName="suburb">
     </div>
-    <div class="col-4 col-s-12">
+    <div class="col-4 col-s-12" formGroupName="clientInformation">
         <label>Estado</label>
-        <mat-select>
-            <mat-option value="option1">Opción 1</mat-option>
-            <mat-option value="option2">Opción 2</mat-option>
-            <mat-option value="option3">Opción 3</mat-option>
-        </mat-select>
+        <!--mat-select-- formControlName="estate">
+            <mat-option [value]="'-1'" disabled>-- SELECCIONE --</mat-option>
+            <mat-option *ngFor="let item of catalogues.state" value="item.value">{{ item.value }}</mat-option>
+        </!--mat-select-->
+        <input formControlName="estate">
     </div>
-    <div class="col-4 col-s-12">
+    <div class="col-4 col-s-12" formGroupName="clientInformation">
         <label>Población</label>
-        <mat-select>
-            <mat-option value="option1">Opción 1</mat-option>
-            <mat-option value="option2">Opción 2</mat-option>
+        <!--mat-select-- formControlName="town">
+            <mat-option [value]="'-1'" disabled>-- SELECCIONE --</mat-option>
+            <mat-option value="sanJoseBuenavista">San Jose Buenavista</mat-option>
             <mat-option value="option3">Opción 3</mat-option>
-        </mat-select>
+        </!--mat-select-->
+        <input formControlName="town">
     </div>
 </div>
-<div class="row">
-    <div class="col-4 col-s-12">
+
+<div class="row" [formGroup]="form">
+    <div class="col-4 col-s-12" formGroupName="clientInformation">
         <label>R.F.C. o CURP</label>
-        <input type="text">
+        <input type="text" formControlName="rfcCurp">
     </div>
-    <div class="col-4 col-s-12">
+    <div class="col-4 col-s-12" formGroupName="clientInformation">
         <label>Teléfono</label>
-        <input type="number">
+        <input type="number" formControlName="phoneNumber">
     </div>
-    <div class="col-4 col-s-12">
+    <div class="col-4 col-s-12" formGroupName="clientInformation">
         <label>Correo electrónico</label>
-        <input type="email">
+        <input type="email" formControlName="email">
     </div>
 </div>

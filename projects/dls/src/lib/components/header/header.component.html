@@ -46,8 +46,8 @@
 		</div>
 		<div id="menu">
 		<ul class="l-navegacion nivel1">
-			<li><a (click)="goMisAsusntos()"><div>Mis asuntos</div></a></li>
-			<li><a (click)="goRegistro()"><div>Registro</div></a></li>
+			<li><a [routerLink]="['/consulta']" routerLinkActive="router-link-active"><div>Mis asuntos</div></a></li>
+			<li><a [routerLink]="['/registro']" routerLinkActive="router-link-active"><div>Registro</div></a></li>
 			<li><a href="#"><div>Carga masiva casos</div></a></li>
 			<li><a href="#"><div>Reportes</div></a></li>
 			<li class="dropdown2">

@@ -1,0 +1,374 @@
+{
+	"success": true,
+	"codigo": 1,
+	"descripcion": "Informacion enviada",
+	"respuesta": {
+		"responseInfo": {
+			"newCase": true,
+			"newCaseInfo": {
+				"caseHeader": {
+					"condusefFolio": "- - -",
+					"caseId": 19360,
+					"analystId": 10028654,
+					"analyst": "ARTURO HERNANDEZ MEDERO",
+					"requestType": "RECLAMACION UNE"
+				},
+				"claimOrigin": {
+					"requestType": "RECLAMACION UNE",
+					"condusefFolio": "- - -",
+					"arrivalMean": "UNIDAD ESPECIALIZADA ELECTRONICA",
+					"arrivalDate": "09/11/2020",
+					"endDate": "24/12/2020",
+					"totalCareDays": 30,
+					"hall": "- - -",
+					"statusId": 128
+				},
+				"clientDetails": {
+					"name": "ALAN GUTIERREZ ESTRADA",
+					"address_1": "DOLORES GARCIA No.533 ",
+					"address_2": "COL. BARRIO V COYOACAN",
+					"address_3": "CIUDAD DE MEXICO",
+					"curp": "GUEA800101",
+					"phoneNumber": "4982645734",
+					"email": "agutierreze@elektra.com.mx"
+				},
+				"clarificationInfo": {
+					"clarificationId": 649079,
+					"opinion": "",
+					"status": "",
+					"reclaimedAmount": ""
+				},
+				"causes": [{
+					"causeCaseId": 242,
+					"businessUnitId": 1,
+					"productTypeId": 7,
+					"productType": [{
+						"key": 7,
+						"value": "CUENTA A LA VISTA",
+						"generateGroup": null,
+						"data": 0
+					}],
+					"tradeNameId": 1,
+					"tradeName": [{
+						"key": 1,
+						"value": "GUARDADITO",
+						"generateGroup": null,
+						"data": 0
+					}],
+					"channelId": 9,
+					"channel": [{
+						"key": 9,
+						"value": "SUCURSAL",
+						"generateGroup": null,
+						"data": 0
+					}],
+					"causeId": 103,
+					"cause": [{
+						"key": 103,
+						"value": "Alta de autorizado no atendido",
+						"generateGroup": null,
+						"data": 0
+					}],
+					"txsNumber": 1,
+					"subsidizedAmount": 650.0,
+					"reclaimedAmount": 650.0,
+					"opinion": "0",
+					"accountNumber": "653901634753",
+					"cardNumber": "1029384756019283",
+					"uniqueClient": null,
+					"comments": "NO PROCEDE",
+					"branch": "1481 - BA EKT MERCADO PANTITLAN",
+					"searchType": {
+						"label": "Número de cuenta",
+						"value": "653901634753"
+					}
+				}, {
+					"causeCaseId": 244,
+					"businessUnitId": 2,
+					"productTypeId": 17,
+					"productType": [{
+						"key": 17,
+						"value": "CUENTAS DE NOMINA",
+						"generateGroup": null,
+						"data": 0
+					}],
+					"tradeNameId": 19,
+					"tradeName": [{
+						"key": 19,
+						"value": "NOMINA AZTECA TRADICIONAL",
+						"generateGroup": null,
+						"data": 0
+					}],
+					"channelId": 9,
+					"channel": [{
+						"key": 9,
+						"value": "SUCURSAL",
+						"generateGroup": null,
+						"data": 0
+					}],
+					"causeId": 109,
+					"cause": [{
+						"key": 109,
+						"value": "Pago a beneficiario",
+						"generateGroup": null,
+						"data": 0
+					}],
+					"txsNumber": 1,
+					"subsidizedAmount": 800.0,
+					"reclaimedAmount": 800.0,
+					"opinion": "1",
+					"accountNumber": "653901634753",
+					"cardNumber": "1029384756019283",
+					"uniqueClient": null,
+					"comments": "PROCEDENTE, REEMBOLSO",
+					"branch": "1481 - BA EKT MERCADO PANTITLAN",
+					"searchType": {
+						"label": "Número de tarjeta",
+						"value": "1029384756019283"
+					}
+				}, {
+					"causeCaseId": 243,
+					"businessUnitId": 5,
+					"productTypeId": 13,
+					"productType": [{
+						"key": 13,
+						"value": "CREDITO AL CONSUMO",
+						"generateGroup": null,
+						"data": 0
+					}],
+					"tradeNameId": 24,
+					"tradeName": [{
+						"key": 24,
+						"value": "CREDIMAX",
+						"generateGroup": null,
+						"data": 0
+					}],
+					"channelId": 9,
+					"channel": [{
+						"key": 9,
+						"value": "SUCURSAL",
+						"generateGroup": null,
+						"data": 0
+					}],
+					"causeId": 2,
+					"cause": [{
+						"key": 2,
+						"value": "Cancelación de producto o servicio ",
+						"generateGroup": null,
+						"data": 0
+					}],
+					"txsNumber": 1,
+					"subsidizedAmount": 0.0,
+					"reclaimedAmount": 0.0,
+					"opinion": "1",
+					"accountNumber": null,
+					"cardNumber": null,
+					"uniqueClient": "1-1-1481-7654",
+					"comments": "PROCEDENTE, CREDITO CANCELADO",
+					"branch": "1481 - BA EKT MERCADO PANTITLAN",
+					"searchType": {
+						"label": "Cliente Único",
+						"value": "1-1-1481-7654"
+					}
+				}],
+				"conclusions": {
+					"opinionId": 30,
+					"reasonId": 1,
+					"comments": "DOS DE LAS CAUSAS FUERON PROCEDENTES, PERO UNA DE ELLAS FUE COMPRA FIRMADA DIGITALMENTE EN SUCURSAL LIVERPOOL"
+				}
+			},
+			"oldCaseInfo": null,
+			"clarifications": null
+		},
+		"catalogues": {
+			"business": {
+				"fieldName": "business",
+				"label": "Negocio",
+				"fieldId": 13,
+				"endpoint": "",
+				"catalogueElement": [{
+					"key": 4,
+					"value": "BAZ DIGITAL",
+					"generateGroup": null,
+					"data": null
+				}, {
+					"key": 2,
+					"value": "BIG",
+					"generateGroup": null,
+					"data": null
+				}, {
+					"key": 1,
+					"value": "CAPTACION",
+					"generateGroup": null,
+					"data": null
+				}, {
+					"key": 5,
+					"value": "CREDITO Y COBRANZA",
+					"generateGroup": null,
+					"data": null
+				}, {
+					"key": 6,
+					"value": "MICRONEGOCIO AZTECA",
+					"generateGroup": null,
+					"data": null
+				}, {
+					"key": 8,
+					"value": "OTRO",
+					"generateGroup": null,
+					"data": null
+				}, {
+					"key": 7,
+					"value": "PRESTA PRENDA",
+					"generateGroup": null,
+					"data": null
+				}, {
+					"key": 3,
+					"value": "TESORERIA",
+					"generateGroup": null,
+					"data": null
+				}]
+			},
+			"status": {
+				"fieldName": "status",
+				"label": "Estatus",
+				"fieldId": 3,
+				"endpoint": "",
+				"catalogueElement": [{
+					"key": 120,
+					"value": "EN ANALISIS",
+					"generateGroup": null,
+					"data": null
+				}, {
+					"key": 127,
+					"value": "ENVIADO A REVISION",
+					"generateGroup": null,
+					"data": null
+				}, {
+					"key": 129,
+					"value": "ENVIADO A REVISION (REVERSA)",
+					"generateGroup": null,
+					"data": null
+				}, {
+					"key": 128,
+					"value": "RECHAZADO",
+					"generateGroup": null,
+					"data": null
+				}, {
+					"key": 123,
+					"value": "SOLICITUD DE ACTUALIZACION DE DATOS",
+					"generateGroup": null,
+					"data": null
+				}, {
+					"key": 122,
+					"value": "SOLICITUD DE INFORMACION ADICIONAL",
+					"generateGroup": null,
+					"data": null
+				}, {
+					"key": 121,
+					"value": "SOLICITUD DE PRORROGA",
+					"generateGroup": null,
+					"data": null
+				}, {
+					"key": 124,
+					"value": "SOLICITUD DE REVERSA",
+					"generateGroup": null,
+					"data": null
+				}]
+			},
+			"opinion": {
+				"fieldName": "opinion",
+				"label": "Fallo",
+				"fieldId": 4,
+				"endpoint": "",
+				"catalogueElement": [{
+					"key": 30,
+					"value": "EN CONTRA DEL USUARIO",
+					"generateGroup": null,
+					"data": null
+				}, {
+					"key": 31,
+					"value": "A FAVOR DEL USUARIO",
+					"generateGroup": null,
+					"data": null
+				}, {
+					"key": 32,
+					"value": "CONSULTA CONTESTADA",
+					"generateGroup": null,
+					"data": null
+				}, {
+					"key": 33,
+					"value": "CERRADO POR REVERSA",
+					"generateGroup": null,
+					"data": null
+				}]
+			},
+			"reason": {
+				"fieldName": "reason",
+				"label": "Motivo",
+				"fieldId": 11,
+				"endpoint": "",
+				"catalogueElement": [{
+					"key": 3,
+					"value": "AUDITORIA INTERNA",
+					"generateGroup": null,
+					"data": null
+				}, {
+					"key": 4,
+					"value": "DETERMINACION DE NEGOCIO",
+					"generateGroup": null,
+					"data": null
+				}, {
+					"key": 2,
+					"value": "DICTAMINACION JURIDICA",
+					"generateGroup": null,
+					"data": null
+				}, {
+					"key": 1,
+					"value": "DICTAMINACION UNE",
+					"generateGroup": null,
+					"data": null
+				}, {
+					"key": 5,
+					"value": "VALIDACION OPERATIVA",
+					"generateGroup": null,
+					"data": null
+				}]
+			},
+			"arrivalMeans": null,
+			"searchType": {
+				"fieldName": "searchType",
+				"label": "TipoBusqueda",
+				"fieldId": 5,
+				"endpoint": "",
+				"catalogueElement": [{
+					"key": 1,
+					"value": "CLIENTE UNICO",
+					"generateGroup": "CLIENTNAME",
+					"data": null
+				}, {
+					"key": 2,
+					"value": "NUMERO DE CUENTA",
+					"generateGroup": "ACCOUTNUMBER",
+					"data": null
+				}, {
+					"key": 3,
+					"value": "NUMERO DE TARJETA",
+					"generateGroup": "CARDNUMBER",
+					"data": null
+				}]
+			},
+			"estate": null,
+			"requestType": null
+		},
+		"response": {
+			"message": "Informacion enviada",
+			"code": "200",
+			"type": true,
+			"serverDate": "2020-11-20 19:44:26"
+		},
+		"tokenInformation": {
+			"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMDAyODY1NCIsInJvbGUiOjQ5LCJleHAiOjE2MDU5MjQzMDUsImlhdCI6MTYwNTkyMzA0NX0.GUvfsu0cC1nkpqYMReC4PryMOIw2oLxZ41AxhSJSDNC1W_UMIJyEkMKMUg-a7kpLQvQSeJtp7eQaRxWDgvXCyw",
+			"expirationDate": "2020-11-20 20:05:05"
+		}
+	}
+}

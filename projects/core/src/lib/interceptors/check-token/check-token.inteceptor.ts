@@ -22,7 +22,7 @@ export class CheckTokenInterceptor implements HttpInterceptor{
     }
     return next.handle(clone).pipe(
       tap( (response: HttpResponse<any>) => {
-        if( typeof response.body === 'object' ) {
+        if ( typeof response.body === 'object' ) {
           sessionStorage.setItem('TOKEN_CORE', response.body.respuesta.tokenInformation.token);
           sessionStorage.setItem('TOKEN_EXPIRATION_CORE', response.body.respuesta.tokenInformation.expirationDate);
         }
@@ -30,5 +30,5 @@ export class CheckTokenInterceptor implements HttpInterceptor{
         this.timer.toogleCountdown();
       })
     );
-  } 
+  }
 }

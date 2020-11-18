@@ -6,6 +6,7 @@
 // SERVICES
 export * from './lib/core.service';
 export * from './lib/services/cases/case.service';
+export * from './lib/services/registry/registry.service';
 
 export * from './lib/core.component';
 export * from './lib/core.module';

@@ -1,3 +1,4 @@
+import { LoaderService } from './../loader/loader.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
@@ -33,6 +34,7 @@ export class AuthService {
   public roles$: Observable<string>;
 
   constructor(
+    private loader: LoaderService,
     private env: EnvAuthService,
     private router: Router,
     private http: HttpClient
@@ -90,9 +92,11 @@ export class AuthService {
       sessionStorage.setItem('TOKEN_EXPIRATION_CORE', `${data.respuesta.tokenInformation.expirationDate}`);
       const userInformation: UserInformation = JSON.parse(sessionStorage.getItem('UI_CORE'));
       userInformation.menuOptions = data.respuesta.userInformation.menuOptions;
+      userInformation.profile = data.respuesta.userInformation.profile;
       sessionStorage.setItem('UI_CORE', `${JSON.stringify(userInformation)}`);
       this.menus.next(userInformation);
       this.router.navigate(['consulta']);
+      this.loader.setLoader(false);
     });
   }
 

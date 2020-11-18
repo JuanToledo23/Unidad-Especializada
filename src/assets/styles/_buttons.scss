@@ -1,11 +1,22 @@
 .btn {
     border-radius: unset !important;
     min-width: 130px !important;
-    font-family: "Avenir_Next_Bold" !important;
+    // font-family: "Avenir_Next_Bold" ;
+}
+
+.btnPrimary:hover {
+    background-color: #027b51;
 }
 
 .btnSecundary {
     box-shadow: 0px 1px 2px #00000033 !important;
+}
+
+.btnTertiary {
+    border: solid 2px $color-primario !important;
+}
+.btnTertiary:hover {
+    background-color: #f7f7f7;
 }
 
 .icoBtn {
@@ -14,4 +25,21 @@
     margin-right: 10px;
     margin-bottom: 6px;
     fill: red;
+}
+
+.inputButton {
+    height: 29px;
+    width: 100%;
+    line-height: unset !important;
+}
+
+.descripcionBtn span {
+    display: flex;
+    line-height: 16px;
+    padding: 7px;
+    text-align: left;
+}
+
+.descripcionBtn mat-icon {
+    padding-top: 5px;
 }

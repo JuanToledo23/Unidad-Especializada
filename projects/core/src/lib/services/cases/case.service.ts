@@ -5,7 +5,7 @@ import { EnvCoreService } from '../env.service';
 
 export interface Catalogue {
   catalogueElement: CatalogueElement[];
-  catalogues: null
+  catalogues: null;
   endpoint: string;
   fieldId: number;
   fieldName: string;
@@ -13,9 +13,9 @@ export interface Catalogue {
 }
 
 export interface CatalogueElement {
-  key: number,
-  value: string,
-  generateGroup: string
+  key: number;
+  value: string;
+  generateGroup: string;
 }
 
 export interface CaseCatalogues {
@@ -46,7 +46,19 @@ export class CaseService {
     return this.http.post(`${this.env.getProperties().CORE}getCatalogue`, body);
   }
 
-  getCases(){
+  getCases(): Observable<any>{
     return this.http.get(`${this.env.getProperties().CORE}getCasesByAnalyst`);
+  }
+
+  getCaseToRegistry(): Observable<any> {
+    return this.http.get(`${this.env.getProperties().CORE}registryController`);
+  }
+
+  getClientInformation(body: any): Observable<any> {
+    return this.http.post(`${this.env.getProperties().CORE}getClientInformation`, body);
+  }
+
+  updateCase(body: any): Observable<any> {
+    return this.http.post(`${this.env.getProperties().CORE}updateCase`, body);
   }
 }

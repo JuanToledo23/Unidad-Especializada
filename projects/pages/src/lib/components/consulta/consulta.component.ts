@@ -1,15 +1,13 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HeaderService } from 'dls';
+import { HeaderService, LoaderService } from 'dls';
 import { CaseService } from 'core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
-import { MatSelectChange } from '@angular/material/select';
-
 
 export interface Catalogue {
-  key: number,
-  value: string,
-  generateGroup: string
+  key: number;
+  value: string;
+  generateGroup: string;
 }
 
 export interface CaseHeader {
@@ -28,32 +26,67 @@ export interface OriginOfClaim {
   endDate: string;
   totalCareDays: number;
   hall?: string;
-  status: number;
+  statusId: number;
 }
 
-export interface clientDetails {
+export interface ClientDetails {
   name: string;
-  address: {
-    section1: string;
-    section2: string;
-    section3: string;
-  }
+  address_1: string;
+  address_2: string;
+  address_3: string;
   curp: string;
   phoneNumber: string;
   email: string;
 }
 
-export interface Cause {
-
+export interface RequestCause {
+  accountNumber: string;
+  branch: string;
+  businessUnitId: number;
+  cardNumber: string;
+  cause: CatalogueElement[];
+  causeCaseId: number;
+  causeId: number;
+  channel: CatalogueElement[];
+  channelId: number;
+  comments: string;
+  opinion: string;
+  productType: CatalogueElement[];
+  productTypeId: number;
+  reclaimedAmount: number;
+  searchType: SearchType;
+  subsidizedAmount: number;
+  tradeName: CatalogueElement[];
+  tradeNameId: number;
+  txsNumber: number;
+  uniqueClient: string;
 }
 
+export interface SearchType {
+  label: string;
+  value: string;
+}
+
+export interface Conclusions {
+  comments: string;
+  opinionId: number;
+  reasonId: number;
+}
+
+export interface CatalogueElement {
+  key: number;
+  value: string;
+  generateGroup: string;
+}
 
 @Component({
-  selector: 'app-consulta',
+  selector: 'pages-consulta',
   templateUrl: './consulta.component.html',
   styleUrls: ['./consulta.component.scss']
 })
 export class ConsultaComponent implements OnInit, AfterViewInit {
+
+  loading: boolean;
 
   caseForm: FormGroup;
 
@@ -61,7 +94,9 @@ export class ConsultaComponent implements OnInit, AfterViewInit {
 
   originOfClaim: OriginOfClaim;
 
-  clientDetails: clientDetails;
+  clientDetails: ClientDetails;
+
+  conclusions: Conclusions;
 
   panelOpenState = false;
 
@@ -73,10 +108,11 @@ export class ConsultaComponent implements OnInit, AfterViewInit {
 
   reasonsCatalogue: Catalogue[];
 
-  causes;
+  causes: RequestCause[];
 
   constructor(
     private ac: ActivatedRoute,
+    private loader: LoaderService,
     private caseService: CaseService,
     public headerService: HeaderService,
     private fb: FormBuilder) {
@@ -92,83 +128,85 @@ export class ConsultaComponent implements OnInit, AfterViewInit {
     this.causes = [];
 
     this.caseForm = fb.group({
-      'claimOriginStatus': '',
-      'descriptionOfTheProblem': fb.array([]),
-      'clarificationInfo': fb.group({
-        'clarificationId': '',
-        'status': '',
-        'opinion': '',
-        'reclaimedAmount': ''
+      caseId: '',
+      claimOriginStatus: '',
+      descriptionOfTheProblem: fb.array([]),
+      clarificationInfo: fb.group({
+        clarificationId: '',
+        status: '',
+        opinion: '',
+        reclaimedAmount: ''
       }),
-      'conclusions': fb.group({
-        'opinionId': '',
-        'reasonId': '',
-        'comments': ''
+      conclusions: fb.group({
+        opinionId: '',
+        reasonId: '',
+        comments: ''
       })
-    })
+    });
   }
 
   ngOnInit(): void {
     if (this.ac.snapshot.params.caseId) {
       const caseId = this.ac.snapshot.params.caseId;
+      this.loader.setLoader(true);
       this.caseService.gatCase(caseId).subscribe(cse => {
+        this.loader.setLoader(false);
         console.log('Caso a pintar:', (cse));
 
-        const cseInfo = cse.respuesta.responseInfo.newCaseInfo;
+        this.caseForm.get('caseId').setValue( parseInt(caseId, 10));
 
+        const cseInfo = cse.respuesta.responseInfo.newCaseInfo;
         this.createCauses(cseInfo.causes);
 
-        this.caseHeader.requestType = cseInfo.requestType;
-        this.caseHeader.condusefFolio = cseInfo.condusefFolio;
-        this.caseHeader.caseId = cseInfo.caseId;
-        this.caseHeader.analyst = cseInfo.analyst;
-        this.caseHeader.analystId = cseInfo.analystId;
+        this.caseHeader = cseInfo.caseHeader;
+        this.originOfClaim = cseInfo.claimOrigin;
+        this.caseForm.get('claimOriginStatus').setValue(this.originOfClaim.statusId);
 
-        this.originOfClaim.requestType = cseInfo.requestType;
-        this.originOfClaim.condusefFolio = cseInfo.condusefFolio;
-        this.originOfClaim.arrivalMean = cseInfo.arrivalMean;
-        this.originOfClaim.arrivalDate = cseInfo.arrivalDate;
-        this.originOfClaim.endDate = cseInfo.endDate;
-        this.originOfClaim.totalCareDays = cseInfo.totalCareDays;
-        this.originOfClaim.hall = cseInfo.hall;
-        this.caseForm.get('claimOriginStatus').setValue(cseInfo.statusId);
+        this.clientDetails = cseInfo.clientDetails;
+        this.conclusions = cseInfo.conclusions;
 
-        this.originOfClaim.status = cseInfo.statusId;
-
-        this.clientDetails.name = cseInfo.name;
-        this.clientDetails.address.section1 = cseInfo.address_1;
-        this.clientDetails.address.section2 = cseInfo.address_2;
-        this.clientDetails.address.section3 = cseInfo.address_3;
-        this.clientDetails.phoneNumber = cseInfo.phoneNumber;
-        this.clientDetails.curp = cseInfo.curp;
-        this.clientDetails.email = cseInfo.email;
-
-        this.caseForm.get('clarificationInfo').get('clarificationId').setValue(cseInfo.clarificationInfo.clarificationId);
         this.caseForm.get('clarificationInfo').get('status').setValue(cseInfo.clarificationInfo.status);
         this.caseForm.get('clarificationInfo').get('opinion').setValue(cseInfo.clarificationInfo.opinion);
         this.caseForm.get('clarificationInfo').get('reclaimedAmount').setValue(cseInfo.clarificationInfo.reclaimedAmount);
+        this.caseForm.get('clarificationInfo').get('clarificationId').setValue(cseInfo.clarificationInfo.clarificationId);
 
-        this.caseForm.get('conclusions').get('opinionId').setValue(cseInfo.opinionId);
-        this.caseForm.get('conclusions').get('reasonId').setValue(cseInfo.reasonId);
-        this.caseForm.get('conclusions').get('comments').setValue(cseInfo.comments);
-
-        
+        this.caseForm.get('conclusions').get('opinionId').setValue(this.conclusions.opinionId);
+        this.caseForm.get('conclusions').get('reasonId').setValue(this.conclusions.reasonId);
+        this.caseForm.get('conclusions').get('comments').setValue(`${this.conclusions.comments}`);
 
         this.causes = cseInfo.causes;
 
-        this.statusCatalogue = cse.respuesta.catalogues.status.catalogueElement;
-        this.business = cse.respuesta.catalogues.business.catalogueElement;
-        this.opinionsCatalogue = cse.respuesta.catalogues.opinion.catalogueElement;
-        this.reasonsCatalogue = cse.respuesta.catalogues.reason.catalogueElement;
+        this.statusCatalogue = this.setCatalogues('status', cse);
+        this.business = this.setCatalogues('business', cse);
+        this.opinionsCatalogue = this.setCatalogues('opinion', cse);
+        this.reasonsCatalogue = this.setCatalogues('reason', cse);
       });
     }
   }
 
-  createCauses(causes: Cause[]): void {
-    
-    causes.forEach((cause,idx) => {
-      let opinion = `opinion${idx}`;
+  setCatalogues(catalogue: string, cse: any): CatalogueElement[] {
+    try {
+      switch (catalogue) {
+        case 'business':
+          return cse.respuesta.catalogues.business.catalogueElement;
+        case 'status':
+          return cse.respuesta.catalogues.status.catalogueElement;
+        case 'opinion':
+          return cse.respuesta.catalogues.opinion.catalogueElement;
+        case 'reason':
+          return cse.respuesta.catalogues.reason.catalogueElement;
+        default:
+          return [];
+      }
+    } catch (e) {
+      return [];
+    }
+  }
+
+  createCauses(causes: RequestCause[]): void {
+    causes.forEach((cause, idx) => {
       this.addCause(this.fb.group({
+        causeId: [''],
         business: [''],
         productType: [''],
         tradeName: [''],
@@ -177,7 +215,7 @@ export class ConsultaComponent implements OnInit, AfterViewInit {
         reclaimedAmount: [''],
         subsidizedAmount: [''],
         txsNumber: [''],
-        opinion : [''],
+        opinion: [''],
         comments: ['']
       }));
       this.fillCause(cause, idx);
@@ -189,7 +227,8 @@ export class ConsultaComponent implements OnInit, AfterViewInit {
     causes.push(cause);
   }
 
-  fillCause( cause, idx ) {
+  fillCause(cause: RequestCause, idx: number): void {
+    this.caseForm.get('descriptionOfTheProblem').get(`${idx}`).get('causeId').setValue(cause.causeCaseId);
     this.caseForm.get('descriptionOfTheProblem').get(`${idx}`).get('business').setValue(cause.businessUnitId);
     this.caseForm.get('descriptionOfTheProblem').get(`${idx}`).get('productType').setValue(cause.productTypeId);
     this.caseForm.get('descriptionOfTheProblem').get(`${idx}`).get('tradeName').setValue(cause.tradeNameId);
@@ -208,14 +247,14 @@ export class ConsultaComponent implements OnInit, AfterViewInit {
     });
   }
 
-  private initCaseHeader() {
+  private initCaseHeader(): void {
     this.caseHeader = {
       requestType: '',
       condusefFolio: '',
       caseId: null,
       analyst: '',
       analystId: null
-    }
+    };
   }
 
   private initOriginOfClaim() {
@@ -227,33 +266,30 @@ export class ConsultaComponent implements OnInit, AfterViewInit {
       endDate: '',
       totalCareDays: null,
       hall: '',
-      status: null
-    }
+      statusId: null,
+    };
   }
 
   private initClientDetails() {
     this.clientDetails = {
       name: '',
-      address: {
-        section1: '',
-        section2: '',
-        section3: '',
-      },
+      address_1: '',
+      address_2: '',
+      address_3: '',
       curp: '',
       phoneNumber: '',
       email: ''
-    }
+    };
   }
 
-  getField(field) {
+  getField(field: string) {
     return this.caseForm.get(field).value;
   }
 
-
-
-
   onSubmit() {
+    this.loader.setLoader(true);
+    console.log('PETICION DE ACTUALIZACION',  JSON.stringify( this.caseForm.value ));
+    this.caseService.updateCase(this.caseForm.value).subscribe(()=> this.loader.setLoader(false));
     console.log('Formulario lleno', this.caseForm.value);
   }
-
 }

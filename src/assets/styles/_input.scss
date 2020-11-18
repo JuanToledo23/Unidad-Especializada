@@ -1,9 +1,10 @@
-// mat-form-field {
-//     width: 100%;
-    
-// }
+mat-form-field {
+    width: 500px;
+}
+mat-form-field mat-label {
+    font-size: 18px;
+}
 
-// .mat-form-field-appearance-legacy .mat-form-field-label {
-//     color: #676666 !important;
-//     font-size: 18px;
-// }
+.input-h-un {
+    height: unset !important;
+}

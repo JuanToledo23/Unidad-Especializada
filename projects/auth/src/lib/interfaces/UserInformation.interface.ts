@@ -9,4 +9,5 @@ export interface UserInformation {
   maternalName: string;
   menuOptions?: MenuOptionResponse;
   roles?: Role[];
+  profile?: string;
 }

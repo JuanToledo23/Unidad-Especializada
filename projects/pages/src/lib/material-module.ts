@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -13,8 +13,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatExpansionModule } from '@angular/material/expansion';
 
-import { MatIconRegistry } from "@angular/material/icon";
-import { DomSanitizer } from "@angular/platform-browser";
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @NgModule({
   exports: [
@@ -39,20 +39,20 @@ import { DomSanitizer } from "@angular/platform-browser";
 export class MaterialModule {
   constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {
     this.matIconRegistry.addSvgIcon(
-      "ico-calendario",
-      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/img/icoCalendario.svg")
+      'ico-calendario',
+      this.domSanitizer.bypassSecurityTrustResourceUrl('assets/img/icoCalendario.svg')
     );
     this.matIconRegistry.addSvgIcon(
-      "ico-agregar-blanco",
-      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/img/icoAgregarBlanco.svg")
+      'ico-agregar-blanco',
+      this.domSanitizer.bypassSecurityTrustResourceUrl('assets/img/icoAgregarBlanco.svg')
     );
     this.matIconRegistry.addSvgIcon(
-      "ico-agregar-negro",
-      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/img/icoAgregarNegro.svg")
+      'ico-agregar-negro',
+      this.domSanitizer.bypassSecurityTrustResourceUrl('assets/img/icoAgregarNegro.svg')
     );
     this.matIconRegistry.addSvgIcon(
-      "ico-guardar",
-      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/img/icoGuardar.svg")
+      'ico-guardar',
+      this.domSanitizer.bypassSecurityTrustResourceUrl('assets/img/icoGuardar.svg')
     );
   }
 }

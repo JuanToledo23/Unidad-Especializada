@@ -1,3 +1,5 @@
+import { LoaderComponent } from './components/loader/loader.component';
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthComponent } from './auth.component';
@@ -18,11 +20,14 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AuthComponent,
-    LoginComponent],
+    LoginComponent,
+    LoaderComponent
+  ],
   imports: [
     CommonModule,
     RouterModule,
     AuthMaterialModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
   exports: [

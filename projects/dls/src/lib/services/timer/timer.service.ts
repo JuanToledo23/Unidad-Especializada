@@ -23,7 +23,7 @@ export class TimerService {
   private counterSource: BehaviorSubject<number>;
 
   constructor() {
-    this.init = 10*60;
+    this.init = 10 * 60;
     this.paused = true;
     this.complete = false;
     this.countdownTimerRef = null;

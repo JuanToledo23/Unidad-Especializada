@@ -33,7 +33,7 @@
     cursor: pointer;
 }
 .tblGeneral tr td img {
-    width: 15px;
+    width: 22px;
     cursor: pointer;
 }
 .cantidad {
@@ -58,6 +58,14 @@ tr.total td {
 
 .tblPuestos {
     background-color: #faf9f9 !important;
+}
+.tblCargaMasiva {
+    background-color: #faf9f9 !important;
+}
+
+.tblCargaMasiva .mat-header-cell {
+    font-family: $font-medium !important;
+    color: #000 !important;
 }
 
 .mat-sort-header-container {
@@ -98,4 +106,8 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
 .scroll-y {
     max-height: 550px;
     overflow-y: auto;
+}
+
+.mat-sort-header-button {
+    color: #1C1C1C !important;
 }

@@ -1,5 +1,5 @@
 input.buscar {
-    background-image: url(./assets/img/lupa.svg);
+    background-image: url(./assets/img/icoLupa.svg);
     background-size: 16px;
     background-repeat: no-repeat;
     background-color: transparent;
@@ -86,11 +86,8 @@ input.inputfile {
     padding: 0px 10px;
     height: 29px;
     width: 100%;
+    font: 500 11px/29px Avenir_Next_Regular !important;
 }
-// .carga + label span {
-//     width: 100%;
-//     line-height: 29px;
-// }
 
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
@@ -132,4 +129,8 @@ input.editar {
 .divTel > input:nth-child(1) {
     width: 30%;
     margin-right: 2%;
+}
+
+.infoInput {
+    margin-left: 9px;
 }

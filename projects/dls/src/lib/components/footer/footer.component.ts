@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'une-footer',
+  selector: 'dls-footer',
   templateUrl: './footer.component.html'
 })
 export class FooterComponent {
 
-  constructor() { }
-
-  ngOnInit(): void { }
+  constructor() {}
 
 }

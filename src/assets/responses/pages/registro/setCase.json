@@ -1,0 +1,41 @@
+{
+    "causes": [],
+    "claimOrigin": {
+      "arrivalDate": "",
+      "arrivalMeanId": 0,
+      "bulkLoadCase": 0,
+      "caseId": 0,
+      "condusefFolio": "",
+      "endDate": "",
+      "hall": 0,
+      "requestId": 0,
+      "statusId": 0,
+      "totalCareDays": 0
+    },
+    "clarificationInfo": {
+      "clarificationId": 0,
+      "opinion": "",
+      "reclaimedAmount": "",
+      "status": ""
+    },
+    "clientInformation": {
+      "claimantMaternalName": "",
+      "claimantName": "",
+      "claimantPaternalName": "",
+      "clientMaternalName": "",
+      "clientName": "",
+      "clientPaternalName": "",
+      "email": "",
+      "estate": "",
+      "interiorNumber": "",
+      "phoneNumber": "",
+      "postalCode": "",
+      "rfcCurp": "",
+      "streetName": "",
+      "streetNumber": "",
+      "suburb": "",
+      "town": ""
+    },
+    "commentario": "  // Esta data es la que se debe enviar"
+  }
+

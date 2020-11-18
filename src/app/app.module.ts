@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material-module';
 import { CheckTokenInterceptor } from 'core';
+import { DlsModule } from 'projects/dls/src/public-api';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { CheckTokenInterceptor } from 'core';
   ],
   imports: [
     BrowserModule,
+    DlsModule,
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,

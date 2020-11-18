@@ -17,3 +17,26 @@
     box-sizing: border-box;
     margin-bottom: 50px;
 }
+
+.contenedor-blanco {
+    width: 100%;
+    // margin: 0px auto;
+    padding: 15px 20px;
+    background-color: #ffffff;
+    -moz-box-shadow: 0 0px 1px rgb(226, 222, 222);
+    -webkit-box-shadow: 0 0px 1px rgb(226, 222, 222);
+    box-shadow: 0 0px 1px rgb(226, 222, 222);
+    // margin-bottom: 15px;
+    text-align: justify;
+    box-sizing: border-box;
+    margin-bottom: 50px;
+}
+
+.contenedor-dialog {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 15px;
+    min-width: 500px;
+    text-align: center;
+}

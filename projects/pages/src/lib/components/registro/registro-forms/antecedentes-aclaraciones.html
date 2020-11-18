@@ -1,27 +1,28 @@
-<div class="row">
+<div class="row" [formGroup]="form">
     <div class="col-4 col-s-12">
-        <label>Busca antecedentes</label>
-        <div class="u-position-r">
-            <input type="text" id="busca">
-            <input type="submit" class="buscar">
-        </div>
+        <br>
+        <button type="button" mat-flat-button color="primary" class="btn inputButton btnPrimary" (click)="consultarAclaraciones()">Consultar antecedentes</button>
     </div>
-    <div class="col-4 col-s-12">
+    <div class="col-4 col-s-12" formGroupName="clarificationInfo">
         <label>Folio previo de aclaraciones</label>
-        <input type="text">
-    </div>
-    <div class="col-4 col-s-12">
-        <label>Estatus</label>
-        <input type="text">
+        <input type="text" formControlName="clarificationId">
+        <!--input type="text" [(ngModel)]="aclaracionesService.aclaracionEnlazada.folio"-->
     </div>
 </div>
 <div class="row">
     <div class="col-4 col-s-12">
-        <label>Fallo</label>
-        <input type="text">
+        <label>Fallo</label> <br>
+        <label class="infoInput"><strong>{{ form.get('clarificationInfo').get('opinion').value | uppercase }}</strong></label>
+        <!--label class="infoInput"><strong>{{aclaracionesService.aclaracionEnlazada.fallo}}</strong></!--label-->
     </div>
     <div class="col-4 col-s-12">
-        <label>Monto reclamado</label>
-        <input type="text" [ngModel]="casoService.montoReclamado | MoneyFormat" (ngModelChange)="casoService.montoReclamado = $event">
+        <label>Estatus</label> <br>
+        <label class="infoInput"><strong>{{ form.get('clarificationInfo').get('status').value | uppercase}}</strong></label>
+        <!--label class="infoInput"><strong>{{aclaracionesService.aclaracionEnlazada.estatus}}</strong></!--label-->
+    </div>
+    <div class="col-4 col-s-12">
+        <label>Monto reclamado</label> <br>
+        <label class="infoInput"><strong>{{ form.get('clarificationInfo').get('reclaimedAmount').value | uppercase}}</strong></label>
+        <!--label class="infoInput"><strong>{{aclaracionesService.aclaracionEnlazada.montoReclamo}}</strong></!--label-->    
     </div>
 </div>

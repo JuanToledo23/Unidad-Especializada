@@ -9,7 +9,7 @@ import { AuthRoutingModule } from './auth-routing.module';
   imports: [
     CommonModule,
     HttpClientModule,
-    AuthRoutingModule,
+    AuthRoutingModule
   ],
   providers: [
     CommonModule,

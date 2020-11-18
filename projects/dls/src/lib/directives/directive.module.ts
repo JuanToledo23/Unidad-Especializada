@@ -9,7 +9,7 @@ import { ExpirationDateDirective } from './expiration-date/expiration-date.direc
   imports: [
     CommonModule
   ],
-  exports:[
+  exports: [
     ExpirationDateDirective
   ]
 })

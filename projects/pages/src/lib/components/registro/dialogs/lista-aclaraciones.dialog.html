@@ -1,0 +1,32 @@
+<div class="titulo-contenido u-p-u">Para ver el detalle de la aclaración, selecciona el número de folio</div>
+<div class="contenedor-dialog u-pt-1">
+    <div class="scroll-y">
+        <table mat-table [dataSource]="dataSource" matSort
+            class="tblGeneral tblCargaMasiva">
+
+            <ng-container matColumnDef="folio">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Folio</th>
+                <td mat-cell *matCellDef="let element"><a class="link" (click)="abrirEstatusAclaracion(element)">{{element.clarificationId}}</a></td>
+            </ng-container>
+            <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+                <td mat-cell *matCellDef="let element">{{element.name}}</td>
+            </ng-container>
+            <ng-container matColumnDef="numeroCuenta">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Número de Cuenta</th>
+                <td mat-cell *matCellDef="let element">{{element.accountNumber}}</td>
+            </ng-container>
+            <ng-container matColumnDef="fallo">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Fallo</th>
+                <td mat-cell *matCellDef="let element">{{element.opinion}}</td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" class="u-txt-medium"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="u-txt-medium"></tr>
+        </table>
+    </div>
+
+    <div class="u-flex-center u-pt-2">
+        <button mat-flat-button color="primary" class="btn btnPrimary u-mx-1" mat-dialog-close cdkFocusInitial>Aceptar</button>
+    </div>
+</div>

@@ -1,0 +1,94 @@
+{
+	"success": false,
+	"codigo": 0,
+	"descripcion": "200 - Informacion enviada",
+	"respuesta": {
+		"response": {
+			"message": "Informacion enviada",
+			"code": "200",
+			"type": true,
+			"serverDate": "2020-11-20 19:37:12"
+		},
+		"tokenInformation": {
+			"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMDAyODY1NCIsInJvbGUiOjQ5LCJleHAiOjE2MDU5MjM4OTIsImlhdCI6MTYwNTkyMjYzMn0.qIAvRextoljy0Eh6DmvQbGMMfJRzeaOWTctz63HJortARYTOxYsX5z8ezUsR99JqDfvqFKsa_WVA4ll2_reCEw",
+			"expirationDate": "2020-11-20 19:58:12"
+		},
+		"userInformation": {
+			"email": null,
+			"employeeNumber": null,
+			"userName": null,
+			"paternalName": null,
+			"maternalName": null,
+			"profile": 49,
+			"roles": [{
+				"key": 49,
+				"value": "Analista UEAU",
+				"generateGroup": null,
+				"data": null
+			}, {
+				"key": 53,
+				"value": "Responsable UEAU",
+				"generateGroup": null,
+				"data": null
+			}],
+			"menuOptions": [{
+				"menuName": "Mis Asuntos",
+				"menuId": "1",
+				"url": "/mis-asuntos",
+				"parentId": "0",
+				"levelCoord": "1",
+				"icon": null,
+				"subMenus": null
+			}, {
+				"menuName": "Reportes",
+				"menuId": "4",
+				"url": null,
+				"parentId": "0",
+				"levelCoord": "4",
+				"icon": null,
+				"subMenus": [{
+					"menuName": "Reporteador",
+					"menuId": "10",
+					"url": null,
+					"parentId": "4",
+					"levelCoord": "1",
+					"icon": null,
+					"subMenus": null
+				}]
+			}, {
+				"menuName": "Consulta Historico MODUNE",
+				"menuId": "5",
+				"url": null,
+				"parentId": "0",
+				"levelCoord": "5",
+				"icon": null,
+				"subMenus": null
+			}, {
+				"menuName": "Consulta",
+				"menuId": "7",
+				"url": null,
+				"parentId": "0",
+				"levelCoord": "6",
+				"icon": null,
+				"subMenus": [{
+					"menuName": "Consulta de Caso",
+					"menuId": "8",
+					"url": null,
+					"parentId": "7",
+					"levelCoord": "1",
+					"icon": null,
+					"subMenus": null
+				}]
+			}, {
+				"menuName": "Salir",
+				"menuId": "100",
+				"url": null,
+				"parentId": "0",
+				"levelCoord": "100",
+				"icon": null,
+				"subMenus": null
+			}]
+		},
+		"roleEstatus": 1
+	}
+}
