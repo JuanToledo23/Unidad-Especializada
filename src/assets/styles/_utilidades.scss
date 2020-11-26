@@ -72,6 +72,11 @@
     align-items: baseline;
 }
 
+.u-flex-start {
+    display: flex;
+    align-items: center;
+}
+
 .u-justify-left{
     justify-content: left;
 }
@@ -588,4 +593,8 @@ input.u-desac {
 
 .u-mw-290px {
     min-width: 290px;
+}
+
+.u-mb-u {
+    margin-bottom: unset !important;
 }

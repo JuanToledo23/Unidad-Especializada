@@ -79,6 +79,9 @@ export class HeaderComponent implements OnInit {
   goCargaMasiva() {
     this.router.navigate(['/analista/carga-masiva']);
   }
+  goReportes() {
+    this.router.navigate(['/analista/reportes/reporteador']);
+  }
 
   menuButtonClick() {
     this.showMenu = !this.showMenu;

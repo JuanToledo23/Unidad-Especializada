@@ -5,12 +5,12 @@ input.buscar {
     background-color: transparent;
     width: 17px;
     height: 17px;
-    border: 0px;
     cursor: pointer;
     position: absolute;
     right: 5px;
     bottom: -5px;
     font-size: 0;
+    border: unset;
 }
 
 input[type="text"],

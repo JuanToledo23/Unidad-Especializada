@@ -4,6 +4,7 @@ import { CargaMasivaComponent } from './components/carga-masiva/carga-masiva.com
 import { ConsultaComponent } from './components/consulta/consulta.component';
 import { MisAsuntosComponent } from './components/mis-asuntos/mis-asuntos.component';
 import { RegistroComponent } from './components/registro/registro.component';
+import { ReporteadorComponent } from './components/reportes/reporteador/reporteador.component';
 import { PagesComponent } from './pages.component';
 
 const routes: Routes = [
@@ -23,6 +24,9 @@ const routes: Routes = [
       },
       {
         path:'carga-masiva', component: CargaMasivaComponent
+      },
+      {
+        path:'reportes/reporteador', component: ReporteadorComponent
       }
     ]
   }

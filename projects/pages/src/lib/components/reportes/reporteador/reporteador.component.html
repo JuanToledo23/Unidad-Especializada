@@ -1,0 +1,66 @@
+<app-header></app-header>
+
+<div class="contenedor-contenido">
+    <div class="titulo-contenido">Reporteador</div>
+    <div class="contenedor-gris">
+        <div class="subtitulo-seccion">Mis reportes</div>
+        <div class="contenedor-blanco u-mb-1">
+            <div class="row">
+                <div class="col-4 col-s-12 u-flex-start u-ex-left-u u-ex-right-u">
+                    <button mat-flat-button color="secundary" class="btn btnSecundary u-mx-1">Gestión Electrónica Agosto 2020</button>
+                    <img src="assets/img/icoEliminar.svg" class="icoBtnEliminar">
+                </div>
+                <div class="col-4 col-s-12 u-flex-start u-ex-left-u u-ex-right-u">
+                    <button mat-flat-button color="secundary" class="btn btnSecundary u-mx-1">Gestión Electrónica Agosto 2020</button>
+                    <img src="assets/img/icoEliminar.svg" class="icoBtnEliminar">
+                </div>
+            </div>
+        </div>
+        <div class="subtitulo-seccion">Crear nuevo reporte</div>
+        <div class="contenedor-blanco u-mb-1">
+            <div class="row">
+                <div class="col-4 col-s-12">
+                    <label>Nombre del reporte</label>
+                    <input type="text" value="Gestion Electronica Septiembre 2020">
+                </div>
+            </div>
+        </div>
+        <div class="subtitulo-seccion">Seleccione los filtros</div>
+        <div class="contenedor-blanco u-mb-1">
+            <ng-container *ngFor="let filtroSeleccionado of reportesService.filtrosSeleccionados">
+                <div class="row">
+                    <div class="col-4 col-s-12">
+                        <label>Nuevo filtro</label>
+                        <mat-select placeholder="Selecciona el filtro deseado" (selectionChange)="cambiarFiltro(filtroSeleccionado)">
+                            <mat-option *ngFor="let filtro of reportesService.filtros" [value]="filtro.value">
+                                {{filtro.nombreFiltro}}
+                            </mat-option>
+                        </mat-select>
+                    </div>
+                    <div class="col-4 col-s-12" *ngIf="filtroSeleccionado.segundoParametro.type === 'select'">
+                        <mat-select placeholder="Selecciona el filtro deseado">
+                            <mat-option *ngFor="let parametro of filtroSeleccionado.segundoParametro.parametros" [value]="parametro.value">
+                                {{parametro.viewValue}}
+                            </mat-option>
+                        </mat-select>
+                    </div>
+                    <div class="col-4 col-s-12" *ngIf="filtroSeleccionado.segundoParametro.type === 'date'">
+                        <div class="date-picker">
+                            <input matInput [matDatepicker]="picker" (click)="picker.open()">
+                            <mat-datepicker-toggle matSuffix [for]="picker">
+                                <mat-icon matDatepickerToggleIcon svgIcon="ico-calendario"></mat-icon>
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+
+    <div class="u-flex-center u-mb-4">
+        <button mat-flat-button color="secundary" class="btn btnSecundary u-mx-1">Cancelar</button>
+        <button mat-flat-button color="primary" class="btn btnPrimary u-mx-1"><mat-icon matDatepickerToggleIcon svgIcon="ico-guardar" class="icoBtn"></mat-icon>Guardar</button>
+    </div>
+</div>
+<une-footer></une-footer>

@@ -23,6 +23,7 @@ import {  ConsultaAntecedentesAclaracionesForm,
 import { CargaExitosaDialog, CargaFalloDialog, CargaMasivaComponent } from './components/carga-masiva/carga-masiva.component';
 import { ResultadoCargaDialog } from './components/carga-masiva/dialogs/resultado-carga.dialog';
 import { EstatusAclaracionDialog, ListaAclaracionesDialog } from './components/registro/dialogs/aclaraciones.component';
+import { ReporteadorComponent } from './components/reportes/reporteador/reporteador.component';
 
 const RegistroComponents = [
   OrigenReclamacionForm,
@@ -36,6 +37,10 @@ const ConsultaComponents = [
   ConsultaConclusionForm,
   ConsultaAntecedentesAclaracionesForm,
   ConsultaDescripcionProblemaForm
+]
+
+const ReportesComponents = [
+  ReporteadorComponent
 ]
 
 const Dialogs = [
@@ -63,6 +68,7 @@ const Dialogs = [
     ConsultaComponent,
     ConsultaComponents,
     CargaMasivaComponent,
+    ReportesComponents,
     Dialogs
   ],
   exports: [
@@ -72,7 +78,8 @@ const Dialogs = [
     RegistroComponents,
     ConsultaComponent,
     ConsultaComponents,
-    CargaMasivaComponent
+    CargaMasivaComponent,
+    ReportesComponents
   ],
   entryComponents: [
     Dialogs
