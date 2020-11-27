@@ -27,40 +27,67 @@
         </div>
         <div class="subtitulo-seccion">Seleccione los filtros</div>
         <div class="contenedor-blanco u-mb-1">
+            <label style="margin-left: 10px;">Nuevo filtro</label>
             <ng-container *ngFor="let filtroSeleccionado of reportesService.filtrosSeleccionados">
-                <div class="row">
-                    <div class="col-4 col-s-12">
-                        <label>Nuevo filtro</label>
-                        <mat-select placeholder="Selecciona el filtro deseado" (selectionChange)="cambiarFiltro(filtroSeleccionado)">
-                            <mat-option *ngFor="let filtro of reportesService.filtros" [value]="filtro.value">
-                                {{filtro.nombreFiltro}}
-                            </mat-option>
-                        </mat-select>
+                <div class="row filtros">
+                    <div class="col-11 col-s-12">
+                        <div class="col-4 col-s-12 u-pl-0">
+                            <mat-select placeholder="Selecciona el filtro deseado" (selectionChange)="cambiarFiltro($event, filtroSeleccionado)">
+                                <mat-option *ngFor="let filtro of reportesService.filtros" [value]="filtro.value">
+                                    {{filtro.nombreFiltro}}
+                                </mat-option>
+                            </mat-select>
+                        </div>
+                        <div class="col-4 col-s-12" *ngIf="filtroSeleccionado.segundoParametro.type === 'select'">
+                            <mat-select>
+                                <mat-option *ngFor="let parametro of filtroSeleccionado.segundoParametro.parametros" [value]="parametro.value">
+                                    {{parametro.viewValue}}
+                                </mat-option>
+                            </mat-select>
+                        </div>
+                        <div class="col-4 col-s-12" *ngIf="filtroSeleccionado.segundoParametro.type === 'date'">
+                            <div class="date-picker">
+                                <input matInput [matDatepicker]="picker" (click)="picker.open()">
+                                <mat-datepicker-toggle matSuffix [for]="picker">
+                                    <mat-icon matDatepickerToggleIcon svgIcon="ico-calendario"></mat-icon>
+                                </mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </div>
+                        </div>
+    
+                        <div class="col-4 col-s-12" *ngIf="filtroSeleccionado.tercerParametro.type === 'select'">
+                            <mat-select>
+                                <mat-option *ngFor="let parametro of filtroSeleccionado.tercerParametro.parametros" [value]="parametro.value">
+                                    {{parametro.viewValue}}
+                                </mat-option>
+                            </mat-select>
+                        </div>
+                        <div class="col-4 col-s-12" *ngIf="filtroSeleccionado.tercerParametro.type === 'date'">
+                            <div class="date-picker">
+                                <input matInput [matDatepicker]="picker" (click)="picker.open()">
+                                <mat-datepicker-toggle matSuffix [for]="picker">
+                                    <mat-icon matDatepickerToggleIcon svgIcon="ico-calendario"></mat-icon>
+                                </mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-4 col-s-12" *ngIf="filtroSeleccionado.segundoParametro.type === 'select'">
-                        <mat-select placeholder="Selecciona el filtro deseado">
-                            <mat-option *ngFor="let parametro of filtroSeleccionado.segundoParametro.parametros" [value]="parametro.value">
-                                {{parametro.viewValue}}
-                            </mat-option>
-                        </mat-select>
-                    </div>
-                    <div class="col-4 col-s-12" *ngIf="filtroSeleccionado.segundoParametro.type === 'date'">
-                        <div class="date-picker">
-                            <input matInput [matDatepicker]="picker" (click)="picker.open()">
-                            <mat-datepicker-toggle matSuffix [for]="picker">
-                                <mat-icon matDatepickerToggleIcon svgIcon="ico-calendario"></mat-icon>
-                            </mat-datepicker-toggle>
-                            <mat-datepicker #picker></mat-datepicker>
+                    <div class="col-1 col-s-12" *ngIf="showBtnIcon">
+                        <div class="col-4 col-s-12 u-flex-start u-ex-left-u u-ex-right-u">
+                            <img src="assets/img/icoEliminar.svg" class="icoBtnEliminar" (click)="eliminarFlitro(filtroSeleccionado)">
                         </div>
                     </div>
                 </div>
             </ng-container>
+            <div class="u-flex-end" *ngIf="showBtnIcon">
+                <button mat-flat-button color="primary" class="btn btnPrimary u-mx-1" (click)="agregarFiltro()"><mat-icon matDatepickerToggleIcon svgIcon="ico-agregar-negro" class="icoBtn"></mat-icon>Agregar filtro</button>
+            </div>
         </div>
     </div>
 
     <div class="u-flex-center u-mb-4">
         <button mat-flat-button color="secundary" class="btn btnSecundary u-mx-1">Cancelar</button>
-        <button mat-flat-button color="primary" class="btn btnPrimary u-mx-1"><mat-icon matDatepickerToggleIcon svgIcon="ico-guardar" class="icoBtn"></mat-icon>Guardar</button>
+        <button mat-flat-button color="primary" class="btn btnPrimary u-mx-1" [routerLink]="['/analista/reportes/ordenar']"><mat-icon matDatepickerToggleIcon svgIcon="ico-guardar" class="icoBtn"></mat-icon>Aceptar</button>
     </div>
 </div>
 <une-footer></une-footer>

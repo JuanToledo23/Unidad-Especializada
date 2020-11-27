@@ -12,6 +12,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 import { MatIconRegistry } from "@angular/material/icon";
 import { DomSanitizer } from "@angular/platform-browser";
@@ -30,7 +32,9 @@ import { DomSanitizer } from "@angular/platform-browser";
     MatSortModule,
     MatRadioModule,
     MatExpansionModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    DragDropModule,
+    MatSlideToggleModule
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'es-MX'}

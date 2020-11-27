@@ -1,0 +1,47 @@
+<app-header></app-header>
+
+<div class="contenedor-contenido">
+    <div class="titulo-contenido">Arrastra el nombre hacia arriba o hacia abajo para ordenar los campos del reporte</div>
+    <div class="contenedor-gris">
+        <div class="u-flex-center u-flex-column u-mt-1">
+            <div class="u-flex-center u-w-40">
+                <div class="row u-w-100">
+                    <div class="col-3 u-pl-1">
+                        <label>Orden</label>
+                    </div>
+                    <div class="col-6 u-pl-1">
+                        <label>Nombre del campo</label>
+                    </div>
+                    <div class="col-3">
+                        <label>Ocultar / Mostrar</label>
+                    </div>
+                </div>
+            </div>
+            <div class="u-flex-center u-w-40">
+                <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+                    <div class="example-box" *ngFor="let filtro of reportesService.filtros" cdkDrag>
+                        <div class="row u-w-100">
+                            <div class="col-3 u-pl-2">
+                                {{reportesService.filtros.indexOf(filtro) + 1}}
+                            </div>
+                            <div class="col-6 u-pl-1 u-txt-nowrap">
+                                {{filtro.nombreFiltro}}
+                            </div>
+                            <div class="col-3 u-flex-center">
+                                <mat-slide-toggle
+                                    [checked]="checked">
+                                </mat-slide-toggle>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="u-flex-center u-mb-4">
+        <button mat-flat-button color="secundary" class="btn btnSecundary u-mx-1">Cancelar</button>
+        <button mat-flat-button color="primary" class="btn btnPrimary u-mx-1"><mat-icon matDatepickerToggleIcon svgIcon="ico-guardar" class="icoBtn"></mat-icon>Aceptar</button>
+    </div>
+</div>
+<une-footer></une-footer>

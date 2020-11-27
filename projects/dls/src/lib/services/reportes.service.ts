@@ -47,12 +47,20 @@ export class ReportesService {
         {
             value: 'medioLlegada', nombreFiltro: 'Medio de llegada', 
             segundoParametro: {
-                type: '',
-                parametros: ''
+                type: 'select',
+                parametros: [
+                    {value: 'igualA', viewValue: 'Igual a'},
+                    {value: 'opcion2', viewValue: 'Opción 2'},
+                    {value: 'opcion3', viewValue: 'Opción 3'},
+                ]
             },
             tercerParametro: {
-                type: '',
-                parametros: ''
+                type: 'select',
+                parametros: [
+                    {value: 'gestionElectronica', viewValue: 'Gestion electronica'},
+                    {value: 'opcion2', viewValue: 'Opción 2'},
+                    {value: 'opcion3', viewValue: 'Opción 3'},
+                ]
             }
         },
         {
@@ -88,18 +96,22 @@ export class ReportesService {
                 ]
             },
             tercerParametro: {
-                type: '',
+                type: 'date',
                 parametros: ''
             }
         },
         {
             value: 'fechaVencimiento', nombreFiltro: 'Fecha de vencimiento', 
             segundoParametro: {
-                type: '',
-                parametros: ''
+                type: 'select',
+                parametros: [
+                    {value: 'igualA', viewValue: 'Igual a'},
+                    {value: 'mayorIgual', viewValue: 'Mayor o igual que'},
+                    {value: 'menorIgual', viewValue: 'Menor o igual a'}
+                ]
             },
             tercerParametro: {
-                type: '',
+                type: 'date',
                 parametros: ''
             }
         },
@@ -428,10 +440,6 @@ export class ReportesService {
             }
         },
     ];
-
-    cambiarFiltro(filtro) {
-        console.log(filtro);
-    }
 }
 
 
