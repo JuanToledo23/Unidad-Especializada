@@ -149,7 +149,7 @@ export class EstatusAclaracionDialogComponent implements OnInit {
       opinion: this.responseInfo.header.opinion,
       status: this.responseInfo.header.status,
       reclaimedAmount: this.responseInfo.clarificationData.reclaimedAmount
-    }
+    };
 
     this.aclaracionesService.setClarificationBinded(CLARIFICATIONBINDER);
   }

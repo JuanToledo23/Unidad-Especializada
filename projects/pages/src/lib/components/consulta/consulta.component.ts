@@ -86,6 +86,8 @@ export interface CatalogueElement {
 })
 export class ConsultaComponent implements OnInit, AfterViewInit {
 
+  causesLenght: number;
+
   loading: boolean;
 
   caseForm: FormGroup;
@@ -126,6 +128,7 @@ export class ConsultaComponent implements OnInit, AfterViewInit {
     this.reasonsCatalogue = [];
 
     this.causes = [];
+    this.causesLenght = 0;
 
     this.caseForm = fb.group({
       caseId: '',
@@ -204,6 +207,8 @@ export class ConsultaComponent implements OnInit, AfterViewInit {
   }
 
   createCauses(causes: RequestCause[]): void {
+    this.causesLenght = causes.length;
+    console.log('Numero de catalogos::', this.causesLenght);
     causes.forEach((cause, idx) => {
       this.addCause(this.fb.group({
         causeId: [''],
@@ -289,7 +294,7 @@ export class ConsultaComponent implements OnInit, AfterViewInit {
   onSubmit() {
     this.loader.setLoader(true);
     console.log('PETICION DE ACTUALIZACION',  JSON.stringify( this.caseForm.value ));
-    this.caseService.updateCase(this.caseForm.value).subscribe(()=> this.loader.setLoader(false));
+    this.caseService.updateCase(this.caseForm.value).subscribe(() => this.loader.setLoader(false));
     console.log('Formulario lleno', this.caseForm.value);
   }
 }

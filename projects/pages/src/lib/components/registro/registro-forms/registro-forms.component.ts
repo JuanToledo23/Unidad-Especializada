@@ -16,7 +16,7 @@ export class OrigenReclamacionFormComponent {
 
   settotalDaysCare( a: MatSelectChange ) {
     const y = this.catalogues.arrivalMeans.find( (x: any) => x.key === a.value );
-    this.form.get('OriginOfClaim').get('totalCareDays').setValue(y.data)
+    this.form.get('OriginOfClaim').get('totalCareDays').setValue(y.data);
   }
 }
 

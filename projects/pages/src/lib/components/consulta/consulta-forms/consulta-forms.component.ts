@@ -60,6 +60,8 @@ export class ConsultaDescripcionProblemaFormComponent implements OnInit {
 
   @Input() idx: number;
 
+  @Input() lenght: number;
+
   @Input() form: FormGroup;
 
   @Input() set case(value: Case) {
@@ -201,4 +203,5 @@ export class ConsultaDocumentosFormComponent {
     selectedFile.estatus = true;
     selectedFile.name = loadedFile[0].name;
   }
+
 }
