@@ -67,7 +67,7 @@ export class RegistroComponent implements AfterViewInit, OnInit {
         email: [''],
       }),
       clarificationInfo: this.fb.group({
-        clarificationId: { value: '', disabled: true },
+        clarificationId: '',
         status: '',
         opinion: '',
         reclaimedAmount: ''

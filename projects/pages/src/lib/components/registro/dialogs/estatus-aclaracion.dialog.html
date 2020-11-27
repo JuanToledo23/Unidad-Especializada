@@ -94,8 +94,7 @@
                         <div class="u-txt-right u-pr-07 u-w-50 u-mw-300">Celular:</div>
                         <div class="u-txt-left u-pl-07 u-w-50 u-mw-300">
                             <div class="u-w-100">
-                                <input *ngIf="responseInfo" type="number"
-                                    [value]="responseInfo.clientInformation.mobile" disabled>
+                                <input *ngIf="responseInfo" type="number" [value]="responseInfo.clientInformation.mobile" readonly>
                             </div>
                         </div>
                     </div>
@@ -104,8 +103,7 @@
                         <div class="u-txt-right u-pr-07 u-w-50 u-mw-300">Correo electrónico:</div>
                         <div class="u-txt-left u-pl-07 u-w-50 u-mw-300">
                             <div class="u-w-100">
-                                <input *ngIf="responseInfo" type="text" [value]="responseInfo.clientInformation.email"
-                                    disabled>
+                                <input *ngIf="responseInfo" type="text" [value]="responseInfo.clientInformation.email" readonly>
                             </div>
                         </div>
                     </div>
