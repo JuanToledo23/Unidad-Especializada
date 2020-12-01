@@ -82,6 +82,9 @@ export class HeaderComponent implements OnInit {
   goReportes() {
     this.router.navigate(['/analista/reportes/reporteador']);
   }
+  goAdminCatalogos() {
+    
+  }
 
   menuButtonClick() {
     this.showMenu = !this.showMenu;

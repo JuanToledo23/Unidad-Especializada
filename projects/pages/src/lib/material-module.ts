@@ -58,5 +58,9 @@ export class MaterialModule {
       "ico-guardar",
       this.domSanitizer.bypassSecurityTrustResourceUrl("assets/img/icoGuardar.svg")
     );
+    this.matIconRegistry.addSvgIcon(
+      "ico-excel",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/img/icoExcel.svg")
+    );
   }
 }

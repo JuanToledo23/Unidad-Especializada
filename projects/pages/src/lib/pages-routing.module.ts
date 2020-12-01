@@ -4,6 +4,7 @@ import { CargaMasivaComponent } from './components/carga-masiva/carga-masiva.com
 import { ConsultaComponent } from './components/consulta/consulta.component';
 import { MisAsuntosComponent } from './components/mis-asuntos/mis-asuntos.component';
 import { RegistroComponent } from './components/registro/registro.component';
+import { ExportarReporteComponent } from './components/reportes/exportar-reporte/exportar-reporte.component';
 import { OrdenarReporteComponent } from './components/reportes/ordenar-reporte/ordenar-reporte.component';
 import { ReporteadorComponent } from './components/reportes/reporteador/reporteador.component';
 import { PagesComponent } from './pages.component';
@@ -31,6 +32,9 @@ const routes: Routes = [
       },
       {
         path:'reportes/ordenar', component: OrdenarReporteComponent
+      },
+      {
+        path:'reportes/exportar', component: ExportarReporteComponent
       }
     ]
   }

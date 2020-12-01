@@ -28,4 +28,5 @@ export class OrdenarReporteComponent implements OnInit, AfterViewInit {
     moveItemInArray(this.reportesService.filtros, event.previousIndex, event.currentIndex);
     console.log(this.reportesService.filtros)
   }  
+
 }

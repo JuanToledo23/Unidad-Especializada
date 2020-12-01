@@ -25,6 +25,7 @@ import { ResultadoCargaDialog } from './components/carga-masiva/dialogs/resultad
 import { EstatusAclaracionDialog, ListaAclaracionesDialog } from './components/registro/dialogs/aclaraciones.component';
 import { ReporteadorComponent } from './components/reportes/reporteador/reporteador.component';
 import { OrdenarReporteComponent } from './components/reportes/ordenar-reporte/ordenar-reporte.component';
+import { ExportarReporteComponent } from './components/reportes/exportar-reporte/exportar-reporte.component';
 
 const RegistroComponents = [
   OrigenReclamacionForm,
@@ -42,7 +43,8 @@ const ConsultaComponents = [
 
 const ReportesComponents = [
   ReporteadorComponent,
-  OrdenarReporteComponent
+  OrdenarReporteComponent,
+  ExportarReporteComponent
 ]
 
 const Dialogs = [

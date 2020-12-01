@@ -41,6 +41,7 @@ export class ReporteadorComponent implements OnInit, AfterViewInit {
       this.reportesService.filtrosSeleccionados[0] = { 
         id: 0, 
         value: '',
+        mostrarColumna: false,
         nombreFiltro: '',
         segundoParametro: {
             type: '',
@@ -63,6 +64,7 @@ export class ReporteadorComponent implements OnInit, AfterViewInit {
       { 
         id: 0, 
         value: '',
+        mostrarColumna: false,
         nombreFiltro: '',
         segundoParametro: {
             type: '',

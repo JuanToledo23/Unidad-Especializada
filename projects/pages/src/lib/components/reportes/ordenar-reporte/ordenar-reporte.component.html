@@ -29,7 +29,7 @@
                             </div>
                             <div class="col-3 u-flex-center">
                                 <mat-slide-toggle
-                                    [checked]="checked">
+                                    [(ngModel)]="filtro.mostrarColumna">
                                 </mat-slide-toggle>
                             </div>
                         </div>
@@ -41,7 +41,7 @@
     </div>
     <div class="u-flex-center u-mb-4">
         <button mat-flat-button color="secundary" class="btn btnSecundary u-mx-1">Cancelar</button>
-        <button mat-flat-button color="primary" class="btn btnPrimary u-mx-1"><mat-icon matDatepickerToggleIcon svgIcon="ico-guardar" class="icoBtn"></mat-icon>Aceptar</button>
+        <button mat-flat-button color="primary" class="btn btnPrimary u-mx-1" [routerLink]="['/analista/reportes/exportar']">Siguiente</button>
     </div>
 </div>
 <une-footer></une-footer>
