@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AclaracionesService, CasoService } from 'dls';
 import { ListaAclaracionesDialog } from '../dialogs/aclaraciones.component';
@@ -38,57 +38,12 @@ export class AntecedentesAclaracionesForm {
   selector: 'descripcion-problema',
   templateUrl: './descripcion-problema.html'
 })
-export class DescripcionProblemaForm {
+export class DescripcionProblemaForm implements OnInit{
   constructor(public casoService: CasoService) {
-    console.log(casoService.reclamos)
   }
 
-  agregarCausa() {
-    this.casoService.reclamos.push({
-        id: this.casoService.reclamos.length, numeroReclamacion: '' + (this.casoService.reclamos.length + 1), descripcion: 'Reclamación' + this.casoService.reclamos.length + 1, seleccionTipoBusqueda: null, busquedaPor: {
-            numeroTarjeta: {
-                estatus: false, segundoParametro: false
-            },
-            numeroCuenta: {
-                estatus: false, segundoParametro: false
-            },
-            clienteUnico: {
-                estatus: false, segundoParametro: false
-            }
-        },
-        btnEliminar: true,
-        btnLimpiar: true,
-        btnAnadir: true
-    })
-
-    this.validacion()
+  ngOnInit(): void {
+    this.casoService.validacion();
   }
 
-  eliminarCausa(reclamo) {
-    let i = this.casoService.reclamos.indexOf(reclamo);
-    this.casoService.reclamos.splice(i, 1);
-    this.validacion()
-  }
-
-  validacion() {
-    this.casoService.reclamos.forEach(element => {
-      element.btnEliminar = true;
-      element.btnLimpiar = true;
-      element.btnAnadir = true;
-    });
-
-    if(this.casoService.reclamos.length === 1) {
-      this.casoService.reclamos[0].btnEliminar = false;
-    }
-
-    if(this.casoService.reclamos.length > 1) {
-      this.casoService.reclamos[0].btnEliminar = true;
-
-      this.casoService.reclamos.forEach(element => {
-        element.btnAnadir = false;
-      });
-      
-      this.casoService.reclamos[this.casoService.reclamos.length - 1].btnAnadir = true;
-    }
-  }
 }

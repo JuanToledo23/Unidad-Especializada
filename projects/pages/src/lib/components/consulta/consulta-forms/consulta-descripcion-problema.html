@@ -1,5 +1,5 @@
 <ng-container *ngFor="let reclamo of casoService.reclamos">
-    <div class="u-flex-between">
+    <div class="u-flex-between u-top-line">
         <div class="subtitulo-subseccion">Causa de reclamación {{ reclamo.numeroReclamacion }}</div>
         <div class="numCuenta u-flex-between u-mw-290px">
             <div>Número de cuenta:</div>
@@ -90,9 +90,9 @@
     <div class="row">
         <div class="col-12 col-s-12 u-flex-end">
             <div class="col-4 u-ex-right-u u-flex-end">
-                <button mat-flat-button class="btn u-flex-center btnSecundary descripcionBtn u-mr-1" *ngIf="reclamo.btnEliminar"><mat-icon matDatepickerToggleIcon svgIcon="ico-agregar-negro" class="icoBtn"></mat-icon><div>Eliminar <br> la causa</div></button>
-                <button mat-flat-button class="btn u-flex-center btnTertiary descripcionBtn u-mr-1" *ngIf="reclamo.btnLimpiar"><mat-icon matDatepickerToggleIcon svgIcon="ico-agregar-negro" class="icoBtn"></mat-icon><div>Limpiar <br> campos</div></button>
-                <button mat-flat-button color="primary" class="btn u-flex-center btnPrimary descripcionBtn" *ngIf="reclamo.btnAnadir"><mat-icon matDatepickerToggleIcon svgIcon="ico-agregar-negro" class="icoBtn"></mat-icon><div>Añadir <br> otra causa</div></button>
+                <button mat-flat-button class="btn u-flex-center btnSecundary descripcionBtn u-mr-1" *ngIf="reclamo.btnEliminar" (click)="casoService.eliminarCausa(reclamo)"><mat-icon matDatepickerToggleIcon svgIcon="ico-eliminar" class="icoBtn"></mat-icon><div>Eliminar <br> la causa</div></button>
+                <button mat-flat-button class="btn u-flex-center btnTertiary descripcionBtn u-mr-1" *ngIf="reclamo.btnLimpiar"><mat-icon matDatepickerToggleIcon svgIcon="ico-limpiar" class="icoBtn"></mat-icon><div>Limpiar <br> campos</div></button>
+                <button mat-flat-button color="primary" class="btn u-flex-center btnPrimary descripcionBtn" *ngIf="reclamo.btnAnadir" (click)="casoService.agregarReclamo()"><mat-icon matDatepickerToggleIcon svgIcon="ico-agregar-negro" class="icoBtn"></mat-icon><div>Añadir <br> otra causa</div></button>
             </div>
         </div>
     </div>

@@ -8,6 +8,10 @@
     opacity: .8;
 }
 
+.u-border-u {
+    border: unset !important;
+}
+
 .u-hr-centrado{
     width: 60%;
     margin: 2.5rem auto;
@@ -612,3 +616,6 @@ input.u-desac {
     margin-top: 7px;
 }
 
+.u-top-line {
+    border-top: solid 1px #E6EFE6;
+}

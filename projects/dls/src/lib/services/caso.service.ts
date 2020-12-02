@@ -69,4 +69,54 @@ export class CasoService {
         }
     }
 
+
+    agregarReclamo() {
+        this.reclamos.push({
+            id: this.reclamos.length, numeroReclamacion: '' + (this.reclamos.length + 1), descripcion: 'Reclamación' + this.reclamos.length + 1, seleccionTipoBusqueda: null, busquedaPor: {
+                numeroTarjeta: {
+                    estatus: false, segundoParametro: false
+                },
+                numeroCuenta: {
+                    estatus: false, segundoParametro: false
+                },
+                clienteUnico: {
+                    estatus: false, segundoParametro: false
+                }
+            },
+            btnEliminar: true,
+            btnLimpiar: true,
+            btnAnadir: true
+        })
+
+        this.validacion()
+    }
+
+    eliminarCausa(reclamo) {
+        let i = this.reclamos.indexOf(reclamo);
+        this.reclamos.splice(i, 1);
+        this.validacion()
+    }
+
+    validacion() {
+        this.reclamos.forEach(element => {
+            element.btnEliminar = true;
+            element.btnLimpiar = true;
+            element.btnAnadir = true;
+        });
+
+        if (this.reclamos.length === 1) {
+            this.reclamos[0].btnEliminar = false;
+        }
+
+        if (this.reclamos.length > 1) {
+            this.reclamos[0].btnEliminar = true;
+
+            this.reclamos.forEach(element => {
+                element.btnAnadir = false;
+            });
+
+            this.reclamos[this.reclamos.length - 1].btnAnadir = true;
+        }
+    }
+
 }

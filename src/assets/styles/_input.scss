@@ -12,3 +12,7 @@ mat-form-field mat-label {
 .mat-input-element {
     border: 1px solid #bfbfbf !important;
 }
+
+.mat-input-element.u-border-u {
+    border: unset !important;
+}

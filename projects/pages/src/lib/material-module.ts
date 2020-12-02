@@ -62,5 +62,13 @@ export class MaterialModule {
       "ico-excel",
       this.domSanitizer.bypassSecurityTrustResourceUrl("assets/img/icoExcel.svg")
     );
+    this.matIconRegistry.addSvgIcon(
+      "ico-limpiar",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/img/icoLimpiar.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      "ico-eliminar",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/img/icoEliminar.svg")
+    );
   }
 }
