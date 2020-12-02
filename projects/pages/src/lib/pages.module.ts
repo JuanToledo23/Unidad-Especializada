@@ -26,6 +26,7 @@ import { EstatusAclaracionDialog, ListaAclaracionesDialog } from './components/r
 import { ReporteadorComponent } from './components/reportes/reporteador/reporteador.component';
 import { OrdenarReporteComponent } from './components/reportes/ordenar-reporte/ordenar-reporte.component';
 import { ExportarReporteComponent } from './components/reportes/exportar-reporte/exportar-reporte.component';
+import { AdministracionCatalogosComponent } from './components/administracion-catalogos/administracion-catalogos.component';
 
 const RegistroComponents = [
   OrigenReclamacionForm,
@@ -73,6 +74,7 @@ const Dialogs = [
     ConsultaComponents,
     CargaMasivaComponent,
     ReportesComponents,
+    AdministracionCatalogosComponent,
     Dialogs
   ],
   exports: [
@@ -83,7 +85,8 @@ const Dialogs = [
     ConsultaComponent,
     ConsultaComponents,
     CargaMasivaComponent,
-    ReportesComponents
+    ReportesComponents,
+    AdministracionCatalogosComponent,
   ],
   entryComponents: [
     Dialogs

@@ -35,6 +35,9 @@ const routes: Routes = [
       },
       {
         path:'reportes/exportar', component: ExportarReporteComponent
+      },
+      {
+        path:'administracion-catalogos', component: ExportarReporteComponent
       }
     ]
   }
