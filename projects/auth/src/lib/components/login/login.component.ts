@@ -4,7 +4,7 @@ import { MatRadioButton, MatRadioChange } from '@angular/material/radio';
 import { MatSelectChange } from '@angular/material/select';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
-// import { PerfilDesconocidoDialog } from './dialogs/perfilDesconocido.dialog';
+import { PerfilDesconocidoDialog } from './dialogs/perfilDesconocido.dialog';
 
 @Component({
   selector: 'auth-login',
@@ -86,12 +86,12 @@ export class LoginComponent implements OnInit {
   }
 
   llaveMaestra() {
-    this.INGRESO = false;
-    // const dialogRef = this.dialog.open(PerfilDesconocidoDialog, {
-    //   disableClose: true
-    // });
-    // dialogRef.afterClosed().subscribe(result => {
-    // });
+    const dialogRef = this.dialog.open(PerfilDesconocidoDialog, {
+      disableClose: true
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.INGRESO = false;
+    });
   }
   iniciarSesion() {
     this.router.navigate(['/analista/mis-asuntos']);
