@@ -21,15 +21,17 @@ export class CargaMasivaComponent implements OnInit, AfterViewInit {
 
   loaderTitle = "Procesando el archivo...";
   json_object: any;
-  TODO_BIEN = true;
+  TODO_BIEN = false;
+
+  selectedFile: any;
+  lodedFileGlobal: any;
 
   handleFileInput(loadedFile) {
-      const selectedFile = this.archivoExcel[0];
-      selectedFile.file = loadedFile.target.files[0];
-      selectedFile.estatus = true;
-      selectedFile.name = loadedFile.target.files[0].name;
-
-      this.headerService.showLoader = true;
+    this.lodedFileGlobal = loadedFile;
+      this.selectedFile = this.archivoExcel[0];
+      this.selectedFile.file = this.lodedFileGlobal.target.files[0];
+      this.selectedFile.estatus = true;
+      this.selectedFile.name = this.lodedFileGlobal.target.files[0].name;
 
       let reader = new FileReader();
       reader.onload = (event) => {
@@ -39,33 +41,37 @@ export class CargaMasivaComponent implements OnInit, AfterViewInit {
           });
           this.json_object = XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]], {raw: false});
       }
-      reader.readAsBinaryString(selectedFile.file);
+      reader.readAsBinaryString(this.selectedFile.file);
       
-      setTimeout(() => {
-        this.headerService.showLoader = false;
+  }
 
-        if(this.TODO_BIEN) {
-          const dialogRef = this.dialog.open(CargaExitosaDialog, {
+  cargarExcel() {
+    this.headerService.showLoader = true;
+    setTimeout(() => {
+      this.headerService.showLoader = false;
+      if(this.TODO_BIEN) {
+        const dialogRef = this.dialog.open(CargaExitosaDialog, {
+          disableClose: true
+        });
+        dialogRef.componentInstance.fileName = this.selectedFile.name;
+        dialogRef.afterClosed().subscribe(result => {
+          this.dialog.open(ResultadoCargaDialog, {
             disableClose: true
-          });
-          dialogRef.componentInstance.fileName = selectedFile.name;
-          dialogRef.afterClosed().subscribe(result => {
-            this.dialog.open(ResultadoCargaDialog, {
-              disableClose: true
-            }).componentInstance.json_object = this.json_object;
-          });
-        } else {
-          const dialogRef = this.dialog.open(CargaFalloDialog, {
-            disableClose: true
-          });
-          dialogRef.componentInstance.fileName = selectedFile.name;
-          dialogRef.afterClosed().subscribe(result => {
-            if(result) {
-              this.handleFileInput(loadedFile);
-            }
-          });
-        }
-      }, 1000);
+          }).componentInstance.json_object = this.json_object;
+        });
+      } else {
+        const dialogRef = this.dialog.open(CargaFalloDialog, {
+          disableClose: true
+        });
+        dialogRef.componentInstance.fileName = this.selectedFile.name;
+        dialogRef.afterClosed().subscribe(result => {
+          if(result) {
+            this.cargarExcel();
+            this.TODO_BIEN = true;
+          }
+        });
+      }
+    }, 1000);
   }
 
   ngOnInit(): void {
