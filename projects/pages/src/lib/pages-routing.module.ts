@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AdministracionCatalogosComponent } from './components/administracion-catalogos/administracion-catalogos.component';
 import { CargaMasivaComponent } from './components/carga-masiva/carga-masiva.component';
 import { ConsultaComponent } from './components/consulta/consulta.component';
 import { MisAsuntosComponent } from './components/mis-asuntos/mis-asuntos.component';
@@ -37,7 +38,7 @@ const routes: Routes = [
         path:'reportes/exportar', component: ExportarReporteComponent
       },
       {
-        path:'administracion-catalogos', component: ExportarReporteComponent
+        path:'administracion-catalogos', component: AdministracionCatalogosComponent
       }
     ]
   }

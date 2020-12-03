@@ -3,11 +3,50 @@
 <div class="contenedor-contenido">
     <div class="titulo-contenido">Selecciona un catálogo</div>
     <div class="contenedor-gris">
-        <div class="u-flex-center u-flex-column u-mt-1">
-            ADMINISTRACIÓN DE CATÁLOGOS
+        <div class="u-txt-medium u-txt-left">Editar catálogo</div>
+        <div class="u-flex-center u-flex-column u-mt-1 u-w-100">
+            <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="u-w-100">
+                <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding>
+                    <button mat-icon-button disabled></button>
+                    
+                    <mat-radio-button (change)="radioChange(node)">
+                        {{node.item}}
+                    </mat-radio-button>
+                    <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" *ngIf="node.selected">
+                        <mat-icon svgIcon="ico-eliminar" class="u-green-icon"></mat-icon>
+                    </button>
+    <!--                     <mat-checkbox class="checklist-leaf-node"
+                                    [checked]="checklistSelection.isSelected(node)"
+                                    (change)="todoLeafItemSelectionToggle(node)">{{node.item}}</mat-checkbox> -->
+                </mat-tree-node>
+            
+                <mat-tree-node *matTreeNodeDef="let node; when: hasNoContent" matTreeNodePadding>
+                    <button mat-icon-button disabled></button>
+                    <mat-form-field>
+                        <mat-label>Nuevo ítem</mat-label>
+                        <input matInput #itemValue>
+                    </mat-form-field>
+                    <button mat-button (click)="saveNode(node, itemValue.value)">Save</button>
+                </mat-tree-node>
+            
+                <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
+                    <button mat-icon-button matTreeNodeToggle
+                            [attr.aria-label]="'Toggle ' + node.item">
+                        <mat-icon class="mat-icon-rtl-mirror">
+                        {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                        </mat-icon>
+                    </button>
+                    <mat-radio-button (change)="radioChange(node)" #radioButton>{{node.item}}</mat-radio-button>
+<!--                     <mat-checkbox [checked]="descendantsAllSelected(node)"
+                                    [indeterminate]="descendantsPartiallySelected(node)"
+                                    (change)="todoItemSelectionToggle(node)">{{node.item}}</mat-checkbox> -->
+                    <button mat-icon-button (click)="addNewItem(node, radioButton)" *ngIf="node.selected"><mat-icon>add</mat-icon></button>
+                </mat-tree-node>
+            </mat-tree>
         </div>
-        <div class="u-flex-center u-mb-4">
+        <div class="u-flex-center u-mb-3 u-mt-3">
             <button mat-flat-button color="secundary" class="btn btnSecundary u-mx-1">Cancelar</button>
+            <button mat-flat-button color="primary" class="btn btnPrimary u-mx-1"><mat-icon matDatepickerToggleIcon svgIcon="ico-guardar" class="icoBtn"></mat-icon>Guardar</button>
         </div>
     </div>
 </div>

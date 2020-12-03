@@ -8,11 +8,15 @@
             <div class="row">
                 <div class="col-4 col-s-12 u-flex-start u-ex-left-u u-ex-right-u">
                     <button mat-flat-button color="secundary" class="btn btnSecundary u-mx-1">Gestión Electrónica Agosto 2020</button>
-                    <img src="assets/img/icoEliminar.svg" class="icoBtnEliminar">
+                    <button mat-icon-button aria-label="Eliminar">
+                        <mat-icon svgIcon="ico-eliminar" class="u-gray-icon"></mat-icon>
+                    </button>
                 </div>
                 <div class="col-4 col-s-12 u-flex-start u-ex-left-u u-ex-right-u">
                     <button mat-flat-button color="secundary" class="btn btnSecundary u-mx-1">Gestión Electrónica Agosto 2020</button>
-                    <img src="assets/img/icoEliminar.svg" class="icoBtnEliminar">
+                    <button mat-icon-button aria-label="Eliminar">
+                        <mat-icon svgIcon="ico-eliminar" class="u-gray-icon"></mat-icon>
+                    </button>
                 </div>
             </div>
         </div>
@@ -74,7 +78,9 @@
                     </div>
                     <div class="col-1 col-s-12" *ngIf="showBtnIcon">
                         <div class="col-4 col-s-12 u-flex-start u-ex-left-u u-ex-right-u">
-                            <img src="assets/img/icoEliminar.svg" class="icoBtnEliminar" (click)="eliminarFlitro(filtroSeleccionado)">
+                            <button mat-icon-button aria-label="Eliminar" (click)="eliminarFlitro(filtroSeleccionado)">
+                                <mat-icon svgIcon="ico-eliminar" class="u-gray-icon"></mat-icon>
+                            </button>
                         </div>
                     </div>
                 </div>

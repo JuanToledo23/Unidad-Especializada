@@ -619,3 +619,15 @@ input.u-desac {
 .u-top-line {
     border-top: solid 1px #E6EFE6;
 }
+
+.u-green-icon {
+    color: #027b51;
+}
+/* Note: If you're using an SVG icon, you should make the class target the `<svg>` element */
+.u-green-icon svg {
+    fill: #027b51;
+}
+
+.u-gray-icon svg {
+    fill:#575757;
+}

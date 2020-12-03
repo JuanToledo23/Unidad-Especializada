@@ -14,6 +14,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatTreeModule } from '@angular/material/tree';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { MatIconRegistry } from "@angular/material/icon";
 import { DomSanitizer } from "@angular/platform-browser";
@@ -34,7 +36,9 @@ import { DomSanitizer } from "@angular/platform-browser";
     MatExpansionModule,
     MatNativeDateModule,
     DragDropModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatTreeModule,
+    MatCheckboxModule
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'es-MX'}

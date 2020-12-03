@@ -1,0 +1,20 @@
+mat-tree button[disabled] {
+    background: unset !important;
+    width: 40px;
+    height: 40px;
+}
+
+.mat-tree-node {
+    min-height: 41px !important;
+}
+
+mat-tree .mat-form-field-appearance-legacy .mat-form-field-underline {
+    height: 0 !important;
+}
+mat-tree .mat-form-field-ripple {
+    display: none !important;
+}
+mat-tree .mat-form-field-label {
+    margin-top: 4px;
+    margin-left: 4px;
+}
