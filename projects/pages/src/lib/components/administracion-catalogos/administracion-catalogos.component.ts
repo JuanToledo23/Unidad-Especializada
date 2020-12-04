@@ -8,141 +8,181 @@ import { Key } from 'protractor';
 import { BehaviorSubject } from 'rxjs';
 
 /**
- * Node for to-do item
+ * Food data with nested structure.
+ * Each node has a name and an optional list of children.
  */
-export class TodoItemNode {
-  children: TodoItemNode[];
-  item: string;
+interface FoodNode {
+  name: string;
+  children?: FoodNode[];
   selected: boolean;
+  status: boolean;
 }
 
-/** Flat to-do item node with expandable and level information */
-export class TodoItemFlatNode {
-  item: string;
-  level: number;
+/** Flat node with expandable and level information */
+interface ExampleFlatNode {
   expandable: boolean;
+  name: string;
+  level: number;
   selected: boolean;
+  status: boolean;
 }
 
-/**
- * The Json object for to-do list data.
- */
-const TREE_DATA = {
-  Groceries: {
-    'Almond Meal flour': null,
-    'Organic eggs': null,
-    'Protein Powder': null,
-    Fruits: {
-      Apple: null,
-      Berries: ['Blueberry', 'Raspberry'],
-      Orange: null
-    }
-  },
-  Reminders: [
-    'Cook dinner',
-    'Read the Material Design spec',
-    'Upgrade Application to Angular'
-  ]
-};
-
-/**
- * Checklist database, it can build a tree structured Json object.
- * Each node in Json object represents a to-do item or a category.
- * If a node is a category, it has children items and new items can be added under the category.
- */
-@Injectable()
-export class ChecklistDatabase {
-  dataChange = new BehaviorSubject<TodoItemNode[]>([]);
-
-  get data(): TodoItemNode[] { return this.dataChange.value; }
-
-  constructor() {
-    this.initialize();
+let TREE_DATA: FoodNode[] = [
+  {
+    name: 'Fruit',
+    children: [
+      {name: 'Apple', selected: false, status: true},
+      {name: 'Banana', selected: false, status: true},
+      {name: 'Fruit loops', selected: false, status: true},
+    ],
+    selected: false,
+    status: true
   }
+];
 
-  initialize() {
-    // Build the tree nodes from Json object. The result is a list of `TodoItemNode` with nested
-    // file node as children.
-    const data = this.buildFileTree(TREE_DATA, 0);
-
-    // Notify the change.
-    this.dataChange.next(data);
+const analistas = [
+  {
+    name: 'Catálogo analistas (Usuario, Nombre)',
+    children: [
+      { name: '10028653 - JESUS ABAIS HERRERA', selected: false, status: true },
+      { name: '10028652 - RAUL GONZALEZ PAEZ', selected: false, status: true },
+      { name: '10028654 - ARTURO HERNANDEZ MEDERO', selected: false, status: true },
+      { name: '722500 - NORMA AVENDAÑO ACOSTA', selected: false, status: true },
+      { name: '976658 - DIEGO JIMENEZ MARTINEZ', selected: false, status: true }
+    ],
+    selected: false,
+    status: true
   }
-
-  /**
-   * Build the file structure tree. The `value` is the Json object, or a sub-tree of a Json object.
-   * The return value is the list of `TodoItemNode`.
-   */
-  buildFileTree(obj: {[key: string]: any}, level: number): TodoItemNode[] {
-    return Object.keys(obj).reduce<TodoItemNode[]>((accumulator, key) => {
-      const value = obj[key];
-      const node = new TodoItemNode();
-      node.item = key;
-
-      if (value != null) {
-        if (typeof value === 'object') {
-          node.children = this.buildFileTree(value, level + 1);
-        } else {
-          node.item = value;
-        }
-      }
-      node.selected = false
-
-      return accumulator.concat(node);
-    }, []);
+];
+const unidadAtencionUsuariosCondusef = [
+  {
+    name: 'Catálogo unidad de atención a usuarios CONDUSEF (Delegación, Clave, Analista asignado)',
+    children: [
+      { name: 'AGUASCALIENTES - 010 - 10028654', selected: false, status: true },
+      { name: 'BAJA CALIFORNIA - 020 - 10028652', selected: false, status: true },
+      { name: 'BAJA CALIFORNIA SUR - 030 - 10028653', selected: false, status: true },
+      { name: 'CAMPECHE - 040 - 722500', selected: false, status: true },
+      { name: 'CAT EXTRANJERO - 340 - 976658', selected: false, status: true },
+      { name: 'CENTRO DE ATENCION TELEFONICA - 096', selected: false, status: true },
+      { name: 'CHIAPAS - 070 - 10028652', selected: false, status: true },
+      { name: 'CHIHUAHUA - 080 - 10028654', selected: false, status: true },
+      { name: 'CIUDAD JUAREZ - 081 - 722500', selected: false, status: true },
+      { name: 'COAHUILA - 050 - 976658', selected: false, status: true },
+      { name: 'COLIMA	- 060	- 10028653', selected: false, status: true },
+      { name: 'DIRECCION CONSULTIVA - 094	- 10028652', selected: false, status: true },
+      { name: 'DURANGO - 100 - 10028654', selected: false, status: true },
+      { name: 'ESTADO DE MEXICO - 110	- 722500', selected: false, status: true },
+      { name: 'GUANAJUATO	- 120	- 976658', selected: false, status: true },
+      { name: 'GUERRERO	- 130	- 10028653', selected: false, status: true },
+      { name: 'HIDALGO - 140 - 10028652', selected: false, status: true },
+      { name: 'JALISCO - 150 - 10028654', selected: false, status: true },
+      { name: 'METROPOLITANA CENTRAL - 090 - 722500', selected: false, status: true },
+      { name: 'METROPOLITANA CENTRO HISTORICO	- 350	- 976658', selected: false, status: true },
+      { name: 'METROPOLITANA ORIENTE - 093 - 10028653', selected: false, status: true },
+      { name: 'MICHOACAN - 160 - 10028652', selected: false, status: true },
+      { name: 'MORELOS - 170 - 10028654', selected: false, status: true },
+      { name: 'NAYARIT - 180 - 722500', selected: false, status: true },
+      { name: 'NUEVO LEON	- 190	- 976658', selected: false, status: true },
+      { name: 'OAXACA	- 200	- 10028653', selected: false, status: true },
+      { name: 'PUEBLA	- 210	- 10028652', selected: false, status: true },
+      { name: 'QUERETARO - 220 - 10028654', selected: false, status: true },
+      { name: 'QUINTANA ROO - 230 - 722500', selected: false, status: true },
+      { name: 'SAN LUIS POTOSI - 240 - 976658', selected: false, status: true },
+      { name: 'SINALOA - 250 - 10028652', selected: false, status: true },
+      { name: 'SONORA - 260 - 10028654', selected: false, status: true },
+      { name: 'TABASCO - 270 - 722500', selected: false, status: true },
+      { name: 'TAMAULIPAS	- 280	- 976658', selected: false, status: true },
+      { name: 'TLAXCALA	- 290	- 10028653', selected: false, status: true },
+      { name: 'VERACRUZ - 300 - 10028652', selected: false, status: true },
+      { name: 'YUCATAN - 310 - 10028654', selected: false, status: true },
+      { name: 'ZACATECAS - 320 - 722500', selected: false, status: true },
+    ],
+    selected: false, 
+    status: true
   }
-
-  /** Add an item to to-do list */
-  insertItem(parent: TodoItemNode, name: string) {
-    if (parent.children) {
-      parent.children.push({item: name} as TodoItemNode);
-      this.dataChange.next(this.data);
-    }
+]
+const fallo = [
+  {
+    name: 'Catálogo fallo',
+    children: [
+      { name: 'EN CONTRA DEL USUARIO', selected: false, status: true },
+      { name: 'A FAVOR DEL USUARIO', selected: false, status: true },
+      { name: 'CERRADO POR REVERSA', selected: false, status: true },
+      { name: 'CONSULTA CONTESTADA', selected: false, status: true }
+    ],
+    selected: false, 
+    status: true
   }
+]
 
-  updateItem(node: TodoItemNode, name: string) {
-    node.item = name;
-    
-    this.dataChange.next(this.data);
+const motivos = [
+  {
+    name: 'Catálogo motivos',
+    children: [
+      { name: 'DICTAMINACION JURIDICA', selected: false, status: true },
+      { name: 'DICTAMINACION UNE', selected: false, status: true },
+      { name: 'DETERMINACION DE NEGOCIO', selected: false, status: true },
+      { name: 'AUDITORIA INTERNA', selected: false, status: true },
+      { name: 'VALIDACION OPERATIVA', selected: false, status: true }
+    ],
+    selected: false, 
+    status: true
   }
+]
+
+const medioLlegada = [
+  {
+    name: 'Catálogo medio de llegada (Proceso, Días, Clave)',
+    children: [
+      { name: 'GESTION ELECTRONICA TRADICIONAL - 20	- 1/20', selected: false, status: true },
+      { name: 'GESTION ELECTRONICA PORI - 10 - 1/10', selected: false, status: true },
+      { name: 'GESTION ELECTRONICA INMEDIATA - 3 - 1/3', selected: false, status: true },
+      { name: 'UNIDAD ESPECIALIZADA ELECTRONICA - 30', selected: false, status: true },
+      { name: 'UNIDAD ESPECIALIZADA PRESENCIAL - 30', selected: false, status: true }
+    ],
+    selected: false, 
+    status: true
+  }
+]
+
+interface Catalogo {
+  value: string;
+  viewValue: string;
 }
-
 @Component({
   selector: 'app-administracion-catalogos',
   templateUrl: './administracion-catalogos.component.html',
-  styleUrls: ['./administracion-catalogos.component.scss'],
-  providers: [ChecklistDatabase]
+  styleUrls: ['./administracion-catalogos.component.scss']
 })
 export class AdministracionCatalogosComponent implements AfterViewInit {
-  /** Map from flat node to nested node. This helps us finding the nested node to be modified */
-  flatNodeMap = new Map<TodoItemFlatNode, TodoItemNode>();
+  private _transformer = (node: FoodNode, level: number) => {
+    return {
+      expandable: !!node.children && node.children.length > 0,
+      name: node.name,
+      level: level,
+      selected: node.selected,
+      status: node.status
+    };
+  }
 
-  /** Map from nested node to flattened node. This helps us to keep the same object for selection */
-  nestedNodeMap = new Map<TodoItemNode, TodoItemFlatNode>();
+  treeControl = new FlatTreeControl<ExampleFlatNode>(
+      node => node.level, node => node.expandable);
 
-  /** A selected parent node to be inserted */
-  selectedParent: TodoItemFlatNode | null = null;
+  treeFlattener = new MatTreeFlattener(
+      this._transformer, node => node.level, node => node.expandable, node => node.children);
 
-  /** The new item's name */
-  newItemName = '';
+  dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
-  treeControl: FlatTreeControl<TodoItemFlatNode>;
+  catalogos: Catalogo[] = [
+    {value: 'analistas', viewValue: 'Catálogo analistas (Usuario, Nombre)'},
+    {value: 'unidadAtencionUsuariosCondusef', viewValue: 'Catálogo unidad de atención a usuarios CONDUSEF (Delegación, Clave, Analista asignado)'},
+    {value: 'fallo', viewValue: 'Catálogo fallo (Proceso, Días, Clave)'},
+    {value: 'motivos', viewValue: 'Catálogo motivos'},
+    {value: 'medioLlegada', viewValue: 'Catálogo medio de llegada'},
+  ];
 
-  treeFlattener: MatTreeFlattener<TodoItemNode, TodoItemFlatNode>;
-
-  dataSource: MatTreeFlatDataSource<TodoItemNode, TodoItemFlatNode>;
-
-  /** The selection for checklist */
-  checklistSelection = new SelectionModel<TodoItemFlatNode>(true /* multiple */);
-
-  constructor(private _database: ChecklistDatabase, public headerService: HeaderService) {
-    this.treeFlattener = new MatTreeFlattener(this.transformer, this.getLevel,
-      this.isExpandable, this.getChildren);
-    this.treeControl = new FlatTreeControl<TodoItemFlatNode>(this.getLevel, this.isExpandable);
-    this.dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
-    _database.dataChange.subscribe(data => {
-      this.dataSource.data = data;
-    });
+  constructor(public headerService: HeaderService) {
+    this.dataSource.data = analistas;
   }
 
   ngAfterViewInit(): void {
@@ -151,133 +191,96 @@ export class AdministracionCatalogosComponent implements AfterViewInit {
     });
   }
 
-  getLevel = (node: TodoItemFlatNode) => node.level;
-
-  isExpandable = (node: TodoItemFlatNode) => node.expandable;
-
-  getChildren = (node: TodoItemNode): TodoItemNode[] => node.children;
-
-  hasChild = (_: number, _nodeData: TodoItemFlatNode) => _nodeData.expandable;
-
-  hasNoContent = (_: number, _nodeData: TodoItemFlatNode) => _nodeData.item === '';
-
-  /**
-   * Transformer to convert nested node to flat node. Record the nodes in maps for later use.
-   */
-  transformer = (node: TodoItemNode, level: number) => {
-    const existingNode = this.nestedNodeMap.get(node);
-    const flatNode = existingNode && existingNode.item === node.item
-        ? existingNode
-        : new TodoItemFlatNode();
-    flatNode.item = node.item;
-    flatNode.level = level;
-    flatNode.expandable = !!node.children?.length;
-    flatNode.selected = false;
-    this.flatNodeMap.set(flatNode, node);
-    this.nestedNodeMap.set(node, flatNode);
-    return flatNode;
-  }
-
-  ////////////////////////////////////////////////
-  /** Whether all the descendants of the node are selected. */
-  descendantsAllSelected(node: TodoItemFlatNode): boolean {
-    const descendants = this.treeControl.getDescendants(node);
-    const descAllSelected = descendants.length > 0 && descendants.every(child => {
-      return this.checklistSelection.isSelected(child);
-    });
-    return descAllSelected;
-  }
-
-  /** Whether part of the descendants are selected */
-  descendantsPartiallySelected(node: TodoItemFlatNode): boolean {
-    const descendants = this.treeControl.getDescendants(node);
-    const result = descendants.some(child => this.checklistSelection.isSelected(child));
-    return result && !this.descendantsAllSelected(node);
-  }
-
-  /** Toggle the to-do item selection. Select/deselect all the descendants node */
-  todoItemSelectionToggle(node: TodoItemFlatNode): void {
-    this.checklistSelection.toggle(node);
-    const descendants = this.treeControl.getDescendants(node);
-    this.checklistSelection.isSelected(node)
-      ? this.checklistSelection.select(...descendants)
-      : this.checklistSelection.deselect(...descendants);
-
-    // Force update for the parent
-    descendants.forEach(child => this.checklistSelection.isSelected(child));
-    this.checkAllParentsSelection(node);
-  }
-
-  /** Toggle a leaf to-do item selection. Check all the parents to see if they changed */
-  todoLeafItemSelectionToggle(node: TodoItemFlatNode): void {
-    this.checklistSelection.toggle(node);
-    this.checkAllParentsSelection(node);
-  }
-
-  /* Checks all the parents when a leaf node is selected/unselected */
-  checkAllParentsSelection(node: TodoItemFlatNode): void {
-    let parent: TodoItemFlatNode | null = this.getParentNode(node);
-    while (parent) {
-      this.checkRootNodeSelection(parent);
-      parent = this.getParentNode(parent);
-    }
-  }
-
-  /** Check root node checked state and change it accordingly */
-  checkRootNodeSelection(node: TodoItemFlatNode): void {
-    const nodeSelected = this.checklistSelection.isSelected(node);
-    const descendants = this.treeControl.getDescendants(node);
-    const descAllSelected = descendants.length > 0 && descendants.every(child => {
-      return this.checklistSelection.isSelected(child);
-    });
-    if (nodeSelected && !descAllSelected) {
-      this.checklistSelection.deselect(node);
-    } else if (!nodeSelected && descAllSelected) {
-      this.checklistSelection.select(node);
-    }
-  }
-////////////////////////////////////////////////
-
-radioChange(node: TodoItemFlatNode) {
-  this.treeControl.dataNodes.forEach(element => {
-    element['selected'] = false;
-  });
-  node.selected = true;
-}
-
-
-  /* Get the parent node of a node */
-  getParentNode(node: TodoItemFlatNode): TodoItemFlatNode | null {
-    const currentLevel = this.getLevel(node);
-
-    if (currentLevel < 1) {
-      return null;
-    }
-
-    const startIndex = this.treeControl.dataNodes.indexOf(node) - 1;
-
-    for (let i = startIndex; i >= 0; i--) {
-      const currentNode = this.treeControl.dataNodes[i];
-
-      if (this.getLevel(currentNode) < currentLevel) {
-        return currentNode;
-      }
-    }
-    return null;
-  }
+  hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
+  
+  hasNoContent = (_: number, node: ExampleFlatNode) => node.name === '';
 
   /** Select the category so we can insert the new item. */
-  addNewItem(node: TodoItemFlatNode, radioButton: any, itemValue: any) {
-    radioButton.checked = false;
-    console.log(itemValue);
-    const parentNode = this.flatNodeMap.get(node);
-    this._database.insertItem(parentNode!, '');
-    this.treeControl.expand(node);
+  addNewItem(node: ExampleFlatNode) {
+    
+    console.log(node);
+    let catalogo;
+    switch (node.name) {
+      case 'Catálogo analistas (Usuario, Nombre)':
+        catalogo = analistas;
+        break;
+      case 'Catálogo unidad de atención a usuarios CONDUSEF (Delegación, Clave, Analista asignado)':
+        catalogo = unidadAtencionUsuariosCondusef;
+        break;
+      case 'Catálogo fallo':
+        catalogo = fallo;
+        break;
+      case 'Catálogo motivos':
+        catalogo = motivos;
+        break;
+      case 'Catálogo medio de llegada (Proceso, Días, Clave)':
+        catalogo = medioLlegada;
+        break;
+    
+      default:
+        break;
+    }
+
+    catalogo[0].children.push({
+      name: ''
+    });
+    this.dataSource.data = catalogo;
+    this.treeControl.expand(this.treeControl.dataNodes[0]);
   }
 
-  /** Save the node to database */
-  saveNode(node: TodoItemFlatNode, itemValue: string) {
-    const nestedNode = this.flatNodeMap.get(node);
-    this._database.updateItem(nestedNode!, itemValue);
+  cambioCatalogo(catalogoSeleccionado) {
+    console.log(analistas)
+    let catalogo;
+    switch (catalogoSeleccionado.value) {
+      case 'analistas':
+        catalogo = analistas;
+        break;
+      case 'unidadAtencionUsuariosCondusef':
+        catalogo = unidadAtencionUsuariosCondusef;
+        break;
+      case 'fallo':
+        catalogo = fallo;
+        break;
+      case 'motivos':
+        catalogo = motivos;
+        break;
+      case 'medioLlegada':
+        catalogo = medioLlegada;
+        break;
+    
+      default:
+        break;
+    }
+    this.dataSource.data = catalogo;
+    this.dataSource.data[0].children.forEach(element => {
+      element.selected = false;
+    });
+    this.treeControl.dataNodes.forEach(element => {
+      element.selected = false;
+    });
+  }
+
+  cambioRadio(node: ExampleFlatNode) {
+    this.dataSource.data[0].children.forEach(element => {
+        element.selected = false;
+    });
+    this.treeControl.dataNodes.forEach(element => {
+        element.selected = false;
+    });
+    this.dataSource.data[0].children.forEach(element => {
+      if(element.name === node.name) {
+        element.selected = true;
+        node.selected = true;
+      }
+    });
+  }
+
+  cambioEstado(node) {
+    this.dataSource.data[0].children.forEach(element => {
+      if(element.name === node.name) {
+        element.status = !element.status;
+        node.status = !node.status;
+      }
+    });
   }
 }

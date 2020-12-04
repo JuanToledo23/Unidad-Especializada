@@ -343,6 +343,10 @@ strong{
     font-family: 'Avenir_Next_Bold';
 }
 
+.u-font {
+    font: 500 14px/29px Avenir_Next_Regular !important;
+}
+
 .strong2 {
     font-family: 'Avenir_Next_Demi_Bold';
 }
@@ -483,6 +487,10 @@ strong{
 .u-desac{
     pointer-events: none;
     opacity: 0.6;
+}
+
+.u-desac-cat {
+    color: red;
 }
 
 input.u-desac {
@@ -630,4 +638,8 @@ input.u-desac {
 
 .u-gray-icon svg {
     fill:#575757;
+}
+
+.u-border-box {
+    box-sizing: border-box;
 }
