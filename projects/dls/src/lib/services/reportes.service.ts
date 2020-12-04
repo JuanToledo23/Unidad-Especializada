@@ -31,6 +31,8 @@ export interface RegistroReporte {
     nombreComercialProductoServicio: string;
     canalOperacion: string;
     causaInconformidad: string;
+    codigoProducto: string;
+    codigoCausa: string;
     transaccionesReclamadas: string;
     montoReclamacion: string;
     importeBonificacionCancelado: string;
@@ -382,6 +384,28 @@ export class ReportesService {
             }
         },
         {
+            value: 'codigoProducto',  mostrarColumna: false, nombreFiltro: 'Código del producto', 
+            segundoParametro: {
+                type: '',
+                parametros: ''
+            },
+            tercerParametro: {
+                type: '',
+                parametros: ''
+            }
+        },
+        {
+            value: 'codigoCausa',  mostrarColumna: false, nombreFiltro: 'Código de la causa', 
+            segundoParametro: {
+                type: '',
+                parametros: ''
+            },
+            tercerParametro: {
+                type: '',
+                parametros: ''
+            }
+        },
+        {
             value: 'transaccionesReclamadas',  mostrarColumna: false, nombreFiltro: 'Transacciones reclamadas', 
             segundoParametro: {
                 type: '',
@@ -509,6 +533,8 @@ export class ReportesService {
             nombreComercialProductoServicio: 'TEXTO DE PRUEBA',
             canalOperacion: 'TEXTO DE PRUEBA',
             causaInconformidad: 'TEXTO DE PRUEBA',
+            codigoProducto: 'TEXTO DE PRUEBA',
+            codigoCausa: 'TEXTO DE PRUEBA',
             transaccionesReclamadas: 'TEXTO DE PRUEBA',
             montoReclamacion: 'TEXTO DE PRUEBA',
             importeBonificacionCancelado: 'TEXTO DE PRUEBA',
@@ -548,6 +574,8 @@ export class ReportesService {
             nombreComercialProductoServicio: 'TEXTO DE PRUEBA',
             canalOperacion: 'TEXTO DE PRUEBA',
             causaInconformidad: 'TEXTO DE PRUEBA',
+            codigoProducto: 'TEXTO DE PRUEBA',
+            codigoCausa: 'TEXTO DE PRUEBA',
             transaccionesReclamadas: 'TEXTO DE PRUEBA',
             montoReclamacion: 'TEXTO DE PRUEBA',
             importeBonificacionCancelado: 'TEXTO DE PRUEBA',
@@ -587,6 +615,8 @@ export class ReportesService {
             nombreComercialProductoServicio: 'TEXTO DE PRUEBA',
             canalOperacion: 'TEXTO DE PRUEBA',
             causaInconformidad: 'TEXTO DE PRUEBA',
+            codigoProducto: 'TEXTO DE PRUEBA',
+            codigoCausa: 'TEXTO DE PRUEBA',
             transaccionesReclamadas: 'TEXTO DE PRUEBA',
             montoReclamacion: 'TEXTO DE PRUEBA',
             importeBonificacionCancelado: 'TEXTO DE PRUEBA',
@@ -626,6 +656,8 @@ export class ReportesService {
             nombreComercialProductoServicio: 'TEXTO DE PRUEBA',
             canalOperacion: 'TEXTO DE PRUEBA',
             causaInconformidad: 'TEXTO DE PRUEBA',
+            codigoProducto: 'TEXTO DE PRUEBA',
+            codigoCausa: 'TEXTO DE PRUEBA',
             transaccionesReclamadas: 'TEXTO DE PRUEBA',
             montoReclamacion: 'TEXTO DE PRUEBA',
             importeBonificacionCancelado: 'TEXTO DE PRUEBA',
@@ -665,6 +697,8 @@ export class ReportesService {
             nombreComercialProductoServicio: 'TEXTO DE PRUEBA',
             canalOperacion: 'TEXTO DE PRUEBA',
             causaInconformidad: 'TEXTO DE PRUEBA',
+            codigoProducto: 'TEXTO DE PRUEBA',
+            codigoCausa: 'TEXTO DE PRUEBA',
             transaccionesReclamadas: 'TEXTO DE PRUEBA',
             montoReclamacion: 'TEXTO DE PRUEBA',
             importeBonificacionCancelado: 'TEXTO DE PRUEBA',
@@ -704,6 +738,8 @@ export class ReportesService {
             nombreComercialProductoServicio: 'TEXTO DE PRUEBA',
             canalOperacion: 'TEXTO DE PRUEBA',
             causaInconformidad: 'TEXTO DE PRUEBA',
+            codigoProducto: 'TEXTO DE PRUEBA',
+            codigoCausa: 'TEXTO DE PRUEBA',
             transaccionesReclamadas: 'TEXTO DE PRUEBA',
             montoReclamacion: 'TEXTO DE PRUEBA',
             importeBonificacionCancelado: 'TEXTO DE PRUEBA',
@@ -743,6 +779,8 @@ export class ReportesService {
             nombreComercialProductoServicio: 'TEXTO DE PRUEBA',
             canalOperacion: 'TEXTO DE PRUEBA',
             causaInconformidad: 'TEXTO DE PRUEBA',
+            codigoProducto: 'TEXTO DE PRUEBA',
+            codigoCausa: 'TEXTO DE PRUEBA',
             transaccionesReclamadas: 'TEXTO DE PRUEBA',
             montoReclamacion: 'TEXTO DE PRUEBA',
             importeBonificacionCancelado: 'TEXTO DE PRUEBA',
@@ -782,6 +820,8 @@ export class ReportesService {
             nombreComercialProductoServicio: 'TEXTO DE PRUEBA',
             canalOperacion: 'TEXTO DE PRUEBA',
             causaInconformidad: 'TEXTO DE PRUEBA',
+            codigoProducto: 'TEXTO DE PRUEBA',
+            codigoCausa: 'TEXTO DE PRUEBA',
             transaccionesReclamadas: 'TEXTO DE PRUEBA',
             montoReclamacion: 'TEXTO DE PRUEBA',
             importeBonificacionCancelado: 'TEXTO DE PRUEBA',
@@ -821,6 +861,8 @@ export class ReportesService {
             nombreComercialProductoServicio: 'TEXTO DE PRUEBA',
             canalOperacion: 'TEXTO DE PRUEBA',
             causaInconformidad: 'TEXTO DE PRUEBA',
+            codigoProducto: 'TEXTO DE PRUEBA',
+            codigoCausa: 'TEXTO DE PRUEBA',
             transaccionesReclamadas: 'TEXTO DE PRUEBA',
             montoReclamacion: 'TEXTO DE PRUEBA',
             importeBonificacionCancelado: 'TEXTO DE PRUEBA',
@@ -860,6 +902,8 @@ export class ReportesService {
             nombreComercialProductoServicio: 'TEXTO DE PRUEBA',
             canalOperacion: 'TEXTO DE PRUEBA',
             causaInconformidad: 'TEXTO DE PRUEBA',
+            codigoProducto: 'TEXTO DE PRUEBA',
+            codigoCausa: 'TEXTO DE PRUEBA',
             transaccionesReclamadas: 'TEXTO DE PRUEBA',
             montoReclamacion: 'TEXTO DE PRUEBA',
             importeBonificacionCancelado: 'TEXTO DE PRUEBA',
@@ -899,6 +943,8 @@ export class ReportesService {
             nombreComercialProductoServicio: 'TEXTO DE PRUEBA',
             canalOperacion: 'TEXTO DE PRUEBA',
             causaInconformidad: 'TEXTO DE PRUEBA',
+            codigoProducto: 'TEXTO DE PRUEBA',
+            codigoCausa: 'TEXTO DE PRUEBA',
             transaccionesReclamadas: 'TEXTO DE PRUEBA',
             montoReclamacion: 'TEXTO DE PRUEBA',
             importeBonificacionCancelado: 'TEXTO DE PRUEBA',
@@ -938,6 +984,8 @@ export class ReportesService {
             nombreComercialProductoServicio: 'TEXTO DE PRUEBA',
             canalOperacion: 'TEXTO DE PRUEBA',
             causaInconformidad: 'TEXTO DE PRUEBA',
+            codigoProducto: 'TEXTO DE PRUEBA',
+            codigoCausa: 'TEXTO DE PRUEBA',
             transaccionesReclamadas: 'TEXTO DE PRUEBA',
             montoReclamacion: 'TEXTO DE PRUEBA',
             importeBonificacionCancelado: 'TEXTO DE PRUEBA',
@@ -977,6 +1025,8 @@ export class ReportesService {
             nombreComercialProductoServicio: 'TEXTO DE PRUEBA',
             canalOperacion: 'TEXTO DE PRUEBA',
             causaInconformidad: 'TEXTO DE PRUEBA',
+            codigoProducto: 'TEXTO DE PRUEBA',
+            codigoCausa: 'TEXTO DE PRUEBA',
             transaccionesReclamadas: 'TEXTO DE PRUEBA',
             montoReclamacion: 'TEXTO DE PRUEBA',
             importeBonificacionCancelado: 'TEXTO DE PRUEBA',
@@ -1016,6 +1066,8 @@ export class ReportesService {
             nombreComercialProductoServicio: 'TEXTO DE PRUEBA',
             canalOperacion: 'TEXTO DE PRUEBA',
             causaInconformidad: 'TEXTO DE PRUEBA',
+            codigoProducto: 'TEXTO DE PRUEBA',
+            codigoCausa: 'TEXTO DE PRUEBA',
             transaccionesReclamadas: 'TEXTO DE PRUEBA',
             montoReclamacion: 'TEXTO DE PRUEBA',
             importeBonificacionCancelado: 'TEXTO DE PRUEBA',
@@ -1055,6 +1107,8 @@ export class ReportesService {
             nombreComercialProductoServicio: 'TEXTO DE PRUEBA',
             canalOperacion: 'TEXTO DE PRUEBA',
             causaInconformidad: 'TEXTO DE PRUEBA',
+            codigoProducto: 'TEXTO DE PRUEBA',
+            codigoCausa: 'TEXTO DE PRUEBA',
             transaccionesReclamadas: 'TEXTO DE PRUEBA',
             montoReclamacion: 'TEXTO DE PRUEBA',
             importeBonificacionCancelado: 'TEXTO DE PRUEBA',
@@ -1094,6 +1148,8 @@ export class ReportesService {
             nombreComercialProductoServicio: 'TEXTO DE PRUEBA',
             canalOperacion: 'TEXTO DE PRUEBA',
             causaInconformidad: 'TEXTO DE PRUEBA',
+            codigoProducto: 'TEXTO DE PRUEBA',
+            codigoCausa: 'TEXTO DE PRUEBA',
             transaccionesReclamadas: 'TEXTO DE PRUEBA',
             montoReclamacion: 'TEXTO DE PRUEBA',
             importeBonificacionCancelado: 'TEXTO DE PRUEBA',

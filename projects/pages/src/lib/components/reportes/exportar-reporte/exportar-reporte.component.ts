@@ -36,6 +36,8 @@ export interface RegistroReporte {
   nombreComercialProductoServicio: string;
   canalOperacion: string;
   causaInconformidad: string;
+  codigoProducto: string;
+  codigoCausa: string;
   transaccionesReclamadas: string;
   montoReclamacion: string;
   importeBonificacionCancelado: string;

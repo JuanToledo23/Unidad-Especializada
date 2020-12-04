@@ -122,6 +122,14 @@
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>Causa de la inconformidad</th>
                     <td mat-cell *matCellDef="let element">{{element.causaInconformidad}}</td>
                 </ng-container>
+                <ng-container matColumnDef="codigoProducto">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Código de producto</th>
+                    <td mat-cell *matCellDef="let element">{{element.codigoProducto}}</td>
+                </ng-container>
+                <ng-container matColumnDef="codigoCausa">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Código de la causa</th>
+                    <td mat-cell *matCellDef="let element">{{element.codigoCausa}}</td>
+                </ng-container>
                 <ng-container matColumnDef="transaccionesReclamadas">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>Transacciones reclamadas</th>
                     <td mat-cell *matCellDef="let element">{{element.transaccionesReclamadas}}</td>
