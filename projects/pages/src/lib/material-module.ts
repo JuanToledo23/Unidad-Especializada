@@ -74,5 +74,25 @@ export class MaterialModule {
       "ico-eliminar",
       this.domSanitizer.bypassSecurityTrustResourceUrl("assets/img/icoEliminar.svg")
     );
+    this.matIconRegistry.addSvgIcon(
+      "ico-expandir",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/img/icoExpandir.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      "ico-contraer",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/img/icoContraer.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      "ico-agregar-verde",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/img/icoAgregarVerde.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      "ico-deshabilitar",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/img/icoDeshabilitar.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      "ico-habilitar",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/img/icoHabilitar.svg")
+    );
   }
 }

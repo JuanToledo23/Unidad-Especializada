@@ -5,55 +5,40 @@
     <div class="contenedor-gris">
         <div class="u-flex-center u-flex-column u-mt-1 u-w-100">
             <div class="u-flex-center u-w-35 u-font">
-                <mat-select (selectionChange)="cambioCatalogo($event)">
+                <mat-select (selectionChange)="cambioCatalogo($event)" placeholder="Selecciona un catálogo de la lista">
                     <mat-option *ngFor="let catalogo of catalogos" [value]="catalogo.value">
                         {{catalogo.viewValue}}
                     </mat-option>
                 </mat-select>
             </div>
-            <div class="u-txt-medium u-txt-left u-w-100 u-mt-2">Editar catálogo</div>
-            <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="u-w-100">
-                <!-- This is the tree node template for leaf nodes -->
-                <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
-                    <!-- use a disabled button to provide padding for tree leaf -->
-                    <button mat-icon-button disabled></button>
-                    <mat-radio-button (change)="cambioRadio(node)" [ngClass]="{'u-desac-cat': node.status}">
-                        {{node.name}}
-                    </mat-radio-button>
-                    <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" *ngIf="node.selected">
-                        <mat-icon svgIcon="ico-limpiar" class="u-green-icon" *ngIf="!node.status" (click)="cambioEstado(node)"></mat-icon>
-                        <mat-icon svgIcon="ico-eliminar" class="u-green-icon" *ngIf="node.status" (click)="cambioEstado(node)"></mat-icon>
-                    </button>
-                </mat-tree-node>
+            <!-- <div class="u-txt-medium u-txt-left u-w-100 u-mt-2" *ngIf="catalogoSeleccionado">Editar catálogo</div> -->
+            <div class="u-w-100">
+                <button mat-icon-button>
+                    <mat-icon svgIcon="ico-expandir" (click)="expandirComprimir('showCatalogoAnalistas')" *ngIf="showCatalogoAnalistas"></mat-icon>
+                    <mat-icon svgIcon="ico-contraer" (click)="expandirComprimir('showCatalogoAnalistas')" *ngIf="!showCatalogoAnalistas"></mat-icon>
+                </button>
+                <mat-radio-button class="strong2" (change)="cambioRadio(catalogoAnalistas)"> 
+                    {{ catalogoAnalistas.name }}
+                </mat-radio-button>
+                <button mat-icon-button><mat-icon svgIcon="ico-agregar-verde"></mat-icon></button>
 
-                <mat-tree-node *matTreeNodeDef="let node; when: hasNoContent" matTreeNodePadding>
-                    <button mat-icon-button disabled></button>
-                    <mat-form-field>
-                        <mat-label>Nuevo ítem</mat-label>
-                        <input matInput #itemValue>
-                    </mat-form-field>
-                    <button mat-button >Save</button>
-                </mat-tree-node>
-                <!-- (click)="saveNode(node, itemValue.value)" -->
-                <!-- This is the tree node template for expandable nodes -->
-                <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
-                    <button mat-icon-button matTreeNodeToggle
-                            [attr.aria-label]="'Toggle ' + node.name">
-                    <mat-icon class="mat-icon-rtl-mirror">
-                        {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
-                    </mat-icon>
-                    </button>
-                    <mat-radio-button>
-                        {{node.name}}
-                    </mat-radio-button>
-                    <button mat-icon-button (click)="addNewItem(node)"><mat-icon>add</mat-icon></button>
-                </mat-tree-node>
-            </mat-tree>
+                <div class="row" *ngIf="showCatalogoAnalistas">
+                    <div class="col-4 col-m-6 col-s-12 u-pl-5 u-ptbr-u" *ngFor="let item of catalogoAnalistas.catalogo">
+                        <mat-radio-button (change)="cambioRadio(item)">
+                            <span>{{item.name}}</span>
+                        </mat-radio-button>
+                        <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+                            <mat-icon svgIcon="ico-deshabilitar" class="u-green-icon"></mat-icon>
+                            <!-- <mat-icon svgIcon="ico-habilitar" class="u-green-icon" *ngIf="node.status"></mat-icon> -->
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="u-flex-center u-mb-3 u-mt-3">
+        <!-- <div class="u-flex-center u-mb-3 u-mt-3" *ngIf="cambiosArbol">
             <button mat-flat-button color="secundary" class="btn btnSecundary u-mx-1">Cancelar</button>
             <button mat-flat-button color="primary" class="btn btnPrimary u-mx-1"><mat-icon matDatepickerToggleIcon svgIcon="ico-guardar" class="icoBtn"></mat-icon>Guardar</button>
-        </div>
+        </div> -->
     </div>
 </div>
 <une-footer></une-footer>
