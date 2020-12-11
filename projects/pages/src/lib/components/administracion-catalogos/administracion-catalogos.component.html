@@ -5,40 +5,403 @@
     <div class="contenedor-gris">
         <div class="u-flex-center u-flex-column u-mt-1 u-w-100">
             <div class="u-flex-center u-w-35 u-font">
-                <mat-select (selectionChange)="cambioCatalogo($event)" placeholder="Selecciona un catálogo de la lista">
+                <mat-select (selectionChange)="cambioCatalogo($event)" placeholder="Selecciona un catálogo de la lista" panelClass="adminCatalogos">
                     <mat-option *ngFor="let catalogo of catalogos" [value]="catalogo.value">
                         {{catalogo.viewValue}}
                     </mat-option>
+                    <mat-option value="asociar" style="border-top: solid 1px #c3c3c3;">
+                        ASOCIAR
+                    </mat-option>
                 </mat-select>
             </div>
-            <!-- <div class="u-txt-medium u-txt-left u-w-100 u-mt-2" *ngIf="catalogoSeleccionado">Editar catálogo</div> -->
-            <div class="u-w-100">
-                <button mat-icon-button>
-                    <mat-icon svgIcon="ico-expandir" (click)="expandirComprimir('showCatalogoAnalistas')" *ngIf="showCatalogoAnalistas"></mat-icon>
-                    <mat-icon svgIcon="ico-contraer" (click)="expandirComprimir('showCatalogoAnalistas')" *ngIf="!showCatalogoAnalistas"></mat-icon>
-                </button>
-                <mat-radio-button class="strong2" (change)="cambioRadio(catalogoAnalistas)"> 
-                    {{ catalogoAnalistas.name }}
-                </mat-radio-button>
-                <button mat-icon-button><mat-icon svgIcon="ico-agregar-verde"></mat-icon></button>
+            <div class="u-txt-medium u-txt-left u-w-100 u-mt-3" *ngIf="showTextEditar">Editar catálogo</div>
+            <div class="contenedor-blanco" *ngIf="catalogos[0].show">
+                <div class="u-w-100" *ngFor="let catalogo of catalogoAnalistas">
+                    <button mat-icon-button (click)="expandirComprimir(catalogo)">
+                        <mat-icon svgIcon="ico-expandir" *ngIf="catalogo.show"></mat-icon>
+                        <mat-icon svgIcon="ico-contraer" *ngIf="!catalogo.show"></mat-icon>
+                    </button>
+                    <mat-radio-button class="strong2" (change)="cambioRadio(catalogo)"> 
+                        {{ catalogo.name }}
+                    </mat-radio-button>
+                    <button mat-icon-button *ngIf="catalogo.selected" (click)="agregarElemento(catalogo)"><mat-icon svgIcon="ico-agregar-verde"></mat-icon></button>
+    
+                    <div class="row" *ngIf="catalogo.show">
+                        <div class="col-12 col-m-6 col-s-12 u-pl-5 u-ptbr-u u-flex-center-y u-mh-40px" *ngFor="let node of catalogo.catalogo">
+                            <mat-radio-button (change)="cambioRadio(catalogo, node)">
+                                <span [ngClass]="{'u-desac-cat': !node.status}">{{node.name}}</span>
+                            </mat-radio-button>
+                            <button mat-icon-button *ngIf="node.selected" (click)="cambioEstado(node)">
+                                <mat-icon svgIcon="ico-deshabilitar" class="u-green-icon" *ngIf="!node.status"></mat-icon>
+                                <mat-icon svgIcon="ico-habilitar" class="u-green-icon" *ngIf="node.status"></mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <ng-container *ngIf="agregarAnalistaFormulario">
+                    <div class="row">
+                        <div class="col-4 col-s-12">
+                            <label>Usuario</label> <br>
+                            <input type="text" [(ngModel)]="valuesNuevoAnalista.usuario">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 col-s-12">
+                            <label>Nombre (s)</label> <br>
+                            <input type="text" [(ngModel)]="valuesNuevoAnalista.nombres">
+                        </div>
+                        <div class="col-4 col-s-12">
+                            <label>Apellido paterno</label> <br>
+                            <input type="text" [(ngModel)]="valuesNuevoAnalista.apellidoPaterno">
+                        </div>
+                        <div class="col-4 col-s-12">
+                            <label>Apellido materno</label> <br>
+                            <input type="text" [(ngModel)]="valuesNuevoAnalista.apellidoMaterno">
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
 
-                <div class="row" *ngIf="showCatalogoAnalistas">
-                    <div class="col-4 col-m-6 col-s-12 u-pl-5 u-ptbr-u" *ngFor="let item of catalogoAnalistas.catalogo">
-                        <mat-radio-button (change)="cambioRadio(item)">
-                            <span>{{item.name}}</span>
-                        </mat-radio-button>
-                        <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
-                            <mat-icon svgIcon="ico-deshabilitar" class="u-green-icon"></mat-icon>
-                            <!-- <mat-icon svgIcon="ico-habilitar" class="u-green-icon" *ngIf="node.status"></mat-icon> -->
-                        </button>
+            <div class="contenedor-blanco" *ngIf="catalogos[1].show">
+                <div class="u-w-100" *ngFor="let catalogo of catalogoUnidadAtencionUsuariosCondusef">
+                    <button mat-icon-button (click)="expandirComprimir(catalogo)">
+                        <mat-icon svgIcon="ico-expandir" *ngIf="catalogo.show"></mat-icon>
+                        <mat-icon svgIcon="ico-contraer" *ngIf="!catalogo.show"></mat-icon>
+                    </button>
+                    <mat-radio-button class="strong2" (change)="cambioRadio(catalogo)"> 
+                        {{ catalogo.name }}
+                    </mat-radio-button>
+                    <button mat-icon-button *ngIf="catalogo.selected" (click)="agregarElemento(catalogo)"><mat-icon svgIcon="ico-agregar-verde"></mat-icon></button>
+    
+                    <div class="row" *ngIf="catalogo.show">
+                        <div class="col-4 col-m-6 col-s-12 u-pl-5 u-ptbr-u u-flex-center-y u-mh-40px" *ngFor="let node of catalogo.catalogo">
+                            <mat-radio-button (change)="cambioRadio(catalogo, node)">
+                                <span [ngClass]="{'u-desac-cat': !node.status}">{{node.name}}</span>
+                            </mat-radio-button>
+                            <button mat-icon-button *ngIf="node.selected" (click)="cambioEstado(node)">
+                                <mat-icon svgIcon="ico-deshabilitar" class="u-green-icon" *ngIf="!node.status"></mat-icon>
+                                <mat-icon svgIcon="ico-habilitar" class="u-green-icon" *ngIf="node.status"></mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <ng-container *ngIf="agregarUnidadAtencionUsuarios">
+                    <div class="row">
+                        <div class="col-4 col-s-12">
+                            <label>Nombre</label> <br>
+                            <input type="text" [(ngModel)]="valuesUnidadAtencionUsuarios.nombre">
+                        </div>
+                        <div class="col-4 col-s-12">
+                            <label>Clave</label> <br>
+                            <input type="text" [(ngModel)]="valuesUnidadAtencionUsuarios.clave">
+                        </div>
+                        <div class="col-4 col-s-12">
+                            <label>Analista asignado</label> <br>
+                            <mat-select placeholder="Selecciona">
+                                <mat-option *ngFor="let analista of catalogoAnalistas[0].catalogo" [value]="analista.name">
+                                    {{analista.name}}
+                                </mat-option>
+                            </mat-select>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+
+            <div class="contenedor-blanco" *ngIf="catalogos[2].show">
+                <div class="u-w-100" *ngFor="let catalogo of catalogoFallo">
+                    <button mat-icon-button (click)="expandirComprimir(catalogo)">
+                        <mat-icon svgIcon="ico-expandir" *ngIf="catalogo.show"></mat-icon>
+                        <mat-icon svgIcon="ico-contraer" *ngIf="!catalogo.show"></mat-icon>
+                    </button>
+                    <mat-radio-button class="strong2" (change)="cambioRadio(catalogo)"> 
+                        {{ catalogo.name }}
+                    </mat-radio-button>
+                    <button mat-icon-button *ngIf="catalogo.selected" (click)="agregarElemento(catalogo)"><mat-icon svgIcon="ico-agregar-verde"></mat-icon></button>
+    
+                    <div class="row" *ngIf="catalogo.show">
+                        <div class="col-12 col-m-6 col-s-12 u-pl-5 u-ptbr-u u-flex-center-y u-mh-40px" *ngFor="let node of catalogo.catalogo">
+                            <mat-radio-button (change)="cambioRadio(catalogo, node)">
+                                <span [ngClass]="{'u-desac-cat': !node.status}">{{node.name}}</span>
+                            </mat-radio-button>
+                            <button mat-icon-button *ngIf="node.selected" (click)="cambioEstado(node)">
+                                <mat-icon svgIcon="ico-deshabilitar" class="u-green-icon" *ngIf="!node.status"></mat-icon>
+                                <mat-icon svgIcon="ico-habilitar" class="u-green-icon" *ngIf="node.status"></mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <ng-container *ngIf="agregarFallo">
+                    <div class="row">
+                        <div class="col-4 col-s-12">
+                            <label>Nombre del fallo</label> <br>
+                            <input type="text" [(ngModel)]="valuesFallo.nombre">
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+
+            <div class="contenedor-blanco" *ngIf="catalogos[3].show">
+                <div class="u-w-100" *ngFor="let catalogo of catalogoMedioLllegada">
+                    <button mat-icon-button (click)="expandirComprimir(catalogo)">
+                        <mat-icon svgIcon="ico-expandir" *ngIf="catalogo.show"></mat-icon>
+                        <mat-icon svgIcon="ico-contraer" *ngIf="!catalogo.show"></mat-icon>
+                    </button>
+                    <mat-radio-button class="strong2" (change)="cambioRadio(catalogo)"> 
+                        {{ catalogo.name }}
+                    </mat-radio-button>
+                    <button mat-icon-button *ngIf="catalogo.selected" (click)="agregarElemento(catalogo)"><mat-icon svgIcon="ico-agregar-verde"></mat-icon></button>
+    
+                    <div class="row" *ngIf="catalogo.show">
+                        <div class="col-12 col-m-6 col-s-12 u-pl-5 u-ptbr-u u-flex-center-y u-mh-40px" *ngFor="let node of catalogo.catalogo">
+                            <mat-radio-button (change)="cambioRadio(catalogo, node)">
+                                <span [ngClass]="{'u-desac-cat': !node.status}">{{node.name}}</span>
+                            </mat-radio-button>
+                            <button mat-icon-button *ngIf="node.selected" (click)="cambioEstado(node)">
+                                <mat-icon svgIcon="ico-deshabilitar" class="u-green-icon" *ngIf="!node.status"></mat-icon>
+                                <mat-icon svgIcon="ico-habilitar" class="u-green-icon" *ngIf="node.status"></mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <ng-container *ngIf="agregarMedioLlegada">
+                    <div class="row">
+                        <div class="col-4 col-s-12">
+                            <label>Nombre</label> <br>
+                            <input type="text" [(ngModel)]="valuesMedioLlegada.nombre">
+                        </div>
+                        <div class="col-4 col-s-12">
+                            <label>Días de atención</label> <br>
+                            <input type="text" [(ngModel)]="valuesMedioLlegada.dias">
+                        </div>
+                        <div class="col-4 col-s-12">
+                            <label>Clave CONDUSEF</label> <br>
+                            <input type="text" [(ngModel)]="valuesMedioLlegada.clave">
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+
+            <div class="contenedor-blanco" *ngIf="catalogos[4].show">
+                <div class="u-w-100" *ngFor="let catalogo of catalogoUnidadNegocio">
+                    <button mat-icon-button (click)="expandirComprimir(catalogo)">
+                        <mat-icon svgIcon="ico-expandir" *ngIf="catalogo.show"></mat-icon>
+                        <mat-icon svgIcon="ico-contraer" *ngIf="!catalogo.show"></mat-icon>
+                    </button>
+                    <mat-radio-button class="strong2" (change)="cambioRadio(catalogo)"> 
+                        {{ catalogo.name }}
+                    </mat-radio-button>
+                    <button mat-icon-button *ngIf="catalogo.selected" (click)="agregarElemento(catalogo)"><mat-icon svgIcon="ico-agregar-verde"></mat-icon></button>
+    
+                    <div class="row" *ngIf="catalogo.show">
+                        <div class="col-12 col-m-6 col-s-12 u-pl-5 u-ptbr-u u-flex-center-y u-mh-40px" *ngFor="let node of catalogo.catalogo">
+                            <mat-radio-button (change)="cambioRadio(catalogo, node)">
+                                <span [ngClass]="{'u-desac-cat': !node.status}">{{node.name}}</span>
+                            </mat-radio-button>
+                            <button mat-icon-button *ngIf="node.selected" (click)="cambioEstado(node)">
+                                <mat-icon svgIcon="ico-deshabilitar" class="u-green-icon" *ngIf="!node.status"></mat-icon>
+                                <mat-icon svgIcon="ico-habilitar" class="u-green-icon" *ngIf="node.status"></mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <ng-container *ngIf="agregarUnidadNegocio">
+                    <div class="row">
+                        <div class="col-4 col-s-12">
+                            <label>Nombre</label> <br>
+                            <input type="text" [(ngModel)]="valuesUnidadNegocio.nombre">
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+
+            <div class="contenedor-blanco" *ngIf="catalogos[5].show">
+                <div class="u-w-100" *ngFor="let catalogo of catalogoTipoProductoServicio">
+                    <button mat-icon-button (click)="expandirComprimir(catalogo)">
+                        <mat-icon svgIcon="ico-expandir" *ngIf="catalogo.show"></mat-icon>
+                        <mat-icon svgIcon="ico-contraer" *ngIf="!catalogo.show"></mat-icon>
+                    </button>
+                    <mat-radio-button class="strong2" (change)="cambioRadio(catalogo)"> 
+                        {{ catalogo.name }}
+                    </mat-radio-button>
+                    <button mat-icon-button *ngIf="catalogo.selected" (click)="agregarElemento(catalogo)"><mat-icon svgIcon="ico-agregar-verde"></mat-icon></button>
+    
+                    <div class="row" *ngIf="catalogo.show">
+                        <div class="col-12 col-m-6 col-s-12 u-pl-5 u-ptbr-u u-flex-center-y u-mh-40px" *ngFor="let node of catalogo.catalogo">
+                            <mat-radio-button (change)="cambioRadio(catalogo, node)">
+                                <span [ngClass]="{'u-desac-cat': !node.status}">{{node.name}}</span>
+                            </mat-radio-button>
+                            <button mat-icon-button *ngIf="node.selected" (click)="cambioEstado(node)">
+                                <mat-icon svgIcon="ico-deshabilitar" class="u-green-icon" *ngIf="!node.status"></mat-icon>
+                                <mat-icon svgIcon="ico-habilitar" class="u-green-icon" *ngIf="node.status"></mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <ng-container *ngIf="agregarTipoProductoServicio">
+                    <div class="row">
+                        <div class="col-4 col-s-12">
+                            <label>Nombre del producto o servicio</label> <br>
+                            <input type="text" [(ngModel)]="valuesTipoProductoServicio.nombre">
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+
+            <div class="contenedor-blanco" *ngIf="catalogos[6].show">
+                <div class="u-w-100" *ngFor="let catalogo of catalogoNombreComercial">
+                    <button mat-icon-button (click)="expandirComprimir(catalogo)">
+                        <mat-icon svgIcon="ico-expandir" *ngIf="catalogo.show"></mat-icon>
+                        <mat-icon svgIcon="ico-contraer" *ngIf="!catalogo.show"></mat-icon>
+                    </button>
+                    <mat-radio-button class="strong2" (change)="cambioRadio(catalogo)"> 
+                        {{ catalogo.name }}
+                    </mat-radio-button>
+                    <button mat-icon-button *ngIf="catalogo.selected" (click)="agregarElemento(catalogo)"><mat-icon svgIcon="ico-agregar-verde"></mat-icon></button>
+    
+                    <div class="row" *ngIf="catalogo.show">
+                        <div class="col-12 col-m-6 col-s-12 u-pl-5 u-ptbr-u u-flex-center-y u-mh-40px" *ngFor="let node of catalogo.catalogo">
+                            <mat-radio-button (change)="cambioRadio(catalogo, node)">
+                                <span [ngClass]="{'u-desac-cat': !node.status}">{{node.name}}</span>
+                            </mat-radio-button>
+                            <button mat-icon-button *ngIf="node.selected" (click)="cambioEstado(node)">
+                                <mat-icon svgIcon="ico-deshabilitar" class="u-green-icon" *ngIf="!node.status"></mat-icon>
+                                <mat-icon svgIcon="ico-habilitar" class="u-green-icon" *ngIf="node.status"></mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <ng-container *ngIf="agregarNombreComercial">
+                    <div class="row">
+                        <div class="col-4 col-s-12">
+                            <label>Nombre comercial</label> <br>
+                            <input type="text" [(ngModel)]="valuesNombreComercial.nombre">
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+
+            <div class="contenedor-blanco" *ngIf="catalogos[7].show">
+                <div class="u-w-100" *ngFor="let catalogo of catalogoCanalOperacion">
+                    <button mat-icon-button (click)="expandirComprimir(catalogo)">
+                        <mat-icon svgIcon="ico-expandir" *ngIf="catalogo.show"></mat-icon>
+                        <mat-icon svgIcon="ico-contraer" *ngIf="!catalogo.show"></mat-icon>
+                    </button>
+                    <mat-radio-button class="strong2" (change)="cambioRadio(catalogo)"> 
+                        {{ catalogo.name }}
+                    </mat-radio-button>
+                    <button mat-icon-button *ngIf="catalogo.selected" (click)="agregarElemento(catalogo)"><mat-icon svgIcon="ico-agregar-verde"></mat-icon></button>
+    
+                    <div class="row" *ngIf="catalogo.show">
+                        <div class="col-12 col-m-6 col-s-12 u-pl-5 u-ptbr-u u-flex-center-y u-mh-40px" *ngFor="let node of catalogo.catalogo">
+                            <mat-radio-button (change)="cambioRadio(catalogo, node)">
+                                <span [ngClass]="{'u-desac-cat': !node.status}">{{node.name}}</span>
+                            </mat-radio-button>
+                            <button mat-icon-button *ngIf="node.selected" (click)="cambioEstado(node)">
+                                <mat-icon svgIcon="ico-deshabilitar" class="u-green-icon" *ngIf="!node.status"></mat-icon>
+                                <mat-icon svgIcon="ico-habilitar" class="u-green-icon" *ngIf="node.status"></mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <ng-container *ngIf="agregarCanalOperacion">
+                    <div class="row">
+                        <div class="col-4 col-s-12">
+                            <label>Nuevo canal</label> <br>
+                            <input type="text" [(ngModel)]="valuesCanalOperacion.nombre">
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+
+            <div class="contenedor-blanco" *ngIf="catalogos[8].show">
+                <div class="u-w-100" *ngFor="let catalogo of catalogoCausaInconformidad">
+                    <button mat-icon-button (click)="expandirComprimir(catalogo)">
+                        <mat-icon svgIcon="ico-expandir" *ngIf="catalogo.show"></mat-icon>
+                        <mat-icon svgIcon="ico-contraer" *ngIf="!catalogo.show"></mat-icon>
+                    </button>
+                    <mat-radio-button class="strong2" (change)="cambioRadio(catalogo)"> 
+                        {{ catalogo.name }}
+                    </mat-radio-button>
+                    <button mat-icon-button *ngIf="catalogo.selected" (click)="agregarElemento(catalogo)"><mat-icon svgIcon="ico-agregar-verde"></mat-icon></button>
+    
+                    <div class="row" *ngIf="catalogo.show">
+                        <div class="col-6 col-m-6 col-s-12 u-pl-5 u-ptbr-u u-flex-center-y u-mh-40px" *ngFor="let node of catalogo.catalogo">
+                            <mat-radio-button (change)="cambioRadio(catalogo, node)">
+                                <span [ngClass]="{'u-desac-cat': !node.status}">{{node.name}}</span>
+                            </mat-radio-button>
+                            <button mat-icon-button *ngIf="node.selected" (click)="cambioEstado(node)">
+                                <mat-icon svgIcon="ico-deshabilitar" class="u-green-icon" *ngIf="!node.status"></mat-icon>
+                                <mat-icon svgIcon="ico-habilitar" class="u-green-icon" *ngIf="node.status"></mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <ng-container *ngIf="agregarCausaInconformidad">
+                    <div class="row">
+                        <div class="col-4 col-s-12">
+                            <label>Nueva causa de inconformidad</label> <br>
+                            <input type="text" [(ngModel)]="valuesCausaInconformidad.nombre">
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+
+            <div class="contenedor-blanco" *ngIf="showAsociar">
+                <div class="row">
+                    <div class="col-4 col-s-12">
+                        <label>Unidad de negocio</label> <br>
+                        <mat-select placeholder="Selecciona">
+                            <mat-option *ngFor="let item of catalogoUnidadNegocio[0].catalogo" [value]="item.name">
+                                {{item.name}}
+                            </mat-option>
+                        </mat-select>
+                    </div>
+                    <div class="col-4 col-s-12">
+                        <label>Tipo de producto</label> <br>
+                        <mat-select placeholder="Selecciona">
+                            <mat-option *ngFor="let item of catalogoTipoProductoServicio[0].catalogo" [value]="item.name">
+                                {{item.name}}
+                            </mat-option>
+                        </mat-select>
+                    </div>
+                    <div class="col-4 col-s-12">
+                        <label>Nombre comercial</label> <br>
+                        <mat-select placeholder="Selecciona">
+                            <mat-option *ngFor="let item of catalogoNombreComercial[0].catalogo" [value]="item.name">
+                                {{item.name}}
+                            </mat-option>
+                        </mat-select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 col-s-12">
+                        <label>Canal de operación</label> <br>
+                        <mat-select placeholder="Selecciona">
+                            <mat-option *ngFor="let item of catalogoCanalOperacion[0].catalogo" [value]="item.name">
+                                {{item.name}}
+                            </mat-option>
+                        </mat-select>
+                    </div>
+                    <div class="col-4 col-s-12">
+                        <label>Causa</label> <br>
+                        <mat-select placeholder="Selecciona">
+                            <mat-option *ngFor="let item of catalogoCausaInconformidad[0].catalogo" [value]="item.name">
+                                {{item.name}}
+                            </mat-option>
+                        </mat-select>
+                    </div>
+                    <div class="col-4 col-s-12 u-ex-right-u u-flex-end" style="padding-top: 32px !important;">
+                        <button mat-flat-button color="secundary" class="btn btnSecundary u-mx-1"><mat-icon matDatepickerToggleIcon svgIcon="ico-deshabilitar" class="icoBtn"></mat-icon>Deshabilitar</button>
+                        <button mat-flat-button color="primary" class="btn btnPrimary u-mx-1"><mat-icon matDatepickerToggleIcon svgIcon="ico-agregar-blanco"
+                            ></mat-icon>Agregar nuevo</button>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- <div class="u-flex-center u-mb-3 u-mt-3" *ngIf="cambiosArbol">
+        <div class="u-flex-center u-mb-3 u-mt-1">
             <button mat-flat-button color="secundary" class="btn btnSecundary u-mx-1">Cancelar</button>
-            <button mat-flat-button color="primary" class="btn btnPrimary u-mx-1"><mat-icon matDatepickerToggleIcon svgIcon="ico-guardar" class="icoBtn"></mat-icon>Guardar</button>
-        </div> -->
+            <button mat-flat-button color="primary" class="btn btnPrimary u-mx-1" (click)="guardarElemento()" *ngIf="showBotonGuardar"><mat-icon matDatepickerToggleIcon svgIcon="ico-guardar" class="icoBtn"></mat-icon>Guardar</button>
+        </div>
     </div>
 </div>
 <une-footer></une-footer>

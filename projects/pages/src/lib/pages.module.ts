@@ -27,6 +27,7 @@ import { ReporteadorComponent } from './components/reportes/reporteador/reportea
 import { OrdenarReporteComponent } from './components/reportes/ordenar-reporte/ordenar-reporte.component';
 import { ExportarReporteComponent } from './components/reportes/exportar-reporte/exportar-reporte.component';
 import { AdministracionCatalogosComponent } from './components/administracion-catalogos/administracion-catalogos.component';
+import { ConfirmarItemDialog } from './components/administracion-catalogos/dialogs/confirmar-item.dialog';
 
 const RegistroComponents = [
   OrigenReclamacionForm,
@@ -53,7 +54,8 @@ const Dialogs = [
   ResultadoCargaDialog,
   CargaFalloDialog,
   ListaAclaracionesDialog,
-  EstatusAclaracionDialog
+  EstatusAclaracionDialog,
+  ConfirmarItemDialog
 ]
 
 @NgModule({

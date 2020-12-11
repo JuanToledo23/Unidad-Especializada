@@ -59,6 +59,11 @@
     align-items: center;
 }
 
+.u-flex-center-y {
+    display: flex;
+    align-items: center;
+}
+
 .u-flex-end{
     display: flex;
     align-items: center;
@@ -107,6 +112,10 @@
 .u-img-fluid{
     max-width: 100%;
     height: auto;
+}
+
+.u-mh-40px {
+    min-height: 40px;
 }
 
 .u-img-xs{
