@@ -68,7 +68,6 @@ export class ExportarReporteComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
 
     this.reportesService.filtros.forEach(element => {
-      console.log(element)
       if(element.mostrarColumna) {
         this.displayedColumns.push(element.value)
       }

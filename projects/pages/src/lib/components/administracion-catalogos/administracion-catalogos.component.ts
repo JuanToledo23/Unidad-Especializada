@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, Injectable } from '@angular/core';
+import { Component, AfterViewInit, Injectable, Pipe, PipeTransform } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { HeaderService } from 'dls';
 import { ConfirmarItemDialog } from './dialogs/confirmar-item.dialog';
@@ -232,8 +232,11 @@ export class AdministracionCatalogosComponent implements AfterViewInit {
       ]
     }
   ];
-  
 
+  asociaciones = [
+    { id: 0, unidadNegocio: null, tipoProducto: null, nombreComercial: null, canalOperacion: null, causa: null, status: true, btnAgregar: true, btnHabilitarDeshabilitar: true },
+  ];
+  
   showTextEditar = false;
 
   showAsociar = false;
@@ -266,6 +269,9 @@ export class AdministracionCatalogosComponent implements AfterViewInit {
 
   nuevoElemento = {name: '', selected: false, status: true };
 
+  searchText = '';
+
+  showBuscador = false;
 
   constructor(public headerService: HeaderService, public dialog: MatDialog) {
   }
@@ -334,7 +340,6 @@ export class AdministracionCatalogosComponent implements AfterViewInit {
   }
 
   guardarElemento() {
-
     let elemento = '';
     switch (this.catalogoSeleccionado.name) {
       case 'Analistas':
@@ -408,6 +413,44 @@ export class AdministracionCatalogosComponent implements AfterViewInit {
 
 
   cambioCatalogo(catalogoSeleccionado) {
+    this.searchText = '';
+    switch (catalogoSeleccionado.value) {
+      case 'analistas':
+        this.catalogoSeleccionado = this.catalogoAnalistas;
+        break;
+      case 'uau':
+        this.catalogoSeleccionado = this.catalogoUnidadAtencionUsuariosCondusef;
+        break;
+      case 'fallo':
+        this.catalogoSeleccionado = this.catalogoFallo;
+        break;
+      case 'medioLlegada':
+        this.catalogoSeleccionado = this.catalogoMedioLllegada;
+        break;
+      case 'unidadNegocio':
+        this.catalogoSeleccionado = this.catalogoUnidadNegocio;
+        break;
+      case 'tipoProductoServicio':
+        this.catalogoSeleccionado = this.catalogoTipoProductoServicio;
+        break;
+      case 'nombreComercial':
+        this.catalogoSeleccionado = this.catalogoNombreComercial;
+        break;
+      case 'canalOperacion':
+        this.catalogoSeleccionado = this.catalogoCanalOperacion;
+        break;
+      case 'causaInconformidad':
+        this.catalogoSeleccionado = this.catalogoCausaInconformidad;
+        break;
+      default:
+        break;
+    }
+
+    if(this.catalogoSeleccionado[0].catalogo.length >= 30){
+      this.showBuscador = true;
+    } else {
+      this.showBuscador = false;
+    }
     this.catalogos.forEach(element => {
       element.show = false;
     });
@@ -419,4 +462,55 @@ export class AdministracionCatalogosComponent implements AfterViewInit {
       this.catalogos.find(element => element.value === catalogoSeleccionado.value).show = true;
     }
   }
+
+  habilitarDeshabilitar(asociacion) {
+    asociacion.status = !asociacion.status;
+  }
+
+  agregarAsociacion() {
+    this.asociaciones.push(
+      { id: this.asociaciones.length, unidadNegocio: null, tipoProducto: null, nombreComercial: null, canalOperacion: null, causa: null, status: true, btnAgregar: true, btnHabilitarDeshabilitar: true },
+    )
+
+    this.validacion()
+  }
+
+  validacion() {
+    this.asociaciones.forEach(element => {
+      element.btnAgregar = true, 
+      element.btnHabilitarDeshabilitar = true 
+    });
+    if (this.asociaciones.length > 1) {
+        this.asociaciones.forEach(element => {
+            element.btnAgregar = false;
+        });
+        this.asociaciones[this.asociaciones.length - 1].btnAgregar = true;
+    }
+  }
+
 }
+
+@Pipe({  
+  name: 'filterArray',  
+  pure: false  
+})  
+export class FilterArrayPipe implements PipeTransform {  
+  
+  transform(value: any[], searchText: string, prop?: any): any {  
+    if (!value) {  
+      return [];  
+    }  
+    if (!searchText || !prop) {  
+      return value;  
+    }  
+    const _searchText = searchText.toLowerCase(),  
+      _isArr = Array.isArray(value),  
+      _flag = _isArr && typeof value[0] === 'object' ? true : _isArr && typeof value[0] !== 'object' ? false : true;  
+  
+    return value.filter(ele => {  
+      let val = _flag ? ele[prop] : ele;  
+      return val.toString().toLowerCase().includes(_searchText);  
+    });  
+  
+  }  
+}  

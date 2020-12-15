@@ -10,7 +10,6 @@ export class ConfirmarItemDialog implements OnInit  {
     constructor(public dialogRef: MatDialogRef<ConfirmarItemDialog>, @Inject(MAT_DIALOG_DATA) public data: any) {}
     showDialog = '';
     ngOnInit() {
-        console.log(this.data);
         this.showDialog = this.data.catalogo.name;
     }
 }

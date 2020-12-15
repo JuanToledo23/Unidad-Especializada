@@ -29,7 +29,6 @@ export class ListaAclaracionesDialog implements OnInit{
     }
 
     abrirEstatusAclaracion(aclaracionSeleccionada) {
-        console.log(aclaracionSeleccionada);
         this.dialog.closeAll();
         const dialogRef = this.dialog.open(EstatusAclaracionDialog, {
             disableClose: true,

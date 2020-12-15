@@ -1,18 +1,29 @@
 <app-header></app-header>
 
 <div class="contenedor-contenido">
-    <div class="titulo-contenido">Selecciona un catálogo</div>
+    <div class="titulo-contenido">Edición de catálogos</div>
     <div class="contenedor-gris">
         <div class="u-flex-center u-flex-column u-mt-1 u-w-100">
-            <div class="u-flex-center u-w-35 u-font">
-                <mat-select (selectionChange)="cambioCatalogo($event)" placeholder="Selecciona un catálogo de la lista" panelClass="adminCatalogos">
-                    <mat-option *ngFor="let catalogo of catalogos" [value]="catalogo.value">
-                        {{catalogo.viewValue}}
-                    </mat-option>
-                    <mat-option value="asociar" style="border-top: solid 1px #c3c3c3;">
-                        ASOCIAR
-                    </mat-option>
-                </mat-select>
+            <div class="row">
+                <div class="col-4 col-s-12"></div>
+                <div class="col-4 col-s-12">
+                    <br>
+                    <mat-select (selectionChange)="cambioCatalogo($event)" placeholder="Selecciona un catálogo de la lista" panelClass="adminCatalogos">
+                        <mat-option *ngFor="let catalogo of catalogos" [value]="catalogo.value">
+                            {{catalogo.viewValue}}
+                        </mat-option>
+                        <mat-option value="asociar" style="border-top: solid 1px #c3c3c3;">
+                            ASOCIAR
+                        </mat-option>
+                    </mat-select>
+                </div>
+                <div class="col-4 col-s-12">
+                    <br>
+                    <div class="u-position-r" *ngIf="showBuscador">
+                        <input type="text" id="busca" placeholder="Buscar" [(ngModel)]="searchText">
+                        <input type="submit" class="buscar" value="">
+                    </div>
+                </div>
             </div>
             <div class="u-txt-medium u-txt-left u-w-100 u-mt-3" *ngIf="showTextEditar">Editar catálogo</div>
             <div class="contenedor-blanco" *ngIf="catalogos[0].show">
@@ -27,7 +38,7 @@
                     <button mat-icon-button *ngIf="catalogo.selected" (click)="agregarElemento(catalogo)"><mat-icon svgIcon="ico-agregar-verde"></mat-icon></button>
     
                     <div class="row" *ngIf="catalogo.show">
-                        <div class="col-12 col-m-6 col-s-12 u-pl-5 u-ptbr-u u-flex-center-y u-mh-40px" *ngFor="let node of catalogo.catalogo">
+                        <div class="col-12 col-m-6 col-s-12 u-pl-5 u-ptbr-u u-flex-center-y u-mh-40px" *ngFor="let node of catalogo.catalogo | filterArray:searchText:'name'">
                             <mat-radio-button (change)="cambioRadio(catalogo, node)">
                                 <span [ngClass]="{'u-desac-cat': !node.status}">{{node.name}}</span>
                             </mat-radio-button>
@@ -74,7 +85,7 @@
                     <button mat-icon-button *ngIf="catalogo.selected" (click)="agregarElemento(catalogo)"><mat-icon svgIcon="ico-agregar-verde"></mat-icon></button>
     
                     <div class="row" *ngIf="catalogo.show">
-                        <div class="col-4 col-m-6 col-s-12 u-pl-5 u-ptbr-u u-flex-center-y u-mh-40px" *ngFor="let node of catalogo.catalogo">
+                        <div class="col-4 col-m-6 col-s-12 u-pl-5 u-ptbr-u u-flex-center-y u-mh-40px" *ngFor="let node of catalogo.catalogo | filterArray:searchText:'name'">
                             <mat-radio-button (change)="cambioRadio(catalogo, node)">
                                 <span [ngClass]="{'u-desac-cat': !node.status}">{{node.name}}</span>
                             </mat-radio-button>
@@ -97,7 +108,7 @@
                         </div>
                         <div class="col-4 col-s-12">
                             <label>Analista asignado</label> <br>
-                            <mat-select placeholder="Selecciona">
+                            <mat-select placeholder="Selecciona" multiple>
                                 <mat-option *ngFor="let analista of catalogoAnalistas[0].catalogo" [value]="analista.name">
                                     {{analista.name}}
                                 </mat-option>
@@ -119,7 +130,7 @@
                     <button mat-icon-button *ngIf="catalogo.selected" (click)="agregarElemento(catalogo)"><mat-icon svgIcon="ico-agregar-verde"></mat-icon></button>
     
                     <div class="row" *ngIf="catalogo.show">
-                        <div class="col-12 col-m-6 col-s-12 u-pl-5 u-ptbr-u u-flex-center-y u-mh-40px" *ngFor="let node of catalogo.catalogo">
+                        <div class="col-12 col-m-6 col-s-12 u-pl-5 u-ptbr-u u-flex-center-y u-mh-40px" *ngFor="let node of catalogo.catalogo | filterArray:searchText:'name'">
                             <mat-radio-button (change)="cambioRadio(catalogo, node)">
                                 <span [ngClass]="{'u-desac-cat': !node.status}">{{node.name}}</span>
                             </mat-radio-button>
@@ -152,7 +163,7 @@
                     <button mat-icon-button *ngIf="catalogo.selected" (click)="agregarElemento(catalogo)"><mat-icon svgIcon="ico-agregar-verde"></mat-icon></button>
     
                     <div class="row" *ngIf="catalogo.show">
-                        <div class="col-12 col-m-6 col-s-12 u-pl-5 u-ptbr-u u-flex-center-y u-mh-40px" *ngFor="let node of catalogo.catalogo">
+                        <div class="col-12 col-m-6 col-s-12 u-pl-5 u-ptbr-u u-flex-center-y u-mh-40px" *ngFor="let node of catalogo.catalogo | filterArray:searchText:'name'">
                             <mat-radio-button (change)="cambioRadio(catalogo, node)">
                                 <span [ngClass]="{'u-desac-cat': !node.status}">{{node.name}}</span>
                             </mat-radio-button>
@@ -193,7 +204,7 @@
                     <button mat-icon-button *ngIf="catalogo.selected" (click)="agregarElemento(catalogo)"><mat-icon svgIcon="ico-agregar-verde"></mat-icon></button>
     
                     <div class="row" *ngIf="catalogo.show">
-                        <div class="col-12 col-m-6 col-s-12 u-pl-5 u-ptbr-u u-flex-center-y u-mh-40px" *ngFor="let node of catalogo.catalogo">
+                        <div class="col-12 col-m-6 col-s-12 u-pl-5 u-ptbr-u u-flex-center-y u-mh-40px" *ngFor="let node of catalogo.catalogo | filterArray:searchText:'name'">
                             <mat-radio-button (change)="cambioRadio(catalogo, node)">
                                 <span [ngClass]="{'u-desac-cat': !node.status}">{{node.name}}</span>
                             </mat-radio-button>
@@ -226,7 +237,7 @@
                     <button mat-icon-button *ngIf="catalogo.selected" (click)="agregarElemento(catalogo)"><mat-icon svgIcon="ico-agregar-verde"></mat-icon></button>
     
                     <div class="row" *ngIf="catalogo.show">
-                        <div class="col-12 col-m-6 col-s-12 u-pl-5 u-ptbr-u u-flex-center-y u-mh-40px" *ngFor="let node of catalogo.catalogo">
+                        <div class="col-12 col-m-6 col-s-12 u-pl-5 u-ptbr-u u-flex-center-y u-mh-40px" *ngFor="let node of catalogo.catalogo | filterArray:searchText:'name'">
                             <mat-radio-button (change)="cambioRadio(catalogo, node)">
                                 <span [ngClass]="{'u-desac-cat': !node.status}">{{node.name}}</span>
                             </mat-radio-button>
@@ -259,7 +270,7 @@
                     <button mat-icon-button *ngIf="catalogo.selected" (click)="agregarElemento(catalogo)"><mat-icon svgIcon="ico-agregar-verde"></mat-icon></button>
     
                     <div class="row" *ngIf="catalogo.show">
-                        <div class="col-12 col-m-6 col-s-12 u-pl-5 u-ptbr-u u-flex-center-y u-mh-40px" *ngFor="let node of catalogo.catalogo">
+                        <div class="col-12 col-m-6 col-s-12 u-pl-5 u-ptbr-u u-flex-center-y u-mh-40px" *ngFor="let node of catalogo.catalogo | filterArray:searchText:'name'">
                             <mat-radio-button (change)="cambioRadio(catalogo, node)">
                                 <span [ngClass]="{'u-desac-cat': !node.status}">{{node.name}}</span>
                             </mat-radio-button>
@@ -292,7 +303,7 @@
                     <button mat-icon-button *ngIf="catalogo.selected" (click)="agregarElemento(catalogo)"><mat-icon svgIcon="ico-agregar-verde"></mat-icon></button>
     
                     <div class="row" *ngIf="catalogo.show">
-                        <div class="col-12 col-m-6 col-s-12 u-pl-5 u-ptbr-u u-flex-center-y u-mh-40px" *ngFor="let node of catalogo.catalogo">
+                        <div class="col-12 col-m-6 col-s-12 u-pl-5 u-ptbr-u u-flex-center-y u-mh-40px" *ngFor="let node of catalogo.catalogo | filterArray:searchText:'name'">
                             <mat-radio-button (change)="cambioRadio(catalogo, node)">
                                 <span [ngClass]="{'u-desac-cat': !node.status}">{{node.name}}</span>
                             </mat-radio-button>
@@ -325,7 +336,7 @@
                     <button mat-icon-button *ngIf="catalogo.selected" (click)="agregarElemento(catalogo)"><mat-icon svgIcon="ico-agregar-verde"></mat-icon></button>
     
                     <div class="row" *ngIf="catalogo.show">
-                        <div class="col-6 col-m-6 col-s-12 u-pl-5 u-ptbr-u u-flex-center-y u-mh-40px" *ngFor="let node of catalogo.catalogo">
+                        <div class="col-6 col-m-6 col-s-12 u-pl-5 u-ptbr-u u-flex-center-y u-mh-40px" *ngFor="let node of catalogo.catalogo | filterArray:searchText:'name'">
                             <mat-radio-button (change)="cambioRadio(catalogo, node)">
                                 <span [ngClass]="{'u-desac-cat': !node.status}">{{node.name}}</span>
                             </mat-radio-button>
@@ -347,55 +358,63 @@
             </div>
 
             <div class="contenedor-blanco" *ngIf="showAsociar">
-                <div class="row">
-                    <div class="col-4 col-s-12">
-                        <label>Unidad de negocio</label> <br>
-                        <mat-select placeholder="Selecciona">
-                            <mat-option *ngFor="let item of catalogoUnidadNegocio[0].catalogo" [value]="item.name">
-                                {{item.name}}
-                            </mat-option>
-                        </mat-select>
+                <ng-container *ngFor="let asociacion of asociaciones">
+                    <div class="row" [ngClass]="{'u-line-top-catalogos': asociacion.id >= 1}">
+                        <div class="col-4 col-s-12" [ngClass]="{'u-desac': !asociacion.status}">
+                            <label>Unidad de negocio</label> <br>
+                            <mat-select placeholder="Selecciona" [(value)]="asociacion.unidadNegocio">
+                                <mat-option *ngFor="let item of catalogoUnidadNegocio[0].catalogo" [value]="item.name">
+                                    {{item.name}}
+                                </mat-option>
+                            </mat-select>
+                        </div>
+                        <div class="col-4 col-s-12" [ngClass]="{'u-desac': !asociacion.status}">
+                            <label>Tipo de producto</label> <br>
+                            <mat-select placeholder="Selecciona" [(value)]="asociacion.tipoProducto">
+                                <mat-option *ngFor="let item of catalogoTipoProductoServicio[0].catalogo" [value]="item.name">
+                                    {{item.name}}
+                                </mat-option>
+                            </mat-select>
+                        </div>
+                        <div class="col-4 col-s-12" [ngClass]="{'u-desac': !asociacion.status}">
+                            <label>Nombre comercial</label> <br>
+                            <mat-select placeholder="Selecciona" [(value)]="asociacion.nombreComercial">
+                                <mat-option *ngFor="let item of catalogoNombreComercial[0].catalogo" [value]="item.name">
+                                    {{item.name}}
+                                </mat-option>
+                            </mat-select>
+                        </div>
                     </div>
-                    <div class="col-4 col-s-12">
-                        <label>Tipo de producto</label> <br>
-                        <mat-select placeholder="Selecciona">
-                            <mat-option *ngFor="let item of catalogoTipoProductoServicio[0].catalogo" [value]="item.name">
-                                {{item.name}}
-                            </mat-option>
-                        </mat-select>
+                    <div class="row">
+                        <div class="col-4 col-s-12" [ngClass]="{'u-desac': !asociacion.status}">
+                            <label>Canal de operación</label> <br>
+                            <mat-select placeholder="Selecciona" [(value)]="asociacion.canalOperacion">
+                                <mat-option *ngFor="let item of catalogoCanalOperacion[0].catalogo" [value]="item.name">
+                                    {{item.name}}
+                                </mat-option>
+                            </mat-select>
+                        </div>
+                        <div class="col-4 col-s-12" [ngClass]="{'u-desac': !asociacion.status}">
+                            <label>Causa</label> <br>
+                            <mat-select placeholder="Selecciona" [(value)]="asociacion.causa">
+                                <mat-option *ngFor="let item of catalogoCausaInconformidad[0].catalogo" [value]="item.name">
+                                    {{item.name}}
+                                </mat-option>
+                            </mat-select>
+                        </div>
+                        <div class="col-4 col-s-12 u-ex-right-u u-flex-end" style="padding-top: 32px !important;">
+                            <button mat-flat-button class="btn btnTertiary u-mx-1" *ngIf="asociacion.status" (click)="habilitarDeshabilitar(asociacion)" style="min-width: 160px !important;">
+                                <mat-icon matDatepickerToggleIcon svgIcon="ico-deshabilitar" class="icoBtn"></mat-icon>Deshabilitar
+                            </button>
+                            <button mat-flat-button class="btn btnTertiary u-mx-1" *ngIf="!asociacion.status" (click)="habilitarDeshabilitar(asociacion)" style="min-width: 160px !important;">
+                                <mat-icon matDatepickerToggleIcon svgIcon="ico-habilitar" class="icoBtn"></mat-icon>Habilitar
+                            </button>
+                            <button mat-flat-button color="primary" class="btn btnPrimary u-mx-1" (click)="agregarAsociacion()" *ngIf="asociacion.btnAgregar">
+                                <mat-icon matDatepickerToggleIcon svgIcon="ico-agregar-blanco" class="icoBtn"></mat-icon>Agregar nuevo
+                            </button>
+                        </div>
                     </div>
-                    <div class="col-4 col-s-12">
-                        <label>Nombre comercial</label> <br>
-                        <mat-select placeholder="Selecciona">
-                            <mat-option *ngFor="let item of catalogoNombreComercial[0].catalogo" [value]="item.name">
-                                {{item.name}}
-                            </mat-option>
-                        </mat-select>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-4 col-s-12">
-                        <label>Canal de operación</label> <br>
-                        <mat-select placeholder="Selecciona">
-                            <mat-option *ngFor="let item of catalogoCanalOperacion[0].catalogo" [value]="item.name">
-                                {{item.name}}
-                            </mat-option>
-                        </mat-select>
-                    </div>
-                    <div class="col-4 col-s-12">
-                        <label>Causa</label> <br>
-                        <mat-select placeholder="Selecciona">
-                            <mat-option *ngFor="let item of catalogoCausaInconformidad[0].catalogo" [value]="item.name">
-                                {{item.name}}
-                            </mat-option>
-                        </mat-select>
-                    </div>
-                    <div class="col-4 col-s-12 u-ex-right-u u-flex-end" style="padding-top: 32px !important;">
-                        <button mat-flat-button color="secundary" class="btn btnSecundary u-mx-1"><mat-icon matDatepickerToggleIcon svgIcon="ico-deshabilitar" class="icoBtn"></mat-icon>Deshabilitar</button>
-                        <button mat-flat-button color="primary" class="btn btnPrimary u-mx-1"><mat-icon matDatepickerToggleIcon svgIcon="ico-agregar-blanco"
-                            ></mat-icon>Agregar nuevo</button>
-                    </div>
-                </div>
+                </ng-container>
             </div>
         </div>
         <div class="u-flex-center u-mb-3 u-mt-1">

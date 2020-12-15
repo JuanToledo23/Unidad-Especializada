@@ -29,7 +29,6 @@ export class ResultadoCargaDialog implements OnInit{
 
     ngOnInit(): void {
         this.dataSource = new MatTableDataSource(this.REGISTROS_CARGA_MASIVA);
-        console.log(this.json_object)
         this.json_object.forEach(element => {
             let estatus = null;
             if(element['Estatus'].charCodeAt(0) === 10003) {

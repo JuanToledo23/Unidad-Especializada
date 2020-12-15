@@ -26,7 +26,7 @@ import { EstatusAclaracionDialog, ListaAclaracionesDialog } from './components/r
 import { ReporteadorComponent } from './components/reportes/reporteador/reporteador.component';
 import { OrdenarReporteComponent } from './components/reportes/ordenar-reporte/ordenar-reporte.component';
 import { ExportarReporteComponent } from './components/reportes/exportar-reporte/exportar-reporte.component';
-import { AdministracionCatalogosComponent } from './components/administracion-catalogos/administracion-catalogos.component';
+import { AdministracionCatalogosComponent, FilterArrayPipe } from './components/administracion-catalogos/administracion-catalogos.component';
 import { ConfirmarItemDialog } from './components/administracion-catalogos/dialogs/confirmar-item.dialog';
 
 const RegistroComponents = [
@@ -77,7 +77,8 @@ const Dialogs = [
     CargaMasivaComponent,
     ReportesComponents,
     AdministracionCatalogosComponent,
-    Dialogs
+    Dialogs,
+    FilterArrayPipe
   ],
   exports: [
     PagesComponent,

@@ -52,7 +52,7 @@ export class MaterialModule {
     );
     this.matIconRegistry.addSvgIcon(
       "ico-agregar-blanco",
-      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/img/icoAgregarBlanco.svg")
+      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/img/icoAgregar.svg")
     );
     this.matIconRegistry.addSvgIcon(
       "ico-agregar-negro",
