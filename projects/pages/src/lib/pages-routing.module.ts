@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdministracionCatalogosComponent } from './components/administracion-catalogos/administracion-catalogos.component';
+import { AdministracionDiasInhabilesComponent } from './components/administracion-dias-inhabiles/administracion-dias-inhabiles.component';
 import { CargaMasivaComponent } from './components/carga-masiva/carga-masiva.component';
 import { ConsultaComponent } from './components/consulta/consulta.component';
 import { MisAsuntosComponent } from './components/mis-asuntos/mis-asuntos.component';
@@ -39,6 +40,9 @@ const routes: Routes = [
       },
       {
         path:'administracion-catalogos', component: AdministracionCatalogosComponent
+      },
+      {
+        path:'administracion-dias-inhabiles', component: AdministracionDiasInhabilesComponent
       }
     ]
   }

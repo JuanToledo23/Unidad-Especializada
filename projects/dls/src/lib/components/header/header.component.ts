@@ -85,6 +85,9 @@ export class HeaderComponent implements OnInit {
   goAdminCatalogos() {
     this.router.navigate(['/analista/administracion-catalogos']);
   }
+  goAdminDiasInhabiles() {
+    this.router.navigate(['/analista/administracion-dias-inhabiles']);
+  }
 
   menuButtonClick() {
     this.showMenu = !this.showMenu;
