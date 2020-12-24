@@ -94,5 +94,9 @@ export class MaterialModule {
       "ico-habilitar",
       this.domSanitizer.bypassSecurityTrustResourceUrl("assets/img/icoHabilitar.svg")
     );
+    this.matIconRegistry.addSvgIcon(
+      "ico-flecha",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/img/icoFlecha.svg")
+    );
   }
 }

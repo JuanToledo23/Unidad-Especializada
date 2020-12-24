@@ -8,6 +8,10 @@
     opacity: .8;
 }
 
+.u-bg-white {
+    background-color: #fff;
+}
+
 .u-border-u {
     border: unset !important;
 }
@@ -665,4 +669,19 @@ input.u-desac {
 .u-line-top-catalogos {
     border-top: solid 1px #c2c2c2;
     margin-top: 10px;
+}
+
+.u-rtotte-90deg {
+    transform: rotate(90deg);
+}
+.u-rtotte-270deg {
+    transform: rotate(270deg);
+}
+
+.u-img-xs {
+    width: 25px;
+}
+
+.u-my-2 {
+    margin: 0 2rem;
 }
