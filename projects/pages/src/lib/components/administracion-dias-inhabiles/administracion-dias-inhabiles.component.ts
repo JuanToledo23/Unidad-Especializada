@@ -19,7 +19,7 @@ export class AdministracionDiasInhabilesComponent implements AfterViewInit, OnIn
 
   events = [];
 
-  viewYear: number = 2020;
+  viewYear: number = 2021;
 
   viewDate: Date = new Date(this.viewYear + '-01-01T00:00:00');
 
@@ -117,10 +117,21 @@ export class AdministracionDiasInhabilesComponent implements AfterViewInit, OnIn
   }
   getTodayEvents(day, month) {
     this.daydetails = {}
-
+    console.log(this.events);
+    console.log(this.year);
+    this.events.push(
+      {
+        start: new Date(),
+        end: new Date(),
+        title: 'title event 1',
+        color: '',
+        actions: ''
+      }
+    );
     if (this.events.length > 0) {
       this.loader = true;
       this.daydetails = clone(day);
+      console.log(new Date(this.year, month, day.day))
       let d1 = new Date(this.year, month, day.day).toDateString();
 
       for (let index = 0; index < this.events.length; index++) {
@@ -135,14 +146,15 @@ export class AdministracionDiasInhabilesComponent implements AfterViewInit, OnIn
             self.loader = false;
           }, 1000);
         }
-
       }
     }
+    // console.log(this.daydetails);
   }
   getnbevents(day, month) {
     let nb = 0;
     let colors = []
     if (this.events.length > 0) {
+
       let d1 = new Date(this.year, month, day).toDateString();
       for (let index = 0; index < this.events.length; index++) {
         const element = this.events[index];
