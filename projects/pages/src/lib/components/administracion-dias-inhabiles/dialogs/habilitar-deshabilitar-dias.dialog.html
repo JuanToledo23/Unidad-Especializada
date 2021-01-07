@@ -1,0 +1,43 @@
+<div class="titulo-contenido u-p-u">Selecciona el(los) día(s) que deseas deshabilitar</div>
+<div class="contenedor-dialog u-txt-medium u-pt-1">
+    <div class="u-flex-column">
+        <div class="rango u-flex-center">
+            <div>
+                Del: 
+            </div>
+            <div class="divider"></div>
+            <div>
+                Al: 
+            </div>
+        </div>
+        <div>
+            <div class="monthcontainer">
+                <div class="monthname">{{dialogMonth.date | nombreMes}}</div>
+                <div class="flexdays">
+                    <div class="day dayName" *ngFor="let label of days">
+                        {{label}}
+                    </div>
+                </div>
+                <div *ngFor="let week of dialogMonth.days" class="flexdays">
+                    <div *ngFor="let day of week;let i=index"
+                        class="day" placement="right" (mouseover)="activarStatus(dialogMonth)">
+                        {{day?.day}}
+                    </div>
+                    <!-- <div class="day void_day" placement="right"> </div> -->
+                </div>
+            </div>
+            <mat-date-range-input
+                [formGroup]="campaignOne"
+                [rangePicker]="campaignOnePicker">
+                <input matStartDate placeholder="Start date" formControlName="start">
+                <input matEndDate placeholder="End date" formControlName="end">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>
+            <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
+        </div>
+    </div>
+    <div class="u-flex-center u-pt-2">
+        <button mat-flat-button color="secundary" class="btn btnSecundary u-mx-1" mat-dialog-close>No</button>
+        <button mat-flat-button color="primary" class="btn btnPrimary u-mx-1" [mat-dialog-close]="true" cdkFocusInitial>Sí</button>
+    </div>
+</div>

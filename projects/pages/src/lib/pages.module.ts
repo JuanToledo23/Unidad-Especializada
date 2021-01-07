@@ -27,7 +27,7 @@ import { ReporteadorComponent } from './components/reportes/reporteador/reportea
 import { OrdenarReporteComponent } from './components/reportes/ordenar-reporte/ordenar-reporte.component';
 import { ExportarReporteComponent } from './components/reportes/exportar-reporte/exportar-reporte.component';
 import { AdministracionCatalogosComponent, FilterArrayPipe } from './components/administracion-catalogos/administracion-catalogos.component';
-import { AdministracionDiasInhabilesComponent, NombreMesPipe } from './components/administracion-dias-inhabiles/administracion-dias-inhabiles.component';
+import { AdministracionDiasInhabilesComponent, HabilitarDeshabilitarDiasDialog, NombreMesPipe } from './components/administracion-dias-inhabiles/administracion-dias-inhabiles.component';
 import { ConfirmarItemDialog } from './components/administracion-catalogos/dialogs/confirmar-item.dialog';
 
 const RegistroComponents = [
@@ -56,7 +56,8 @@ const Dialogs = [
   CargaFalloDialog,
   ListaAclaracionesDialog,
   EstatusAclaracionDialog,
-  ConfirmarItemDialog
+  ConfirmarItemDialog,
+  HabilitarDeshabilitarDiasDialog
 ]
 
 @NgModule({

@@ -20,7 +20,7 @@
                 <div class="row u-bg-white">
                     <div *ngFor="let Month of calendar;let m =index" class="col-2">
                         <div class="monthcontainer">
-                            <div class="monthname">{{Month.date | nombreMes}}</div>
+                            <div class="monthname" (click)="showDialog(Month)">{{Month.date | nombreMes}}</div>
                             <div class="flexdays">
                                 <div class="day dayName" *ngFor="let label of days">
                                     {{label}}

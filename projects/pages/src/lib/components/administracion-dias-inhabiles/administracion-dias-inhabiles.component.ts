@@ -1,5 +1,6 @@
-import { Component, AfterViewInit, Injectable, Pipe, PipeTransform, OnInit, Output, EventEmitter } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, AfterViewInit, Injectable, Pipe, PipeTransform, OnInit, Output, EventEmitter, Inject } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { HeaderService } from 'dls';
 import * as cloneDeep from "lodash/cloneDeep";
@@ -17,9 +18,71 @@ interface Catalogo {
 })
 export class AdministracionDiasInhabilesComponent implements AfterViewInit, OnInit {
 
-  events = [];
+  colors: any = {
+    red: {
+      primary: '#ad2121',
+      secondary: '#FAE3E3'
+    },
+    blue: {
+      primary: '#1e90ff',
+      secondary: '#D1E8FF'
+    },
+    yellow: {
+      primary: '#e3bc08',
+      secondary: '#FDF1BA'
+    }
+  };
+  actions: any[] = [
+    {
+      label: '<i class="fa fa-fw fa-times"></i>',
+      name: 'delete'
+    },
+    {
+      label: '<i class="fa fa-fw fa-pencil"></i>',
+      name: 'edit'
+    }
+  ];
+  events: any = [
+    {
+      start: new Date(2021, 0, 7),
+      end: new Date(2021, 0, 10),
+      title: 'title event 1',
+      color: this.colors.red,
+      actions: this.actions
+    },
+    {
+      start: new Date(2021, 0, 8),
+      end: new Date(2021, 0, 10),
+      title: 'title event 1',
+      color: this.colors.red,
+      actions: this.actions
+    },
+    {
+      start: new Date(2021, 0, 9),
+      end: new Date(2021, 0, 10),
+      title: 'title event 1',
+      color: this.colors.red,
+      actions: this.actions
+    },
+    {
+      start: new Date(2021, 0, 10),
+      end: new Date(2021, 0, 10),
+      title: 'title event 1',
+      color: this.colors.red,
+      actions: this.actions
+    },
+    {
+      start: new Date(2021, 11, 20),
+      end: new Date(2021, 11, 20),
+      title: 'title event 2',
+      color: this.colors.yellow,
+      actions: this.actions
+    }
+  ]
 
   viewYear: number = 2021;
+
+  dialogMonth: any;
 
   viewDate: Date = new Date(this.viewYear + '-01-01T00:00:00');
 
@@ -36,7 +99,7 @@ export class AdministracionDiasInhabilesComponent implements AfterViewInit, OnIn
   year: any = new Date().getFullYear();
   calendar: any = [];
   spinner: any = true;
-  constructor(public sanitizer:DomSanitizer, public headerService: HeaderService) { }
+  constructor(public sanitizer:DomSanitizer, public headerService: HeaderService, public dialog: MatDialog) { }
   ngAfterViewInit(): void {
     setTimeout(() => {
       this.headerService.titulo = 'Administración de días inhábiles';
@@ -62,7 +125,7 @@ export class AdministracionDiasInhabilesComponent implements AfterViewInit, OnIn
     setTimeout(() => {
       self.spinner = false;
     }, 2000);
-    console.log(this.calendar);
+    // console.log(this.calendar);
   }
   generateCalendar(month, year) {
 
@@ -93,7 +156,8 @@ export class AdministracionDiasInhabilesComponent implements AfterViewInit, OnIn
           istoday: istoday,
           colors: colorsEvents.color,
           events: [],
-          nb: colorsEvents.nb
+          nb: colorsEvents.nb,
+          status: false
         };
         day++;
       }
@@ -117,28 +181,27 @@ export class AdministracionDiasInhabilesComponent implements AfterViewInit, OnIn
   }
   getTodayEvents(day, month) {
     this.daydetails = {}
-    console.log(this.events);
-    console.log(this.year);
-    this.events.push(
-      {
-        start: new Date(),
-        end: new Date(),
-        title: 'title event 1',
-        color: '',
-        actions: ''
-      }
-    );
+    // this.events.push(
+    //   {
+    //     start: new Date(),
+    //     end: new Date(),
+    //     title: 'title event 1',
+    //     color: '',
+    //     actions: ''
+    //   }
+    // );
     if (this.events.length > 0) {
       this.loader = true;
       this.daydetails = clone(day);
-      console.log(new Date(this.year, month, day.day))
+      // console.log(new Date(this.year, month, day.day))
       let d1 = new Date(this.year, month, day.day).toDateString();
-
+      console.log(d1);
       for (let index = 0; index < this.events.length; index++) {
         const element = this.events[index];
         let d2 = element.start.toDateString();
         if (d2 == d1) {
           this.daydetails.events.push(element);
+          console.log(element.end)
         }
         if (index == this.events.length - 1) {
           let self = this;
@@ -155,15 +218,28 @@ export class AdministracionDiasInhabilesComponent implements AfterViewInit, OnIn
     let colors = []
     if (this.events.length > 0) {
 
-      let d1 = new Date(this.year, month, day).toDateString();
+      let d1 = +new Date(this.year, month, day).toISOString().substr(0, 10).replace('-', '').replace('-', '');
+      // console.log(+new Date(this.year, month, day).toISOString().substr(0, 10).replace('-', '').replace('-', ''))
       for (let index = 0; index < this.events.length; index++) {
         const element = this.events[index];
-        let d2 = element.start.toDateString();
+        let d2 = +element.start.toISOString().substr(0, 10).replace('-', '').replace('-', '');
         if (d2 == d1) {
           nb++;
-          colors.push(element.color.secondary)
+          colors.push(element.color.secondary);
+          // console.log(element.start);
+          // console.log(element.end);
+
+          // if(element.start != element.end) {
+          //   console.log(element.end);
+          // }
+
+          // if(d1 < +element.end.toISOString().substr(0, 10).replace('-', '').replace('-', '')) {
+          //   console.log(+element.end.toISOString().substr(0, 10).replace('-', '').replace('-', ''));
+          //   colors.push('#00aaff');
+          // }
         }
       }
+      // console.log(colors)
       return ({ nb: nb, color: colors.toString() })
     } else {
       return { color: "", nb: 0 }
@@ -187,6 +263,20 @@ export class AdministracionDiasInhabilesComponent implements AfterViewInit, OnIn
     this.viewYear--;
     this.refresh(new Date(this.viewYear + '-01-01T00:00:00'));
   }
+  showDialog(m) {
+    this.dialogMonth = m;
+    console.log(this.dialogMonth)
+    const dialogRef = this.dialog.open(HabilitarDeshabilitarDiasDialog, {
+      disableClose: true,
+      data: {
+        dialogMonth: this.dialogMonth
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      // if(result) {
+      // }
+    });
+  }
 }
 
 @Pipe({  
@@ -199,3 +289,31 @@ export class NombreMesPipe implements PipeTransform {
     return this.meses[date.getMonth()]
   }  
 }  
+
+
+@Component({
+  templateUrl: './dialogs/habilitar-deshabilitar-dias.dialog.html',
+  styleUrls: ['./dialogs/habilitar-deshabilitar-dias.dialog.scss']
+})
+export class HabilitarDeshabilitarDiasDialog {
+  days: any = ["Lu", "Ma", "Mi", "Ju", "Vi", "Sa", "Do"];
+  campaignOne: FormGroup;
+  dialogMonth: any;
+  constructor(public dialogRef: MatDialogRef<HabilitarDeshabilitarDiasDialog>, @Inject(MAT_DIALOG_DATA) public data: any) {
+    this.dialogMonth = this.data.dialogMonth;
+    console.log(this.dialogMonth);
+    const today = new Date();
+    const month = today.getMonth();
+    const year = today.getFullYear();
+
+    this.campaignOne = new FormGroup({
+      start: new FormControl(new Date(year, month, 13)),
+      end: new FormControl(new Date(year, month, 16))
+    });
+  }
+  
+  activarStatus(info) {
+    console.log(info)
+  }
+  
+}
