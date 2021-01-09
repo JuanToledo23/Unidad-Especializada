@@ -1,9 +1,13 @@
-import { Component, AfterViewInit, Injectable, Pipe, PipeTransform, OnInit, Output, EventEmitter, Inject } from '@angular/core';
+import { Component, AfterViewInit, Pipe, PipeTransform, OnInit, Output, EventEmitter, Inject } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatCalendar } from '@angular/material/datepicker';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { HeaderService } from 'dls';
 import * as cloneDeep from "lodash/cloneDeep";
+import { Subject } from 'rxjs';
+import { DateAdapter } from 'saturn-datepicker';
+
 const clone: cloneDeep = (<any>cloneDeep).default || cloneDeep
 
 interface Catalogo {
@@ -286,34 +290,74 @@ export class AdministracionDiasInhabilesComponent implements AfterViewInit, OnIn
 export class NombreMesPipe implements PipeTransform {  
   meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
   transform(date: any): any {
-    return this.meses[date.getMonth()]
+    return this.meses[date]
   }  
 }  
-
 
 @Component({
   templateUrl: './dialogs/habilitar-deshabilitar-dias.dialog.html',
   styleUrls: ['./dialogs/habilitar-deshabilitar-dias.dialog.scss']
 })
-export class HabilitarDeshabilitarDiasDialog {
+export class HabilitarDeshabilitarDiasDialog implements AfterViewInit{
+  private _destroyed = new Subject<void>();
   days: any = ["Lu", "Ma", "Mi", "Ju", "Vi", "Sa", "Do"];
-  campaignOne: FormGroup;
-  dialogMonth: any;
-  constructor(public dialogRef: MatDialogRef<HabilitarDeshabilitarDiasDialog>, @Inject(MAT_DIALOG_DATA) public data: any) {
-    this.dialogMonth = this.data.dialogMonth;
-    console.log(this.dialogMonth);
-    const today = new Date();
-    const month = today.getMonth();
-    const year = today.getFullYear();
+  month: number = 0;
+  inlineRange;
+  dias: any;
+  startDate = new Date(2021, 1, 1);
+  constructor(public dialogRef: MatDialogRef<HabilitarDeshabilitarDiasDialog>, @Inject(MAT_DIALOG_DATA) public data: any, private dateAdapter: DateAdapter<Date>) {
+    this.dateAdapter.setLocale('mx');
+    this.dateAdapter.getFirstDayOfWeek = () => { return 1; }
+    this.dateAdapter.getDayOfWeekNames = () => ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"];
+    this.month = this.data.dialogMonth.date.getMonth()
+    console.log(this.month)
+    this.startDate = new Date(this.data.dialogMonth.date);
+  }
 
-    this.campaignOne = new FormGroup({
-      start: new FormControl(new Date(year, month, 13)),
-      end: new FormControl(new Date(year, month, 16))
+  ngAfterViewInit(){
+    document.getElementsByClassName('mat-calendar-next-button')[0].addEventListener('click', () => {
+      if(this.month === 11) {
+        this.month = 0;
+      } else {
+        this.month++;
+      }
+    });
+
+    document.getElementsByClassName('mat-calendar-previous-button')[0].addEventListener('click', () => {
+      if (this.month === 0) {
+        this.month = 11
+      } else {
+        this.month--;
+      }
     });
   }
   
   activarStatus(info) {
     console.log(info)
   }
-  
+  inlineRangeChange($event) {
+    console.log($event)
+    console.log(this.inlineRange)
+    this.inlineRange = $event;
+  }
+
+  guardarDias() {
+    this.dias = this.getDates(new Date(this.inlineRange.begin), new Date(this.inlineRange.end))
+    console.log(this.dias);
+  }
+
+  getDates(startDate, endDate) {
+    var dates = [],
+        currentDate = startDate,
+        addDays = function(days) {
+          var date = new Date(this.valueOf());
+          date.setDate(date.getDate() + days);
+          return date;
+        };
+    while (currentDate <= endDate) {
+      dates.push(currentDate);
+      currentDate = addDays.call(currentDate, 1);
+    }
+    return dates;
+  };
 }

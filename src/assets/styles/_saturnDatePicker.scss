@@ -1,0 +1,77 @@
+:not(.mat-calendar-body-disabled):hover    > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-semi-selected), .cdk-keyboard-focused   .mat-calendar-body-active    > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-semi-selected), .cdk-program-focused   .mat-calendar-body-active    > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-semi-selected) {
+    background-color: rgba(0, 0, 0, 0.04);
+}
+:not(.mat-calendar-body-disabled):hover    > .mat-calendar-body-semi-selected, .cdk-keyboard-focused   .mat-calendar-body-active    > .mat-calendar-body-semi-selected, .cdk-program-focused   .mat-calendar-body-active    > .mat-calendar-body-semi-selected {
+    background-color: #006340;
+    color: white;
+}
+.mat-calendar-body-begin-range:not(.mat-calendar-body-end-range) {
+    background-color: #01986333;
+}
+.mat-calendar-body-end-range:not(.mat-calendar-body-begin-range) {
+    background-color: #01986333;
+}
+.mat-calendar-body    > tr   .mat-calendar-cell-semi-selected  ~ .mat-calendar-cell-semi-selected {
+    border-radius: 0;
+}
+.mat-calendar-cell-semi-selected {
+    background-color: #01986333;
+}
+.mat-calendar-cell-over > .mat-calendar-body-cell-content {
+    border: #006340 1px solid;
+}
+
+.mat-calendar-body-cell {
+    border: 1px solid #E8E7E7 !important;
+}
+
+.mat-calendar-body-cell-content {
+    border-radius: unset !important;
+    width: 100% !important;
+    height: 100% !important;
+    top: 0 !important;
+    left: 0 !important;
+}
+
+.mat-calendar-body-label {
+    color: white;
+}
+
+// .mat-calendar-table-header-divider::after {
+//     content: unset !important;
+// }
+
+.mat-calendar-table-header th {
+    text-align: center;
+    padding: 8px 0px !important;
+    border: 1px solid #E8E7E7;;
+    position: relative;
+    color: #000 !important;
+    font-family: "AvenirNextLTPro-Medium" !important;
+    font-size: 14px !important;
+}
+
+.mat-calendar-table tbody > tr[aria-hidden="true"] {
+    display: none !important;
+}
+
+.mat-calendar-table-header th::before {
+    content: "";
+    border-left: 1px solid #E8E7E7;
+    position: absolute;
+    top: 32px;
+    left: -1px;
+    height: 38px;
+}
+
+.mat-calendar-table-header-divider {
+    display: none !important;
+}
+
+.mat-calendar-controls button:first-of-type, .mat-calendar-controls div:first-of-type {
+    display: none;
+}
+
+.mat-calendar-controls {
+    justify-content: space-around;
+}

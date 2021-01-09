@@ -30,6 +30,8 @@ import { AdministracionCatalogosComponent, FilterArrayPipe } from './components/
 import { AdministracionDiasInhabilesComponent, HabilitarDeshabilitarDiasDialog, NombreMesPipe } from './components/administracion-dias-inhabiles/administracion-dias-inhabiles.component';
 import { ConfirmarItemDialog } from './components/administracion-catalogos/dialogs/confirmar-item.dialog';
 
+import { SatDatepickerModule, SatNativeDateModule } from 'saturn-datepicker';
+
 const RegistroComponents = [
   OrigenReclamacionForm,
   DatosGeneralesClienteForm,
@@ -67,7 +69,8 @@ const Dialogs = [
     MaterialModule,
     PagesRoutingModule,
     DlsModule,
-    DirectiveModule
+    DirectiveModule,
+    SatDatepickerModule, SatNativeDateModule
   ],
   declarations: [
     PagesComponent,

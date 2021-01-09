@@ -11,7 +11,7 @@
             </div>
         </div>
         <div>
-            <div class="monthcontainer">
+            <!-- <div class="monthcontainer">
                 <div class="monthname">{{dialogMonth.date | nombreMes}}</div>
                 <div class="flexdays">
                     <div class="day dayName" *ngFor="let label of days">
@@ -23,21 +23,24 @@
                         class="day" placement="right" (mouseover)="activarStatus(dialogMonth)">
                         {{day?.day}}
                     </div>
-                    <!-- <div class="day void_day" placement="right"> </div> -->
+                </div>
+            </div> -->
+            <span class="code" *ngIf="inlineRange">
+                {{ inlineRange.begin | date }}
+                {{ inlineRange.end | date }}
+            </span>
+            <div class="contenedorCalendario">
+                <div> {{month | nombreMes}} </div>
+                <div class="inlineCalendarContainer">
+                    <sat-calendar [rangeMode]="true" (dateRangesChange)="inlineRangeChange($event)" [startAt]="startDate">
+                    </sat-calendar>
                 </div>
             </div>
-            <mat-date-range-input
-                [formGroup]="campaignOne"
-                [rangePicker]="campaignOnePicker">
-                <input matStartDate placeholder="Start date" formControlName="start">
-                <input matEndDate placeholder="End date" formControlName="end">
-            </mat-date-range-input>
-            <mat-datepicker-toggle matSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>
-            <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
+
         </div>
     </div>
     <div class="u-flex-center u-pt-2">
         <button mat-flat-button color="secundary" class="btn btnSecundary u-mx-1" mat-dialog-close>No</button>
-        <button mat-flat-button color="primary" class="btn btnPrimary u-mx-1" [mat-dialog-close]="true" cdkFocusInitial>Sí</button>
+        <button mat-flat-button color="primary" class="btn btnPrimary u-mx-1" [mat-dialog-close]="true" (click)="guardarDias()" cdkFocusInitial>Sí</button>
     </div>
 </div>
