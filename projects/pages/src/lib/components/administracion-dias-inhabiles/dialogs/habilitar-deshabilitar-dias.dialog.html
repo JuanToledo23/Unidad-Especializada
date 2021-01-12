@@ -3,11 +3,15 @@
     <div class="u-flex-column">
         <div class="rango u-flex-center">
             <div>
-                Del: 
+                Del: <span class="code" *ngIf="inlineRange">
+                    {{ inlineRange.begin | date }}
+                </span>
             </div>
             <div class="divider"></div>
             <div>
-                Al: 
+                Al: <span class="code" *ngIf="inlineRange">
+                    {{ inlineRange.end | date }}
+                </span>
             </div>
         </div>
         <div>
@@ -25,10 +29,6 @@
                     </div>
                 </div>
             </div> -->
-            <span class="code" *ngIf="inlineRange">
-                {{ inlineRange.begin | date }}
-                {{ inlineRange.end | date }}
-            </span>
             <div class="contenedorCalendario">
                 <div> {{month | nombreMes}} </div>
                 <div class="inlineCalendarContainer">
@@ -36,11 +36,15 @@
                     </sat-calendar>
                 </div>
             </div>
+            <div class="cajaTexto">
+                <label>Motivo</label>
+                <textarea [(ngModel)]="calendarioService.motivo"></textarea>
+            </div>
 
         </div>
     </div>
     <div class="u-flex-center u-pt-2">
-        <button mat-flat-button color="secundary" class="btn btnSecundary u-mx-1" mat-dialog-close>No</button>
-        <button mat-flat-button color="primary" class="btn btnPrimary u-mx-1" [mat-dialog-close]="true" (click)="guardarDias()" cdkFocusInitial>Sí</button>
+        <button mat-flat-button color="secundary" class="btn btnSecundary u-mx-1" mat-dialog-close>Cancelar</button>
+        <button mat-flat-button color="primary" class="btn btnPrimary u-mx-1" [mat-dialog-close]="true" (click)="guardarDias()" cdkFocusInitial>Guardar</button>
     </div>
 </div>

@@ -1,5 +1,5 @@
 .rango {
-    background-color: gray;
+    background-color: #f6f6f6;
     padding: 20px 10px;
 }
 
@@ -17,4 +17,8 @@
 .contenedorCalendario div:first-of-type {
     margin-bottom: -50px;
     margin-top: 30px;
+}
+
+.cajaTexto {
+    text-align: start;
 }

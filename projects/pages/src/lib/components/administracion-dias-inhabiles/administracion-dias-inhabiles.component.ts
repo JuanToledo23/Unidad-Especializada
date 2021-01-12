@@ -5,6 +5,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { DomSanitizer } from '@angular/platform-browser';
 import { HeaderService } from 'dls';
 import * as cloneDeep from "lodash/cloneDeep";
+import { CalendarioService } from 'projects/dls/src/lib/services/calendario.service';
 import { Subject } from 'rxjs';
 import { DateAdapter } from 'saturn-datepicker';
 
@@ -24,65 +25,18 @@ export class AdministracionDiasInhabilesComponent implements AfterViewInit, OnIn
 
   colors: any = {
     red: {
-      primary: '#ad2121',
-      secondary: '#FAE3E3'
-    },
+      primary: '#fbbdb8',
+      secondary: '#fbbdb8'
+  },
     blue: {
-      primary: '#1e90ff',
-      secondary: '#D1E8FF'
+        primary: '#1e90ff',
+        secondary: '#D1E8FF'
     },
     yellow: {
-      primary: '#e3bc08',
-      secondary: '#FDF1BA'
+        primary: '#e3bc08',
+        secondary: '#FDF1BA'
     }
-  };
-  actions: any[] = [
-    {
-      label: '<i class="fa fa-fw fa-times"></i>',
-      name: 'delete'
-    },
-    {
-      label: '<i class="fa fa-fw fa-pencil"></i>',
-      name: 'edit'
-    }
-  ];
-  events: any = [
-    {
-      start: new Date(2021, 0, 7),
-      end: new Date(2021, 0, 10),
-      title: 'title event 1',
-      color: this.colors.red,
-      actions: this.actions
-    },
-    {
-      start: new Date(2021, 0, 8),
-      end: new Date(2021, 0, 10),
-      title: 'title event 1',
-      color: this.colors.red,
-      actions: this.actions
-    },
-    {
-      start: new Date(2021, 0, 9),
-      end: new Date(2021, 0, 10),
-      title: 'title event 1',
-      color: this.colors.red,
-      actions: this.actions
-    },
-    {
-      start: new Date(2021, 0, 10),
-      end: new Date(2021, 0, 10),
-      title: 'title event 1',
-      color: this.colors.red,
-      actions: this.actions
-    },
-    {
-      start: new Date(2021, 11, 20),
-      end: new Date(2021, 11, 20),
-      title: 'title event 2',
-      color: this.colors.yellow,
-      actions: this.actions
-    }
-  ]
+};
 
   viewYear: number = 2021;
 
@@ -103,7 +57,7 @@ export class AdministracionDiasInhabilesComponent implements AfterViewInit, OnIn
   year: any = new Date().getFullYear();
   calendar: any = [];
   spinner: any = true;
-  constructor(public sanitizer:DomSanitizer, public headerService: HeaderService, public dialog: MatDialog) { }
+  constructor(public sanitizer:DomSanitizer, public headerService: HeaderService, public dialog: MatDialog, public calendarioService: CalendarioService) { }
   ngAfterViewInit(): void {
     setTimeout(() => {
       this.headerService.titulo = 'Administración de días inhábiles';
@@ -161,7 +115,8 @@ export class AdministracionDiasInhabilesComponent implements AfterViewInit, OnIn
           colors: colorsEvents.color,
           events: [],
           nb: colorsEvents.nb,
-          status: false
+          status: colorsEvents.stat,
+          motivo: colorsEvents.motivo
         };
         day++;
       }
@@ -185,7 +140,7 @@ export class AdministracionDiasInhabilesComponent implements AfterViewInit, OnIn
   }
   getTodayEvents(day, month) {
     this.daydetails = {}
-    // this.events.push(
+    // this.calendarioService.events.push(
     //   {
     //     start: new Date(),
     //     end: new Date(),
@@ -194,20 +149,20 @@ export class AdministracionDiasInhabilesComponent implements AfterViewInit, OnIn
     //     actions: ''
     //   }
     // );
-    if (this.events.length > 0) {
+    if (this.calendarioService.events.length > 0) {
       this.loader = true;
       this.daydetails = clone(day);
       // console.log(new Date(this.year, month, day.day))
       let d1 = new Date(this.year, month, day.day).toDateString();
       console.log(d1);
-      for (let index = 0; index < this.events.length; index++) {
-        const element = this.events[index];
+      for (let index = 0; index < this.calendarioService.events.length; index++) {
+        console.log(this.calendarioService.events[index])
+        const element = this.calendarioService.events[index];
         let d2 = element.start.toDateString();
         if (d2 == d1) {
           this.daydetails.events.push(element);
-          console.log(element.end)
         }
-        if (index == this.events.length - 1) {
+        if (index == this.calendarioService.events.length - 1) {
           let self = this;
           setTimeout(() => {
             self.loader = false;
@@ -220,31 +175,23 @@ export class AdministracionDiasInhabilesComponent implements AfterViewInit, OnIn
   getnbevents(day, month) {
     let nb = 0;
     let colors = []
-    if (this.events.length > 0) {
+    let status;
+    let motivo;
+    if (this.calendarioService.events.length > 0) {
 
       let d1 = +new Date(this.year, month, day).toISOString().substr(0, 10).replace('-', '').replace('-', '');
-      // console.log(+new Date(this.year, month, day).toISOString().substr(0, 10).replace('-', '').replace('-', ''))
-      for (let index = 0; index < this.events.length; index++) {
-        const element = this.events[index];
+      for (let index = 0; index < this.calendarioService.events.length; index++) {
+        const element = this.calendarioService.events[index];
         let d2 = +element.start.toISOString().substr(0, 10).replace('-', '').replace('-', '');
         if (d2 == d1) {
           nb++;
           colors.push(element.color.secondary);
-          // console.log(element.start);
-          // console.log(element.end);
-
-          // if(element.start != element.end) {
-          //   console.log(element.end);
-          // }
-
-          // if(d1 < +element.end.toISOString().substr(0, 10).replace('-', '').replace('-', '')) {
-          //   console.log(+element.end.toISOString().substr(0, 10).replace('-', '').replace('-', ''));
-          //   colors.push('#00aaff');
-          // }
+          status = this.calendarioService.events[index].status
+          motivo = this.calendarioService.events[index].motivo
         }
       }
-      // console.log(colors)
-      return ({ nb: nb, color: colors.toString() })
+
+      return ({ nb: nb, color: colors.toString(), stat: status, motivo: motivo })
     } else {
       return { color: "", nb: 0 }
     }
@@ -277,9 +224,23 @@ export class AdministracionDiasInhabilesComponent implements AfterViewInit, OnIn
       }
     });
     dialogRef.afterClosed().subscribe(result => {
+      this.calendarioService.fechas.forEach(element => {
+        this.calendarioService.events.push({
+          start: new Date(element),
+          end: new Date(element),
+          title: 'title event 1',
+          color: this.colors.red,
+          actions: '',
+          motivo: this.calendarioService.motivo,
+          status: true
+      })
+      });
+      console.log(this.calendarioService.events);
+      this.refresh(this.viewDate);
       // if(result) {
       // }
     });
+    
   }
 }
 
@@ -305,7 +266,7 @@ export class HabilitarDeshabilitarDiasDialog implements AfterViewInit{
   inlineRange;
   dias: any;
   startDate = new Date(2021, 1, 1);
-  constructor(public dialogRef: MatDialogRef<HabilitarDeshabilitarDiasDialog>, @Inject(MAT_DIALOG_DATA) public data: any, private dateAdapter: DateAdapter<Date>) {
+  constructor(public dialogRef: MatDialogRef<HabilitarDeshabilitarDiasDialog>, @Inject(MAT_DIALOG_DATA) public data: any, private dateAdapter: DateAdapter<Date>, public calendarioService: CalendarioService) {
     this.dateAdapter.setLocale('mx');
     this.dateAdapter.getFirstDayOfWeek = () => { return 1; }
     this.dateAdapter.getDayOfWeekNames = () => ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"];
@@ -337,13 +298,13 @@ export class HabilitarDeshabilitarDiasDialog implements AfterViewInit{
   }
   inlineRangeChange($event) {
     console.log($event)
-    console.log(this.inlineRange)
     this.inlineRange = $event;
   }
 
   guardarDias() {
     this.dias = this.getDates(new Date(this.inlineRange.begin), new Date(this.inlineRange.end))
     console.log(this.dias);
+    this.calendarioService.fechas = this.dias;
   }
 
   getDates(startDate, endDate) {

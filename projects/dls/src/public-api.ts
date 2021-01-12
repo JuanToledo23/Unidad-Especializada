@@ -17,6 +17,7 @@ export * from './lib/services/header.service';
 export * from './lib/services/caso.service';
 export * from './lib/services/aclaraciones.service';
 export * from './lib/services/reportes.service';
+export * from './lib/services/calendario.service';
 
 
 // Directives
