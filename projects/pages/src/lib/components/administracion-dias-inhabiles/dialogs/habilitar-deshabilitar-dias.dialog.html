@@ -3,14 +3,14 @@
     <div class="u-flex-column">
         <div class="rango u-flex-center">
             <div>
-                Del: <span class="code" *ngIf="inlineRange">
-                    {{ inlineRange.begin | date }}
+                Del: <span class="code" *ngIf="calendarioService.inlineRange">
+                    {{ calendarioService.inlineRange.begin | date }}
                 </span>
             </div>
             <div class="divider"></div>
             <div>
-                Al: <span class="code" *ngIf="inlineRange">
-                    {{ inlineRange.end | date }}
+                Al: <span class="code" *ngIf="calendarioService.inlineRange">
+                    {{ calendarioService.inlineRange.end | date }}
                 </span>
             </div>
         </div>
@@ -32,7 +32,7 @@
             <div class="contenedorCalendario">
                 <div> {{month | nombreMes}} </div>
                 <div class="inlineCalendarContainer">
-                    <sat-calendar [rangeMode]="true" (dateRangesChange)="inlineRangeChange($event)" [startAt]="startDate">
+                    <sat-calendar [rangeMode]="true" (dateRangesChange)="calendarioService.inlineRangeChange($event)" [startAt]="startDate" [selected]="calendarioService.selectedDate">
                     </sat-calendar>
                 </div>
             </div>
@@ -40,7 +40,6 @@
                 <label>Motivo</label>
                 <textarea [(ngModel)]="calendarioService.motivo"></textarea>
             </div>
-
         </div>
     </div>
     <div class="u-flex-center u-pt-2">

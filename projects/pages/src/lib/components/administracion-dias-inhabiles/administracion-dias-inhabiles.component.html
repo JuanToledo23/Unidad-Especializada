@@ -29,8 +29,8 @@
                             <div *ngFor="let week of Month.days" class="flexdays">
                                 <div *ngFor="let day of week;let i=index"
                                     [ngClass]="day?( day.istoday?'todayclass':(day.nb>0?'haveevents':'')):   'void_day'"
-                                    [style.background-image]="day? ('linear-gradient(120deg, '+day.colors+',#fff)'):''"
-                                    class="day tooltip" placement="right" (click)="dayindex=i;getTodayEvents(day,m)">
+                                    [style.background-color]="day?.colors"
+                                    class="day tooltip" placement="right" (click)="dayindex=i;getTodayEvents(day,m, Month)">
                                     {{day?.day}}
                                     <span class="tooltiptext" [ngClass]="{'transparent': !day?.status}">{{day?.motivo}}</span>
                                 </div>

@@ -11,6 +11,8 @@ export class CalendarioService {
 
     motivo: string;
 
+    inlineRange;
+    selectedDate = null;
     colors: any = {
         red: {
             primary: '#fbbdb8',
@@ -93,4 +95,7 @@ export class CalendarioService {
         }
     ]
 
+    inlineRangeChange($event) {
+        this.inlineRange = $event;
+    }
 }

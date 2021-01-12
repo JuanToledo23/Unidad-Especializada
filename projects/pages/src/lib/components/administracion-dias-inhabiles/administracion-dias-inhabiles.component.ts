@@ -3,9 +3,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { MatCalendar } from '@angular/material/datepicker';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
-import { HeaderService } from 'dls';
+import { CalendarioService, HeaderService } from 'dls';
 import * as cloneDeep from "lodash/cloneDeep";
-import { CalendarioService } from 'projects/dls/src/lib/services/calendario.service';
 import { Subject } from 'rxjs';
 import { DateAdapter } from 'saturn-datepicker';
 
@@ -83,17 +82,14 @@ export class AdministracionDiasInhabilesComponent implements AfterViewInit, OnIn
     setTimeout(() => {
       self.spinner = false;
     }, 2000);
-    // console.log(this.calendar);
   }
   generateCalendar(month, year) {
 
     let monthList = [];
     let nbweeks = this.getNbWeeks(month, year);
     let dayone = this.getDay2(new Date(year, month - 1, 1));
-    // let dayone = new Date(year, month - 1, 1).getDay();
     let nbdaysMonth = new Date(year, month, 0).getDate();
     let lastdayindex = this.getDay2(new Date(year, month - 1, nbdaysMonth));
-    // let lastdayindex = new Date(year, month - 1, nbdaysMonth).getDay();
     let lastday = 7;
     let day = 1;
     let today = new Date().toDateString();
@@ -132,31 +128,31 @@ export class AdministracionDiasInhabilesComponent implements AfterViewInit, OnIn
   }
   getNbWeeks(month, year) {
     let dayone = this.getDay2(new Date(year, month - 1, 1));
-    // let dayone = new Date(year, month - 1, 1).getDay();
     let nbdaysMonth = new Date(year, month, 0).getDate();
     let lastday = this.getDay2(new Date(year, month - 1, nbdaysMonth));;
-    // let lastday = new Date(year, month - 1, nbdaysMonth).getDay();
     return (nbdaysMonth + dayone + (6 - lastday)) / 7;
   }
-  getTodayEvents(day, month) {
+  getTodayEvents(day, month, mon) {
     this.daydetails = {}
-    // this.calendarioService.events.push(
-    //   {
-    //     start: new Date(),
-    //     end: new Date(),
-    //     title: 'title event 1',
-    //     color: '',
-    //     actions: ''
-    //   }
-    // );
+    this.dialogMonth = mon;
+
     if (this.calendarioService.events.length > 0) {
       this.loader = true;
       this.daydetails = clone(day);
-      // console.log(new Date(this.year, month, day.day))
       let d1 = new Date(this.year, month, day.day).toDateString();
-      console.log(d1);
+      
+      if(day.status) {
+        const dialogRef = this.dialog.open(HabilitarDeshabilitarDiasDialog, {
+          disableClose: true,
+          data: {
+            dialogMonth: this.dialogMonth
+          }
+        });
+        day.colors = '#e6efe5';
+        this.calendarioService.selectedDate = new Date(this.year, month, day.day);
+        this.calendarioService.motivo = this.daydetails.motivo;
+      }
       for (let index = 0; index < this.calendarioService.events.length; index++) {
-        console.log(this.calendarioService.events[index])
         const element = this.calendarioService.events[index];
         let d2 = element.start.toDateString();
         if (d2 == d1) {
@@ -170,7 +166,6 @@ export class AdministracionDiasInhabilesComponent implements AfterViewInit, OnIn
         }
       }
     }
-    // console.log(this.daydetails);
   }
   getnbevents(day, month) {
     let nb = 0;
@@ -216,7 +211,6 @@ export class AdministracionDiasInhabilesComponent implements AfterViewInit, OnIn
   }
   showDialog(m) {
     this.dialogMonth = m;
-    console.log(this.dialogMonth)
     const dialogRef = this.dialog.open(HabilitarDeshabilitarDiasDialog, {
       disableClose: true,
       data: {
@@ -235,7 +229,7 @@ export class AdministracionDiasInhabilesComponent implements AfterViewInit, OnIn
           status: true
       })
       });
-      console.log(this.calendarioService.events);
+
       this.refresh(this.viewDate);
       // if(result) {
       // }
@@ -263,7 +257,6 @@ export class HabilitarDeshabilitarDiasDialog implements AfterViewInit{
   private _destroyed = new Subject<void>();
   days: any = ["Lu", "Ma", "Mi", "Ju", "Vi", "Sa", "Do"];
   month: number = 0;
-  inlineRange;
   dias: any;
   startDate = new Date(2021, 1, 1);
   constructor(public dialogRef: MatDialogRef<HabilitarDeshabilitarDiasDialog>, @Inject(MAT_DIALOG_DATA) public data: any, private dateAdapter: DateAdapter<Date>, public calendarioService: CalendarioService) {
@@ -271,7 +264,6 @@ export class HabilitarDeshabilitarDiasDialog implements AfterViewInit{
     this.dateAdapter.getFirstDayOfWeek = () => { return 1; }
     this.dateAdapter.getDayOfWeekNames = () => ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"];
     this.month = this.data.dialogMonth.date.getMonth()
-    console.log(this.month)
     this.startDate = new Date(this.data.dialogMonth.date);
   }
 
@@ -294,16 +286,10 @@ export class HabilitarDeshabilitarDiasDialog implements AfterViewInit{
   }
   
   activarStatus(info) {
-    console.log(info)
-  }
-  inlineRangeChange($event) {
-    console.log($event)
-    this.inlineRange = $event;
   }
 
   guardarDias() {
-    this.dias = this.getDates(new Date(this.inlineRange.begin), new Date(this.inlineRange.end))
-    console.log(this.dias);
+    this.dias = this.getDates(new Date(this.calendarioService.inlineRange.begin), new Date(this.calendarioService.inlineRange.end))
     this.calendarioService.fechas = this.dias;
   }
 
@@ -321,4 +307,5 @@ export class HabilitarDeshabilitarDiasDialog implements AfterViewInit{
     }
     return dates;
   };
+
 }
