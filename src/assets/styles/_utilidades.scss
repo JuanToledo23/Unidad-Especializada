@@ -33,6 +33,10 @@
 .u-flex{
     display: flex;
 }
+.u-flex-row{
+    display: flex;
+    flex-direction: row;
+}
 
 .u-flex-auto{
     flex: 1 1 auto;
@@ -41,6 +45,11 @@
 .u-flex-column{
     display: flex;
     flex-direction: column;
+}
+.u-flex-column-center{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .u-flex-wrap{
@@ -180,6 +189,10 @@
 
 .u-p-2{
     padding: 2rem!important;
+}
+
+.u-p-1-2 {
+    padding: 1rem 2rem;
 }
 
 .u-pt-0{
@@ -382,6 +395,10 @@ strong{
 }
 .u-txt-md{
     font-size: 17px;
+}
+
+.u-txt-19px {
+    font-size: 19px;
 }
 
 .u-txt-lg{
@@ -688,4 +705,8 @@ input.u-desac {
 
 .u-my-2 {
     margin: 0 2rem;
+}
+
+.u-lh-1-5 {
+    line-height: 1.5rem;
 }

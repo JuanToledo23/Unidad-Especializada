@@ -31,6 +31,9 @@ import { AdministracionDiasInhabilesComponent, HabilitarDeshabilitarDiasDialog, 
 import { ConfirmarItemDialog } from './components/administracion-catalogos/dialogs/confirmar-item.dialog';
 
 import { SatDatepickerModule, SatNativeDateModule } from 'saturn-datepicker';
+import { ConfirmacionDialog, ReasignacionCasosComponent } from './components/reasignacion-casos/reasignacion-casos.component';
+import { CancelacionFoliosComponent, ConfirmacionCancelacionDialog } from './components/cancelacion-folio/cancelacion-folios.component';
+
 
 const RegistroComponents = [
   OrigenReclamacionForm,
@@ -59,7 +62,9 @@ const Dialogs = [
   ListaAclaracionesDialog,
   EstatusAclaracionDialog,
   ConfirmarItemDialog,
-  HabilitarDeshabilitarDiasDialog
+  HabilitarDeshabilitarDiasDialog,
+  ConfirmacionDialog,
+  ConfirmacionCancelacionDialog
 ]
 
 @NgModule({
@@ -83,6 +88,8 @@ const Dialogs = [
     ReportesComponents,
     AdministracionCatalogosComponent,
     AdministracionDiasInhabilesComponent,
+    ReasignacionCasosComponent,
+    CancelacionFoliosComponent,
     Dialogs,
     FilterArrayPipe,
     NombreMesPipe
@@ -98,6 +105,8 @@ const Dialogs = [
     ReportesComponents,
     AdministracionCatalogosComponent,
     AdministracionDiasInhabilesComponent,
+    ReasignacionCasosComponent,
+    CancelacionFoliosComponent,
   ],
   entryComponents: [
     Dialogs

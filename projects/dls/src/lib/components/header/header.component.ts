@@ -88,6 +88,12 @@ export class HeaderComponent implements OnInit {
   goAdminDiasInhabiles() {
     this.router.navigate(['/analista/administracion-dias-inhabiles']);
   }
+  goReasignacionCasos() {
+    this.router.navigate(['/analista/reasignacion-casos']);
+  }
+  goCancelacionFolios() {
+    this.router.navigate(['/analista/cancelacion-folios']);
+  }
 
   menuButtonClick() {
     this.showMenu = !this.showMenu;

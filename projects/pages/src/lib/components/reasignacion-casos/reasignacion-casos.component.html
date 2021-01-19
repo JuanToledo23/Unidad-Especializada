@@ -1,0 +1,83 @@
+<app-header></app-header>
+
+<div class="contenedor-contenido">
+    <div class="titulo-contenido">Mis asuntos pendientes</div>
+    <div class="contenedor-gris">
+        <div class="u-flex-center u-flex-column u-mt-1">
+            <div class="u-position-r u-w-50">
+                <input type="text" id="buscaAsuntos" placeholder="Buscar por expediente SIO o folio interno">
+                <input type="submit" class="buscar" value="">
+            </div>            
+        </div>
+        <div class="u-mb-1">
+            <div class="row">
+                <div class="col-6 col-s-6">
+                    <div class="subtitulo-subseccion u-pl-0" style="margin-left: 9px;">Datos del caso:</div>
+                    <div class="contenedor-blanco u-flex-column">
+                        <div class="contenedor-info u-p-1-2 u-border-box u-flex">
+                            <img src="assets/img/icoHoja.svg" class="u-img-md u-mr-1 u-ml-1">
+                            <div class="u-lh-1-5">
+                                <label class="tit-info">CARGO NO RECONOCIDO</label>
+                                <div><label>Num. Expediente: </label><label class="strong2">2020/090/200</label></div>
+                                <div><label>Folio interno: </label><label class="strong2">12345</label></div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-s-12 u-bg-blanco u-flex-column u-p-1">
+                            <div class="u-flex u-justify-center">
+                                <div class="u-txt-right u-pr-07 u-w-50 u-mw-300">Nombre(s) del cliente:</div>
+                                <div class="u-txt-left u-pl-07 u-w-50 u-mw-300"><label class="strong2">ANA LUCIA SOCORRO RASCON</label></div>
+                            </div>
+                            <div class="u-flex u-justify-center">
+                                <div class="u-txt-right u-pr-07 u-w-50 u-mw-300">Medio de llegada:</div>
+                                <div class="u-txt-left u-pl-07 u-w-50 u-mw-300"><label class="strong2">GESTIÓN ELECTRÓNICA TRADICIONAL</label></div>
+                            </div>
+                            <div class="u-flex u-justify-center">
+                                <div class="u-txt-right u-pr-07 u-w-50 u-mw-300">Fecha de recepción:</div>
+                                <div class="u-txt-left u-pl-07 u-w-50 u-mw-300"><label class="strong2">01/09/2020</label></div>
+                            </div>
+                            <div class="u-flex u-justify-center">
+                                <div class="u-txt-right u-pr-07 u-w-50 u-mw-300">Fecha de vencimiento:</div>
+                                <div class="u-txt-left u-pl-07 u-w-50 u-mw-300"><label class="strong2">28/09/2020</label></div>
+                            </div>
+                            <div class="u-flex u-justify-center">
+                                <div class="u-txt-right u-pr-07 u-w-50 u-mw-300">Nombre del producto o servicio:</div>
+                                <div class="u-txt-left u-pl-07 u-w-50 u-mw-300"><label class="strong2">TARJETA AZTECA</label></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-s-6">
+                    <div class="subtitulo-subseccion u-pl-0" style="margin-left: 9px;">Reasignar a:</div>
+                    <div class="contenedor-blanco u-flex-column-center" style="min-height: 302px;padding: 10px 50px;">
+                        <!-- <mat-select placeholder="Selecciona el filtro deseado" (selectionChange)="cambiarFiltro($event, filtroSeleccionado)"> -->
+                        <div class="u-flex-column">
+                            <div class="u-flex-end">
+                                <label class="u-mr-1">Analista actual:</label>
+                                <mat-select placeholder="Seleccione" style="width: 80%;" (selectionChange)="cambiarAnalista($event, 'analista1')">
+                                    <mat-option *ngFor="let analista of catalogosService.catalogoAnalistas[0].catalogo" [value]="analista.name">
+                                        {{analista.name}}
+                                    </mat-option>
+                                </mat-select>
+                            </div>
+                            <img src="assets/img/flecha_reasignar.svg" style="margin: 15px;">
+                            <div class="u-flex-end">
+                                <label class="u-mr-1">Reasignar caso a:</label>
+                                <mat-select placeholder="Seleccione" style="width: 80%;" (selectionChange)="cambiarAnalista($event, 'analista2')">
+                                    <mat-option *ngFor="let analista of catalogosService.catalogoAnalistas[0].catalogo" [value]="analista.name">
+                                        {{analista.name}}
+                                    </mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="u-flex-center u-mb-3 u-mt-1">
+            <button mat-flat-button color="secundary" class="btn btnSecundary u-mx-1">Cancelar</button>
+            <button mat-flat-button color="primary" class="btn btnPrimary u-mx-1" (click)="guardar()"><mat-icon matDatepickerToggleIcon svgIcon="ico-guardar" class="icoBtn"></mat-icon>Guardar</button>
+        </div>
+    </div>
+</div>
+<une-footer></une-footer>

@@ -100,5 +100,9 @@ export class MaterialModule {
       "ico-flecha",
       this.domSanitizer.bypassSecurityTrustResourceUrl("assets/img/icoFlecha.svg")
     );
+    this.matIconRegistry.addSvgIcon(
+      "ico-cancelar",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("assets/img/icoCancelar.svg")
+    );
   }
 }
