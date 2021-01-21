@@ -50,6 +50,8 @@ export class HeaderComponent implements OnInit {
 
   profile: string;
 
+  activeButton: boolean = true;
+
   constructor(public headerService: HeaderService, private router: Router) {
     this.name = 'No disponible';
     this.lastname = '';
@@ -98,7 +100,14 @@ export class HeaderComponent implements OnInit {
   menuButtonClick() {
     this.showMenu = !this.showMenu;
   }
-  
+
+  change(button: string) {
+    if(button === 'reclamaciones') 
+      this.activeButton = true;
+    else if (button === 'redeco')
+      this.activeButton = false;
+  }
+
   @HostListener('click')
   clickInside() {
     this.wasInside = true;

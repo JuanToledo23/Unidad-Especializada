@@ -1,6 +1,7 @@
 .btn {
     border-radius: unset !important;
     min-width: 130px !important;
+    font-family: 'AvenirNextLTPro-Medium';
 }
 
 .btnPrimary:hover {
@@ -46,4 +47,9 @@
 .icoBtnEliminar {
     width: 30px;
     cursor: pointer;
+}
+
+.meneActiveButton {
+    background-color: #006340 !important;
+    color: #fff !important;
 }

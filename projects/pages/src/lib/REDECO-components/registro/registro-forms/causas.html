@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="col-1 u-txt-center">
+        <label class="strong2">No.</label>
+    </div>
+    <div class="col-6 u-txt-center">
+        <label class="strong2">Causa de la queja</label>
+    </div>
+    <div class="col-2 u-txt-center">
+        <label class="strong2">Resolución</label>
+    </div>
+    <div class="col-3 u-txt-center">
+        <label class="strong2">Motivo</label>
+    </div>
+</div>
+<ng-container *ngFor="let causa of causas">
+    <div class="row borderCausa">
+        <div class="col-1 contenedorNumero">
+            <div class="numero u-flex-center strong2">{{causa.numero}}</div>
+        </div>
+        <div class="col-6">
+            {{causa.causa}}
+            <br>
+            <div class="linkCausa"><label class="u-cursor-pointer" (click)="verRespuesta(causa)">Ver Respuesta</label></div>
+        </div>
+        <div class="col-2">
+            <mat-select>
+                <mat-option value="option1">Opción 1</mat-option>
+                <mat-option value="option2">Opción 2</mat-option>
+                <mat-option value="option3">Opción 3</mat-option>
+            </mat-select>
+        </div>
+        <div class="col-3">
+            <mat-select>
+                <mat-option value="option1">Opción 1</mat-option>
+                <mat-option value="option2">Opción 2</mat-option>
+                <mat-option value="option3">Opción 3</mat-option>
+            </mat-select>
+        </div>
+    </div>
+    <div class="row" *ngIf="causa.mostrarRespuesta">
+        <div class="col-1 contenedorEditar">
+            Editar
+            <div class="editarRespuesta u-flex-center u-txt-center">
+                <img src="assets/img/editar.svg" style="width: 22px;">
+            </div>
+        </div>
+        <div class="col-11 textAreaRespuesta">
+            <textarea>{{causa.respuesta}}</textarea>
+        </div>
+    </div>
+</ng-container>

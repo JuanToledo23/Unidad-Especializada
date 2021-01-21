@@ -33,6 +33,8 @@ import { ConfirmarItemDialog } from './components/administracion-catalogos/dialo
 import { SatDatepickerModule, SatNativeDateModule } from 'saturn-datepicker';
 import { ConfirmacionDialog, ReasignacionCasosComponent } from './components/reasignacion-casos/reasignacion-casos.component';
 import { CancelacionFoliosComponent, ConfirmacionCancelacionDialog } from './components/cancelacion-folio/cancelacion-folios.component';
+import { REDECORegistroComponent } from './REDECO-components/registro/registro.component';
+import { REDECOCausas, REDECODatosCliente, REDECODatosGeneralesQuejoso, REDECODocumentos, REDECOOrigenQueja } from './REDECO-components/registro/registro-forms/registro-forms.component';
 
 
 const RegistroComponents = [
@@ -53,6 +55,14 @@ const ReportesComponents = [
   ReporteadorComponent,
   OrdenarReporteComponent,
   ExportarReporteComponent
+]
+
+const REDECORegistroComponents = [
+  REDECODatosGeneralesQuejoso,
+  REDECODatosCliente,
+  REDECOOrigenQueja,
+  REDECOCausas,
+  REDECODocumentos
 ]
 
 const Dialogs = [
@@ -90,6 +100,8 @@ const Dialogs = [
     AdministracionDiasInhabilesComponent,
     ReasignacionCasosComponent,
     CancelacionFoliosComponent,
+    REDECORegistroComponent,
+    REDECORegistroComponents,
     Dialogs,
     FilterArrayPipe,
     NombreMesPipe
@@ -107,6 +119,8 @@ const Dialogs = [
     AdministracionDiasInhabilesComponent,
     ReasignacionCasosComponent,
     CancelacionFoliosComponent,
+    REDECORegistroComponent,
+    REDECORegistroComponents,
   ],
   entryComponents: [
     Dialogs

@@ -1,0 +1,74 @@
+<app-header></app-header>
+
+<div class="contenedor-contenido">
+    <div class="titulo-contenido">Captura de Caso</div>
+    <div class="contenedor-gris">
+        <div class="subtitulo-seccion">Caso</div>
+        <div class="row u-mb-2">
+            <div class="col-12 col-s-12 info-reclamante u-flex-between u-p-1" style="line-height: 20px;">
+                <div class="u-flex">
+                    <img src="assets/img/icoHoja.svg" class="u-img-md u-mr-1 u-ml-1">
+                    <div>
+                        <label class="tit-info">Datos del folio interno</label>
+                        <div><label>Folio interno: </label><label class="strong2">12345678</label></div>
+                    </div>
+                </div>
+                <div class="u-flex u-txt-right" style="align-items: center;">
+                    <div>
+                        <label class="tit-info">NORMA AVENDAÑO ACOSTA</label>
+                        <div><label class="strong2">722500</label></div>
+                    </div>
+                    <img src="assets/img/iconoAnalista.svg" class="u-mr-1 u-ml-2" style="width: 6rem;">
+                </div>
+            </div>
+        </div>
+        <mat-accordion multi>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Datos generales del quejoso
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                    <datos-generales-quejoso></datos-generales-quejoso>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Datos del cliente
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                    <datos-cliente></datos-cliente>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Origen de la queja
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                    <origen-queja></origen-queja>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Causas
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                    <causas></causas>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Documentos
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                    <documentos></documentos>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+
+    <div class="u-flex-center u-mb-4">
+        <button mat-flat-button color="secundary" class="btn btnSecundary u-mx-1">Cancelar</button>
+        <button mat-flat-button color="primary" class="btn btnPrimary u-mx-1"><mat-icon matDatepickerToggleIcon svgIcon="ico-guardar" class="icoBtn"></mat-icon>Guardar</button>
+    </div>
+</div>
+<une-footer></une-footer>

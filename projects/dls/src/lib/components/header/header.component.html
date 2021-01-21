@@ -44,33 +44,52 @@
 				</div>
 			</div>
 		</div>
-		<div id="menu">
-		<ul class="l-navegacion nivel1">
-			<li><a (click)="goMisAsusntos()"><div>Mis asuntos</div></a></li>
-			<li><a (click)="goRegistro()"><div>Registro</div></a></li>
-			<li><a (click)="goCargaMasiva()"><div>Carga masiva casos</div></a></li>
-			<li><a (click)="goReportes()"><div>Reportes</div></a></li>
-			<li class="dropdown2">
-				<a><div>Consulta histórico MODUNE</div><div class="flecha"></div></a>
-				<ul class="nivel2 dropdown-content2">
-					<li><a href="#"><div>Opción 1</div></a></li>
-					<li class="dropdown3">
-						<a><div>Opción 2</div><div class="flecha"></div></a>
-						<ul class="nivel3 dropdown-content3">
-							<li><a href="#"><div>Opción 1</div></a></li>
-							<li><a href="#"><div>Opción 2</div></a></li>
-						</ul>
-					</li>
-				</ul>
-			</li>
-			<li><a (click)="goAdminDiasInhabiles()"><div>Administración de días inhábiles</div></a></li>
-			<li><a><div>Reasignación de días inhábiles</div></a></li>
-			<li><a (click)="goReasignacionCasos()"><div>Reasignación de casos</div></a></li>
-			<li><a (click)="goCancelacionFolios()"><div>Cancelación de folios</div></a></li>
-			<li><a><div>Validación de casos</div></a></li>
-			<li><a (click)="goAdminCatalogos()"><div>Administración de catálogos</div></a></li>
-			<li><a href="#"><div>Cerrar sesión</div></a></li>
-		</ul>
+		<div class="u-flex-center u-mt-3 u-mb-1">
+			<button mat-flat-button class="btn u-mx-1 btnSecundary" [ngClass]="{'meneActiveButton': activeButton}" (click)="change('reclamaciones')">Reclamaciones</button>
+			<button mat-flat-button class="btn u-mx-1 btnSecundary" [ngClass]="{'meneActiveButton': !activeButton}" (click)="change('redeco')">REDECO</button>
+		</div>
+		<div id="menu" *ngIf="activeButton">
+			<ul class="l-navegacion nivel1">
+				<li><a (click)="goMisAsusntos()"><div>Mis asuntos</div></a></li>
+				<li><a (click)="goRegistro()"><div>Registro</div></a></li>
+				<li><a (click)="goCargaMasiva()"><div>Carga masiva casos</div></a></li>
+				<li><a (click)="goReportes()"><div>Reportes</div></a></li>
+				<li><a><div>Consulta histórico MODUNE</div></a></li>
+				<li><a (click)="goAdminDiasInhabiles()"><div>Administración de días inhábiles</div></a></li>
+				<li><a><div>Reasignación de días inhábiles</div></a></li>
+				<li><a (click)="goReasignacionCasos()"><div>Reasignación de casos</div></a></li>
+				<li><a (click)="goCancelacionFolios()"><div>Cancelación de folios</div></a></li>
+				<li><a><div>Validación de casos</div></a></li>
+				<li><a (click)="goAdminCatalogos()"><div>Administración de catálogos</div></a></li>
+				<li><a href="#"><div>Cerrar sesión</div></a></li>
+			</ul>
+		</div>
+		<div id="menu" *ngIf="!activeButton">
+			<ul class="l-navegacion nivel1">
+				<li><a><div>Mis asuntos</div></a></li>
+				<li><a><div>Carga masiva casos</div></a></li>
+				<li><a><div>Reportes</div></a></li>
+				<li><a><div>Consulta histórico MODUNE</div></a></li>
+				<li><a><div>Administración de días inhábiles</div></a></li>
+				<li><a><div>Reasignación de casos</div></a></li>
+				<li><a><div>Cancelación de folios</div></a></li>
+				<li><a><div>Administración de catálogos</div></a></li>
+				<li><a href="#"><div>Cerrar sesión</div></a></li>
+			</ul>
 		</div>
 	</div>
 </div>
+
+<!-- <li class="dropdown2">
+	<a><div>Consulta histórico MODUNE</div><div class="flecha"></div></a>
+	<ul class="nivel2 dropdown-content2">
+		<li><a href="#"><div>Opción 1</div></a></li>
+		<li class="dropdown3">
+			<a><div>Opción 2</div><div class="flecha"></div></a>
+			<ul class="nivel3 dropdown-content3">
+				<li><a href="#"><div>Opción 1</div></a></li>
+				<li><a href="#"><div>Opción 2</div></a></li>
+			</ul>
+		</li>
+	</ul>
+</li> -->

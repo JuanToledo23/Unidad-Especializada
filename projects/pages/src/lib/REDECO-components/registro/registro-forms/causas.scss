@@ -1,0 +1,44 @@
+.borderCausa {
+    border-top: solid 1px #e6efe6;
+}
+
+.contenedorNumero {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    padding: unset;
+}
+
+.contenedorEditar {
+    display: flex;
+    justify-content: center;
+    padding: unset;
+    height: 65px;
+    align-items: center;
+    flex-direction: column;
+    font-size: 12px;
+    font-family: 'Avenir_Next_Demi_Bold';
+}
+
+.numero {
+    background-color: #e6efe6;
+    width: 35px;
+    height: 35px;
+}
+
+.linkCausa {
+    color: #006341;
+    text-decoration: underline;
+    font-family: 'Avenir_Next_Demi_Bold';
+}
+
+.editarRespuesta {
+    width: 33px;
+    height: 33px;
+    background-color: #006341;
+    border-radius: 4px;
+}
+
+.textAreaRespuesta {
+    padding: 0px 10px !important;
+}

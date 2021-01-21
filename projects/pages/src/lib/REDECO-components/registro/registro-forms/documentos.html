@@ -1,0 +1,7 @@
+<div class="row">
+    <div class="col-4 col-s-12" *ngFor="let file of files">
+        <label>{{file.label}}</label>
+        <input type="file" [id]="file.id" class="inputfile" (change)="handleFileInput($event.target.files, file)"/>
+        <label [for]="file.id"><span [ngClass]="{'u-txt-black': file.estatus}">{{file.name}}</span></label>
+    </div>
+</div>

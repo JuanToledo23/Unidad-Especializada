@@ -1,0 +1,98 @@
+<div class="row">
+    <div class="col-4 col-s-12">
+        <div class="col-6 u-ex-left-u">
+            <label>Fecha de los hechos</label>
+            <div class="date-picker">
+                <input matInput [matDatepicker]="picker" (click)="picker.open()">
+                <mat-datepicker-toggle matSuffix [for]="picker">
+                    <mat-icon matDatepickerToggleIcon svgIcon="ico-calendario"></mat-icon>
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </div>
+        </div>
+        <div class="col-6 u-ex-right-u">
+            <label>Días en gestión</label>
+            <input type="text">
+        </div>
+    </div>
+    <div class="col-4 col-s-12">
+        <label>Producto o servicio</label>
+        <mat-select>
+            <mat-option value="option1">Opción 1</mat-option>
+            <mat-option value="option2">Opción 2</mat-option>
+            <mat-option value="option3">Opción 3</mat-option>
+        </mat-select>
+    </div>
+    <div class="col-4 col-s-12">
+        <label>Número de expediente o folio</label>
+        <input type="text">
+    </div>
+</div>
+<div class="row">
+    <div class="col-4 col-s-12">
+        <div class="col-6 u-ex-left-u">
+            <label>Fecha de recepción</label>
+            <div class="date-picker">
+                <input matInput [matDatepicker]="picker2" (click)="picker2.open()">
+                <mat-datepicker-toggle matSuffix [for]="picker2">
+                    <mat-icon matDatepickerToggleIcon svgIcon="ico-calendario"></mat-icon>
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+            </div>
+        </div>
+        <div class="col-6 u-ex-right-u">
+            <label>Fecha de vencimiento</label>
+            <div class="date-picker">
+                <input matInput [matDatepicker]="picker3" (click)="picker3.open()">
+                <mat-datepicker-toggle matSuffix [for]="picker3">
+                    <mat-icon matDatepickerToggleIcon svgIcon="ico-calendario"></mat-icon>
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker3></mat-datepicker>
+            </div>
+        </div>
+    </div>
+    <div class="col-4 col-s-12">
+        <label>Tipo de solicitud</label>
+        <input type="text">
+    </div>
+    <div class="col-4 col-s-12">
+        <label>Entidad federativa</label>
+        <mat-select>
+            <mat-option value="option1">Opción 1</mat-option>
+            <mat-option value="option2">Opción 2</mat-option>
+            <mat-option value="option3">Opción 3</mat-option>
+        </mat-select>
+    </div>
+</div>
+<div class="row">
+    <div class="col-4 col-s-12">
+        <label>Unidad de recepción</label>
+        <mat-select>
+            <mat-option value="option1">Opción 1</mat-option>
+            <mat-option value="option2">Opción 2</mat-option>
+            <mat-option value="option3">Opción 3</mat-option>
+        </mat-select>
+    </div>
+    <div class="col-4 col-s-12">
+        <label>Despacho y/o entidad financiera</label>
+        <mat-select>
+            <mat-option value="option1">Opción 1</mat-option>
+            <mat-option value="option2">Opción 2</mat-option>
+            <mat-option value="option3">Opción 3</mat-option>
+        </mat-select>
+    </div>
+    <div class="col-4 col-s-12">
+        <label>Canal de cobranza</label>
+        <input type="text">
+    </div>
+</div>
+<div class="row">
+    <div class="col-4 col-s-12">
+        <label>Estatus</label>
+        <mat-select>
+            <mat-option value="option1">Opción 1</mat-option>
+            <mat-option value="option2">Opción 2</mat-option>
+            <mat-option value="option3">Opción 3</mat-option>
+        </mat-select>
+    </div>
+</div>

@@ -9,11 +9,17 @@ import { CatalogosService, HeaderService } from 'dls';
   templateUrl: './cancelacion-folios.component.html',
   styleUrls: ['./cancelacion-folios.component.scss']
 })
-export class CancelacionFoliosComponent implements OnInit {
+export class CancelacionFoliosComponent implements OnInit, AfterViewInit {
 
   constructor(public headerService: HeaderService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
+  }
+
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.headerService.titulo = 'Cancelación de folios';
+    });
   }
 
   cancelar() {

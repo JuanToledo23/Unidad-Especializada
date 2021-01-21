@@ -9,13 +9,19 @@ import { CatalogosService, HeaderService } from 'dls';
   templateUrl: './reasignacion-casos.component.html',
   styleUrls: ['./reasignacion-casos.component.scss']
 })
-export class ReasignacionCasosComponent implements OnInit {
+export class ReasignacionCasosComponent implements OnInit, AfterViewInit {
 
   analista1: string = 'Nombre';
   analista2: string = 'Nombre';
   constructor(public headerService: HeaderService, public catalogosService: CatalogosService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
+  }
+
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.headerService.titulo = 'Reasignación de caso';
+    });
   }
 
   cambiarAnalista(e, analista) {

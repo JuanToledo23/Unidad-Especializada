@@ -12,6 +12,7 @@ import { ExportarReporteComponent } from './components/reportes/exportar-reporte
 import { OrdenarReporteComponent } from './components/reportes/ordenar-reporte/ordenar-reporte.component';
 import { ReporteadorComponent } from './components/reportes/reporteador/reporteador.component';
 import { PagesComponent } from './pages.component';
+import { REDECORegistroComponent } from './REDECO-components/registro/registro.component';
 
 const routes: Routes = [
 
@@ -51,6 +52,9 @@ const routes: Routes = [
       },
       {
         path:'cancelacion-folios', component: CancelacionFoliosComponent
+      },
+      {
+        path:'redeco-registro/:id', component: REDECORegistroComponent
       },
 
     ]
