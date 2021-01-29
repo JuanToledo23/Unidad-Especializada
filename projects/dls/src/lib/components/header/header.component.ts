@@ -97,6 +97,10 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/analista/cancelacion-folios']);
   }
 
+  goConsultaCasos() {
+    this.router.navigate(['/analista/consulta-casos']);
+  }
+
   menuButtonClick() {
     this.showMenu = !this.showMenu;
   }

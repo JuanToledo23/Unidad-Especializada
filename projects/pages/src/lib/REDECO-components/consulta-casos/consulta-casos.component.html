@@ -1,0 +1,78 @@
+<app-header></app-header>
+
+<div class="contenedor-contenido">
+    <div class="titulo-contenido">Búsqueda de casos</div>
+    <div class="contenedor-gris">
+        <div class="u-flex-center u-flex-column u-mt-1">
+            <div class="u-position-r u-w-50">
+                <input type="text" id="buscaAsuntos" placeholder="Buscar por nombre, número de cuenta, tarjeta, CU o folio" [(ngModel)]="textoBusqueda">
+                <input type="submit" class="buscar" value="" (click)="applyFilter()">
+            </div>
+            <div class="u-flex-center u-w-75 u-mt-1-5">
+                <mat-radio-group aria-label="Select an option" class="u-w-100 u-flex-between" (change)="radioChange($event)">
+                    <div class="u-txt-medium">Tipo de búsqueda:</div>
+                    <mat-radio-button value="-1">Todos</mat-radio-button>
+                    <mat-radio-button value="0">Gestión electrónica</mat-radio-button>
+                    <mat-radio-button value="1">Unidad especializada</mat-radio-button>
+                    <mat-radio-button value="2">REDECO</mat-radio-button>
+                </mat-radio-group>
+            </div>
+        </div>
+        <ng-container *ngIf="mostrarResultados">
+            <div class="u-w-100 u-flex-center-y u-border-box p-contenedor-notificaciones" [ngClass]="{'u-bg-verde': numeroResultados > 0, 'u-bg-rojo': numeroResultados === 0}">
+                <img src="assets/img/icoHoja.svg" class="u-img-md">
+                <strong class="u-pl-1" *ngIf="numeroResultados > 0">{{numeroResultados}} Casos encontrados</strong>
+                <strong class="u-pl-1" *ngIf="numeroResultados === 0">No se encontraros casos</strong>
+            </div>
+            <div class="u-mt-1-5 scroll-y">
+                <table mat-table [dataSource]="dataSource" matSort
+                    class="tblGeneral tblPuestos">
+    
+                    <ng-container matColumnDef="folio">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Folio</th>
+                        <td mat-cell *matCellDef="let element"><a class="link" >{{element.folio}}</a></td>
+                    </ng-container>
+    
+                    <ng-container matColumnDef="folioConducef">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Fiolio CONDUCEF</th>
+                        <td mat-cell *matCellDef="let element">{{element.folioConducef}}</td>
+                    </ng-container>
+    
+                    <ng-container matColumnDef="nombre">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+                        <td mat-cell *matCellDef="let element">{{element.nombre}}</td>
+                    </ng-container>
+    
+                    <ng-container matColumnDef="medioLlegada">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Medio <br> de llegada</th>
+                        <td mat-cell *matCellDef="let element">{{element.medioLlegada}}</td>
+                    </ng-container>
+    
+                    <ng-container matColumnDef="fechaRecepcion">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha <br> recepción</th>
+                        <td mat-cell *matCellDef="let element">{{element.fechaRecepcion}}</td>
+                    </ng-container>
+    
+                    <ng-container matColumnDef="estatus">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Estatus</th>
+                        <td mat-cell *matCellDef="let element">{{element.estatus}}</td>
+                    </ng-container>
+    
+                    <ng-container matColumnDef="fallo">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Fallo</th>
+                        <td mat-cell *matCellDef="let element">{{element.fallo}}</td>
+                    </ng-container>
+    
+                    <ng-container matColumnDef="fechaConclucion">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha <br> conclución</th>
+                        <td mat-cell *matCellDef="let element">{{element.fechaConclucion}}</td>
+                    </ng-container>
+    
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </div>
+        </ng-container>
+    </div>
+</div>
+<une-footer></une-footer>

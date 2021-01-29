@@ -35,6 +35,7 @@ import { ConfirmacionDialog, ReasignacionCasosComponent } from './components/rea
 import { CancelacionFoliosComponent, ConfirmacionCancelacionDialog } from './components/cancelacion-folio/cancelacion-folios.component';
 import { REDECORegistroComponent } from './REDECO-components/registro/registro.component';
 import { REDECOCausas, REDECODatosCliente, REDECODatosGeneralesQuejoso, REDECODocumentos, REDECOOrigenQueja } from './REDECO-components/registro/registro-forms/registro-forms.component';
+import { ConsultaCasosComponent } from './REDECO-components/consulta-casos/consulta-casos.component';
 
 
 const RegistroComponents = [
@@ -102,6 +103,7 @@ const Dialogs = [
     CancelacionFoliosComponent,
     REDECORegistroComponent,
     REDECORegistroComponents,
+    ConsultaCasosComponent,
     Dialogs,
     FilterArrayPipe,
     NombreMesPipe
@@ -121,6 +123,7 @@ const Dialogs = [
     CancelacionFoliosComponent,
     REDECORegistroComponent,
     REDECORegistroComponents,
+    ConsultaCasosComponent
   ],
   entryComponents: [
     Dialogs
