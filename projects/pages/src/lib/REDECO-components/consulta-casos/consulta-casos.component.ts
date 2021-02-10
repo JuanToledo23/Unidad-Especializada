@@ -1,8 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { HeaderService, MisAsuntosService } from 'dls';
-import { ConsultaCasosService } from 'projects/dls/src/lib/services/consulta-casos.service';
+import { HeaderService, MisAsuntosService, ConsultaCasosService } from 'dls';
 
 export interface Caso {
   id: number;

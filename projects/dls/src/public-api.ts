@@ -20,6 +20,7 @@ export * from './lib/services/reportes.service';
 export * from './lib/services/calendario.service';
 export * from './lib/services/catalogos.service';
 export * from './lib/services/mis-asuntos.service';
+export * from './lib/services/consulta-casos.service';
 
 
 // Directives
